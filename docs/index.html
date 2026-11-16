@@ -8,10 +8,10 @@
     <meta name="robots" content="noarchive">
     <meta name="author" content="Aabyss-Team">
     <meta name="description" content="渊龙Sec安全团队威胁情报自动播报：聚合 NVD、Tenable、阿里云高危漏洞库、斗象、微步、长亭、CISA KEV 等公开来源的最新漏洞情报。">
-    <meta property="og:title" content="威胁情报播报 · 渊龙Sec安全团队">
-    <meta property="og:description" content="自动聚合公开漏洞情报源，每 3 小时更新，聚焦最新披露与在野利用漏洞。">
+    <meta property="og:title" content="网络安全威胁情报·渊龙Sec安全团队">
+    <meta property="og:description" content="自动聚合公开漏洞情报源，每 8 小时更新，聚焦最新披露与在野利用漏洞。">
     <meta property="og:type" content="website">
-    <title>威胁情报播报 · 渊龙Sec安全团队</title>
+    <title>网络安全威胁情报·渊龙Sec安全团队</title>
     <link rel="icon" href="https://www.aabyss.cn/favicon.ico">
     <link rel="stylesheet" href="./css/page.css">
 </head>
@@ -25,7 +25,7 @@
             <h1>威胁情报播报</h1>
             <p class="lede">自动聚合公开漏洞情报源，每 3 小时更新一次，聚焦最新披露与已被在野利用的高危漏洞。</p>
             <div class="hero-meta">
-                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-16T14:44:21+08:00">2026-11-16 14:44:21</time></span>
+                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-16T15:37:39+08:00">2026-11-16 15:37:39</time></span>
                 <span class="meta-item">7 个情报源</span>
                 <span class="meta-item">391 条记录</span>
             </div>
@@ -56,6 +56,16 @@
             <span class="stat-label">每源展示上限</span>
         </div>
     </section>
+
+        <section class="wrap ai-summary" aria-labelledby="ai-summary-title">
+            <div class="ai-summary-head">
+                <span class="ai-badge">AI 研判</span>
+                <h2 id="ai-summary-title">近期高风险漏洞研判</h2>
+            </div>
+            <p class="ai-summary-text">本时间窗口内最需优先关注的是两条已被 CISA 列入在野利用目录的漏洞：CVE-2026-123039（Check Point 多产品关键资源权限分配不当）和 CVE-2026-114713（UnrealIRCd 分隔符处理不当）。前者涉及边界安全网关产品，属典型攻击入口，一旦被控可直接威胁内网；后者影响广泛部署的 IRC 服务端，已有真实攻击活动，两者均应立即核查资产暴露面并按厂商指引紧急补丁或采取缓解措施。其次，CVE-2026-129483（Cyrus SASL 2.1.28 及之前版本 SRP 机制认证绕过）危害极大：SASL 被大量邮件与认证服务集成，认证绕过利用门槛低、波及面广，建议立即升级或临时禁用 SRP 机制。DrayTek Vigor2960 集中披露多个严重漏洞（CVE-2026-129453、CVE-2026-129452、CVE-2026-129451、CVE-2026-129450），均位于 CGI 接口，属边缘设备常见远程攻击面，建议限制管理口暴露并尽快更新固件。此外 CVE-2026-82156（Dell PowerStore 授权绕过可致提权）影响企业存储，亦应排期修复。其余 WordPress 插件类 XSS、文件包含及各类信息泄露漏洞整体风险次之，建议结合资产实际使用情况批量更新插件、收敛暴露面，并加强对上述在野利用漏洞的 IOC 监测与日志回溯。</p>
+            <p class="ai-summary-meta">基于近 5 天 20 条候选情报 · k3 · 2026-11-16 15:37:39</p>
+        </section>
+
 
     <div class="wrap toolbar">
         <div class="search">
@@ -3476,7 +3486,7 @@
         </div>
     </div>
     <div class="wrap copyright">
-        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-16 14:44:21</p>
+        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-16 15:37:39</p>
     </div>
 </footer>
 
