@@ -1,0 +1,6 @@
+# 运行依赖（Python 3.8+，推荐 3.12）
+# 已移除：pypdm-db / pyyaml-erb / py-color-log / GitPython / python-graphql-client / PyExecJS
+# 这些库已停止维护或与新版 PyYAML、Python 3.12 不兼容，现改用标准库实现。
+requests>=2.31,<3
+lxml>=4.9,<7
+PyYAML>=6.0,<7

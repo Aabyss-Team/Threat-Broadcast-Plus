@@ -1,0 +1,27 @@
+database:
+  dbtype: 'sqlite'
+  dbpath: './data/cves.db'
+  sqlpath: './script/cves-create.sql'
+  retain_days: 365                         # 归档保留天数（0 表示不按时间清理）
+  max_rows_per_src: 3000                   # 每个来源最多保留条数（0 表示不限制）
+
+github:
+  graphql: 'https://api.github.com/graphql'
+  repo: 'threat-broadcast'
+  owner: 'Aabyss-Team'
+  gtk: "<%= ENV['GTK'] %>"                 # Github Token，用于从 Issue 收集订阅邮箱
+  auto_commit: False                       # 使用 Github Actions 时不需要开启
+
+crawler:
+  top: 60                                  # 每个来源最多展示 / 抓取前 N 条
+  timeout: 45                              # 单次 HTTP 请求超时（秒）
+
+notify:
+  mail_smtp: 'smtp.qq.com'
+  mail_port: 465                           # 465 = SSL，587 = STARTTLS
+  mail_user: 'threatbroadcast@qq.com'
+  mail_pass: "<%= ENV['MAIL_PASS'] %>"
+  # 微信推送：任选一种配置即可，留空则跳过
+  wechat_webhook: "<%= ENV['WECHAT_WEBHOOK'] %>"      # 企业微信群机器人 Webhook
+  serverchan_key: "<%= ENV['SERVERCHAN_KEY'] %>"      # Server酱 SendKey
+  pushplus_token: "<%= ENV['PUSHPLUS_TOKEN'] %>"      # PushPlus Token
