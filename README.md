@@ -129,7 +129,7 @@ python -m http.server 8000
 
 ### GitHub Actions
 
-工作流：`.github/workflows/autorun.yml`，默认每 3 小时运行一次，也可以手动 `workflow_dispatch`。
+工作流：`.github/workflows/autorun.yml`，默认每 8 小时运行一次，也可以手动 `workflow_dispatch`。
 
 需要在仓库 `Settings -> Secrets and variables -> Actions` 中配置：
 
