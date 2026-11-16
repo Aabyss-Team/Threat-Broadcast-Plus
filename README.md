@@ -90,13 +90,17 @@
 
 ### AI 风险研判
 
-- 配置 `KIMI_API_KEY` 后，每次抓到新情报会调用 Kimi / Moonshot API
+- 配置 `KIMI_API_KEY` 后，每次抓到新情报会调用 Kimi API
 - 从数据库取出最近 5 天的情报，按「在野利用 → 严重 → 高危 → 中危」排序，去重并限制每个来源的条数
 - 让模型从候选清单中筛出真正需要立即关注的漏洞，输出一段 250-350 字的中文研判
 - 结果写入 `data/ai_summary.json`，并展示在页面顶部「近期高风险漏洞研判」卡片中
 - 未配置 API Key 或 API 调用失败时只记录告警，不会覆盖已有摘要，也不影响页面生成
-- 默认模型 `kimi-k3`，推理强度默认 `low`；可在 `settings.yml` 中调整 `model` / `reasoning_effort`
-- `KIMI_API_KEY` 请使用 `platform.kimi.com` 创建的 Key，`platform.kimi.ai` 的 Key 不能混用
+- **Kimi Code Console 默认配置**：模型 `k3`，地址 `https://api.kimi.com/coding/v1/chat/completions`
+- 推理强度默认 `low`，可在 `settings.yml` 中调整 `reasoning_effort`
+- Key 与地址必须配套：
+  - `www.kimi.com/code/console` 的 Key → `https://api.kimi.com/coding/v1/chat/completions`，模型 `k3` / `k3.1-pro`
+  - `platform.kimi.com` 的 Key → `https://api.moonshot.cn/v1/chat/completions`，模型 `kimi-k3`
+  - `platform.kimi.ai` 的 Key → `https://api.moonshot.ai/v1/chat/completions`，模型 `kimi-k3`
 
 ------
 
@@ -133,7 +137,8 @@ python -m http.server 8000
 | `MAIL_USER` | 否 | 发件邮箱账号；不配置则使用 `settings.yml` 中的默认值 |
 | `MAIL_SMTP` | 否 | SMTP 服务器；不配置则使用 `settings.yml` 中的默认值 |
 | `NVD_API_KEY` | 否 | NVD API Key，仅在回退 REST API 时使用 |
-| `KIMI_API_KEY` | 否 | Moonshot / Kimi API Key，用于生成近 5 天风险研判；不配置则不调用 AI |
+| `KIMI_API_KEY` | 否 | Kimi Code / Kimi API Key，用于生成近 5 天风险研判；不配置则不调用 AI |
+| `KIMI_API_URL` | 否 | 覆盖完整 API 地址；默认 Kimi Code 国内 `https://api.kimi.com/coding/v1/chat/completions`；Kimi Code 海外用 `https://api.kimi.ai/coding/v1/chat/completions`；开放平台用 `https://api.moonshot.cn/v1/chat/completions` |
 | `WECHAT_WEBHOOK` | 否 | 企业微信群机器人 Webhook |
 | `SERVERCHAN_KEY` | 否 | Server酱 SendKey |
 | `PUSHPLUS_TOKEN` | 否 | PushPlus Token |
@@ -167,8 +172,8 @@ notify:
 
 kimi:
   api_key: "<%= ENV['KIMI_API_KEY'] %>"
-  api_url: 'https://api.moonshot.cn/v1/chat/completions'
-  model: 'kimi-k3'          # Kimi K3
+  api_url: "<%= ENV['KIMI_API_URL'] %>"  # 留空默认 Kimi Code 国内地址
+  model: 'k3'               # Kimi Code: k3 / k3.1-pro / k3-256k
   reasoning_effort: 'low'   # K3 推理强度：low / high / max
   days: 5                   # 分析最近 N 天
   max_items: 30             # 最多送给模型的候选条数

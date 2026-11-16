@@ -27,9 +27,13 @@ notify:
   pushplus_token: "<%= ENV['PUSHPLUS_TOKEN'] %>"      # PushPlus Token
 
 kimi:
-  api_key: "<%= ENV['KIMI_API_KEY'] %>"               # Moonshot / Kimi API Key
-  api_url: 'https://api.moonshot.cn/v1/chat/completions'
-  model: 'kimi-k3'                                    # Kimi K3 模型
+  api_key: "<%= ENV['KIMI_API_KEY'] %>"               # Kimi Code / Kimi API Key
+  # Kimi Code（www.kimi.com/code/console）：
+  #   国内 https://api.kimi.com/coding/v1/chat/completions
+  #   海外 https://api.kimi.ai/coding/v1/chat/completions
+  # Kimi API 开放平台（platform.kimi.com）：https://api.moonshot.cn/v1/chat/completions
+  api_url: "<%= ENV['KIMI_API_URL'] %>"              # 留空默认 Kimi Code 国内地址
+  model: 'k3'                                         # Kimi Code: k3 / k3.1-pro / k3-256k
   reasoning_effort: 'low'                             # K3 推理强度：low / high / max
   days: 5                                             # 分析最近 N 天的情报
   max_items: 30                                       # 最多送给模型的候选条数

@@ -56,8 +56,8 @@ DEFAULT_SETTINGS = {
     },
     'kimi': {
         'api_key': '',
-        'api_url': 'https://api.moonshot.cn/v1/chat/completions',
-        'model': 'kimi-k3',
+        'api_url': 'https://api.kimi.com/coding/v1/chat/completions',
+        'model': 'k3',
         'reasoning_effort': 'low',
         'days': 5,
         'max_items': 30,

@@ -54,6 +54,7 @@ jobs:
           MAIL_SMTP: ${{ secrets.MAIL_SMTP }}
           NVD_API_KEY: ${{ secrets.NVD_API_KEY }}
           KIMI_API_KEY: ${{ secrets.KIMI_API_KEY }}
+          KIMI_API_URL: ${{ secrets.KIMI_API_URL }}
           WECHAT_WEBHOOK: ${{ secrets.WECHAT_WEBHOOK }}
           SERVERCHAN_KEY: ${{ secrets.SERVERCHAN_KEY }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}

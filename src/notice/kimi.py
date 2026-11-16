@@ -16,8 +16,8 @@ from src.bean.cve_info import CST, LEVEL_CN
 from src.logger import log
 
 SUMMARY_PATH = os.path.join(config.PRJ_DIR, 'data', 'ai_summary.json')
-DEFAULT_API_URL = 'https://api.moonshot.cn/v1/chat/completions'
-DEFAULT_MODEL = 'kimi-k3'
+DEFAULT_API_URL = 'https://api.kimi.com/coding/v1/chat/completions'
+DEFAULT_MODEL = 'k3'
 
 LEVEL_RANK = {
     'KEV': 0,
@@ -47,6 +47,9 @@ def has_summary():
 def to_summary(conn):
     """生成并保存近 N 天风险研判；成功写入返回 True。"""
     api_key = (config.settings.get('kimi', 'api_key', '') or '').strip()
+    api_key = api_key.strip('"').strip("'").strip()
+    if api_key.lower().startswith('bearer '):
+        api_key = api_key[7:].strip().strip('"').strip("'")
     if not api_key:
         log.info('[AI] 未配置 KIMI_API_KEY，跳过风险研判')
         return False
@@ -160,9 +163,16 @@ def _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort='l
         'messages': messages,
     }
 
-    # Kimi K3 固定 temperature=1.0，不接受显式 temperature；
-    # 同时使用 max_completion_tokens，并给思考过程预留足够额度。
-    if model.lower().startswith('kimi-k3'):
+    # Kimi Code 走 OpenAI Chat Completions，输出字段用 max_tokens；
+    # Kimi K3 固定 thinking=ON，不显式传 temperature。
+    # Kimi API 开放平台的 K3 则使用 max_completion_tokens。
+    is_kimi_code = ('api.kimi.com/coding' in api_url or 'api.kimi.ai/coding' in api_url)
+    is_k3 = model.lower().startswith(('k3', 'kimi-k3'))
+
+    if is_kimi_code:
+        payload['reasoning_effort'] = reasoning_effort
+        payload['max_tokens'] = max(int(max_tokens), 4096)
+    elif is_k3:
         payload['reasoning_effort'] = reasoning_effort
         payload['max_completion_tokens'] = max(int(max_tokens), 4096)
     else:
@@ -181,8 +191,19 @@ def _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort='l
         return ''
 
     if response.status_code != 200:
-        log.warning('[AI] Kimi API 返回 HTTP %s：%s'
-                    % (response.status_code, (response.text or '')[:300]))
+        if response.status_code == 401:
+            log.warning(
+                '[AI] Kimi API 认证失败（401）：%s\n'
+                '请检查 KIMI_API_KEY 与 KIMI_API_URL 是否配套：\n'
+                '  www.kimi.com/code/console 的 Key -> https://api.kimi.com/coding/v1/chat/completions（model=k3）\n'
+                '  platform.kimi.com 的 Key -> https://api.moonshot.cn/v1/chat/completions（model=kimi-k3）\n'
+                '  platform.kimi.ai  的 Key -> https://api.moonshot.ai/v1/chat/completions（model=kimi-k3）\n'
+                '同时确认 Key 没有多余引号/空格/Bearer 前缀、未被删除，账号有 K3 权限和余额。'
+                % (response.text or '')[:300]
+            )
+        else:
+            log.warning('[AI] Kimi API 返回 HTTP %s：%s'
+                        % (response.status_code, (response.text or '')[:300]))
         return ''
 
     try:
