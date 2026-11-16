@@ -6,7 +6,7 @@
 
 ## 1# 项目介绍
 
-**基于原项目[threat-broadcast](https://github.com/Aabyss-Team/threat-broadcast)的魔改和升级，感谢DeepSeek Cyber网络安全模型的帮助~**
+**基于原项目 [threat-broadcast](https://github.com/Aabyss-Team/threat-broadcast) 的魔改和升级，感谢 `DeepSeek-Cyber-Flash` 网络安全模型的帮助，非常牛~**
 
 自动从多个公开威胁情报源抓取最新漏洞信息，去重归档后生成静态播报页面，并通过 GitHub Actions 定时更新、提交回仓库。
 
