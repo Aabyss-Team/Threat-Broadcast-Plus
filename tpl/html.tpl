@@ -23,7 +23,7 @@
         <div class="hero-copy">
             <p class="eyebrow">THREAT INTELLIGENCE · AUTO BROADCAST</p>
             <h1>威胁情报播报</h1>
-            <p class="lede">自动聚合公开漏洞情报源，每 3 小时更新一次，聚焦最新披露与已被在野利用的高危漏洞。</p>
+            <p class="lede">自动聚合公开漏洞情报源，每 8 小时更新一次，聚焦最新披露与已被在野利用的高危漏洞，并提供 Kimi K3 模型的分析，能够马上锁定近 5 天的重大漏洞。</p>
             <div class="hero-meta">
                 <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="$datetime_iso">$datetime</time></span>
                 <span class="meta-item">$src_count 个情报源</span>
