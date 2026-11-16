@@ -30,7 +30,7 @@ import src.notice.wechat as wechat
 import src.utils._git as git
 
 # 防止仓库被随意 Fork 后直接运行、导致目标站点被大量请求
-DEFAULT_CRAWL_PWD = os.environ.get('CRAWL_PWD') or 'AabyssTeam6666'
+DEFAULT_CRAWL_PWD = os.environ.get('CRAWL_PWD') or 'AabyssTeam-Plus-F5m5bAxpaHE2CwS'
 
 
 def args():
