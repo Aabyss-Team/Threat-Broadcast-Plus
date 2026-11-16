@@ -1,4 +1,4 @@
-                    <tr data-search="$search">
+                    <tr data-search="$search" data-level="$level_code" data-ts="$timestamp">
                         <td class="col-id" data-label="编号"><span class="cve-id">$id</span></td>
                         <td class="col-level" data-label="等级">$level_html</td>
                         <td class="col-time" data-label="披露时间"><time datetime="$time_iso">$time</time>$new_html</td>

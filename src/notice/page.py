@@ -184,11 +184,22 @@ def _render_row(row_tpl, cve, new_cutoff):
         'title_full': html.escape(title, quote=True),
         'time': html.escape(display_time),
         'time_iso': html.escape((cve.time or '').replace(' ', 'T'), quote=True),
+        'timestamp': _epoch(cve.time),
+        'level_code': (cve.level or 'none').lower(),
         'level_html': _level_badge(cve.level),
         'new_html': '<span class="badge-new">NEW</span>' if is_new else '',
         'search': html.escape(search_text, quote=True),
         'md5': html.escape(cve.md5 or ''),
     })
+
+
+def _epoch(value):
+    """把 UTC+8 的时间字符串转成 Unix 时间戳，供前端时间筛选使用。"""
+    try:
+        moment = datetime.strptime(value, '%Y-%m-%d %H:%M:%S').replace(tzinfo=CST)
+        return int(moment.timestamp())
+    except (TypeError, ValueError):
+        return 0
 
 
 def _shorten(text, limit):

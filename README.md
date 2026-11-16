@@ -16,7 +16,7 @@
 
 | 来源 | 地址 | 说明 |
 | --- | --- | --- |
-| 阿里云漏洞库 | https://avd.aliyun.com/ | 中文漏洞通告，服务端渲染，稳定 |
+| 阿里云高危漏洞库 | https://avd.aliyun.com/high-risk/list | 中文高危漏洞，全部按高危展示；WAF 挑战时回退只读渲染 |
 | 斗象漏洞情报中心 | https://vip.tophant.com/intellList | 中文漏洞情报，含风险等级，支持 CVE 搜索 |
 | 微步在线情报中心 | https://x.threatbook.com/v5/vulIntelligence | 中文漏洞公告，含风险等级、CVE/CNNVD 编号 |
 | 长亭漏洞库 | https://stack.chaitin.com/vuldb/index | 中文漏洞库，含危害等级、CVE/CNVD/CNNVD 编号 |
