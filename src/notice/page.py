@@ -8,6 +8,7 @@
 # -----------------------------------------------
 
 import html
+import json
 import os
 from datetime import datetime, timedelta
 from string import Template
@@ -21,6 +22,7 @@ HTML_PATH = '%s/docs/index.html' % config.PRJ_DIR
 HTML_TPL_PATH = '%s/tpl/html.tpl' % config.PRJ_DIR
 TABLE_TPL_PATH = '%s/tpl/table.tpl' % config.PRJ_DIR
 ROW_TPL_PATH = '%s/tpl/row.tpl' % config.PRJ_DIR
+SUMMARY_PATH = '%s/data/ai_summary.json' % config.PRJ_DIR
 
 # 只展示最近 N 天内更新过的来源，避免已停用的来源长期占据页面
 SOURCE_RECENT_DAYS = 45
@@ -122,6 +124,7 @@ def to_page(conn, top=60, sources=None, active=None):
         'latest': latest_time or '—',
         'top': int(top),
         'source_names': html.escape(' · '.join(included_names) or '公开威胁情报源'),
+        'summary': _render_summary(_load_summary()),
         'nav': '\n'.join(nav_items),
         'tables': '\n'.join(blocks),
     })
@@ -143,6 +146,40 @@ def load_tpl():
         row_tpl = file.read()
 
     return html_tpl, table_tpl, row_tpl
+
+
+def _load_summary():
+    try:
+        with open(SUMMARY_PATH, 'r', encoding=config.CHARSET) as file:
+            data = json.load(file)
+        return data if isinstance(data, dict) else {}
+    except (OSError, ValueError):
+        return {}
+
+
+def _render_summary(data):
+    content = str(data.get('content') or '').strip()
+    if not content:
+        return ''
+
+    days = data.get('window_days') or 5
+    count = data.get('count') or 0
+    model = data.get('model') or 'Kimi'
+    generated = data.get('generated_at') or ''
+
+    meta = '基于近 %s 天 %s 条候选情报 · %s' % (days, count, model)
+    if generated:
+        meta = '%s · %s' % (meta, generated)
+
+    return '''        <section class="wrap ai-summary" aria-labelledby="ai-summary-title">
+            <div class="ai-summary-head">
+                <span class="ai-badge">AI 研判</span>
+                <h2 id="ai-summary-title">近期高风险漏洞研判</h2>
+            </div>
+            <p class="ai-summary-text">%s</p>
+            <p class="ai-summary-meta">%s</p>
+        </section>
+''' % (html.escape(content).replace('\n', '<br>'), html.escape(meta))
 
 
 def create_html(content):

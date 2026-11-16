@@ -25,3 +25,13 @@ notify:
   wechat_webhook: "<%= ENV['WECHAT_WEBHOOK'] %>"      # 企业微信群机器人 Webhook
   serverchan_key: "<%= ENV['SERVERCHAN_KEY'] %>"      # Server酱 SendKey
   pushplus_token: "<%= ENV['PUSHPLUS_TOKEN'] %>"      # PushPlus Token
+
+kimi:
+  api_key: "<%= ENV['KIMI_API_KEY'] %>"               # Moonshot / Kimi API Key
+  api_url: 'https://api.moonshot.cn/v1/chat/completions'
+  model: 'kimi-k3'                                    # Kimi K3 模型
+  reasoning_effort: 'low'                             # K3 推理强度：low / high / max
+  days: 5                                             # 分析最近 N 天的情报
+  max_items: 30                                       # 最多送给模型的候选条数
+  max_tokens: 800                                     # 非 K3 模型的输出上限（K3 自动放宽）
+

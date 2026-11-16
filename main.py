@@ -27,6 +27,7 @@ from src.crawler.cisa_kev import CisaKev
 import src.notice.page as page
 import src.notice.mail as mail
 import src.notice.wechat as wechat
+import src.notice.kimi as kimi
 import src.utils._git as git
 
 # 防止仓库被随意 Fork 后直接运行、导致目标站点被大量请求
@@ -143,8 +144,16 @@ def run(options):
         # 先清理过期 / 超量归档，保证页面与提交的数据库都是裁剪后的结果
         _db.prune(conn)
 
-        # 有新情报，或页面从未生成过时，才重建页面，避免产生无意义的提交
-        if all_cves or not os.path.exists(page.HTML_PATH):
+        # 有新情报或还没有 AI 研判时，调用 Kimi 生成近 N 天风险摘要
+        summary_changed = False
+        try:
+            if all_cves or not kimi.has_summary():
+                summary_changed = kimi.to_summary(conn)
+        except Exception as error:
+            log.error('[AI] 生成风险研判异常，跳过：%s' % error)
+
+        # 有新情报、新摘要，或页面从未生成过时，才重建页面，避免产生无意义的提交
+        if all_cves or summary_changed or not os.path.exists(page.HTML_PATH):
             page.to_page(conn, top, sources, active)
         else:
             log.info('本次没有新增情报，播报页面保持不变')

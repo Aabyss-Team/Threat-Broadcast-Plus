@@ -75,6 +75,7 @@
 
 - 全新响应式布局：桌面表格 / 移动端卡片式堆叠
 - 顶部数据概览（总条数、近两天新增、来源数、每源上限）
+- 配置 Kimi 后，顶部展示近 5 天高风险漏洞 AI 研判摘要
 - 支持关键词搜索（CVE 编号、标题、来源），快捷键 `/` 聚焦
 - 支持深色 / 浅色主题，跟随系统并记住选择
 - 严重等级徽章（严重 / 高危 / 中危 / 低危 / 在野利用）与 `NEW` 标记
@@ -86,6 +87,16 @@
 - 邮件改为直接 SMTP 发送（465 SSL / 587 STARTTLS），失败只告警
 - 新增微信推送：企业微信群机器人 / Server酱 / PushPlus，配置任意一种即可
 - 邮件与微信内容均做转义与长度控制
+
+### AI 风险研判
+
+- 配置 `KIMI_API_KEY` 后，每次抓到新情报会调用 Kimi / Moonshot API
+- 从数据库取出最近 5 天的情报，按「在野利用 → 严重 → 高危 → 中危」排序，去重并限制每个来源的条数
+- 让模型从候选清单中筛出真正需要立即关注的漏洞，输出一段 250-350 字的中文研判
+- 结果写入 `data/ai_summary.json`，并展示在页面顶部「近期高风险漏洞研判」卡片中
+- 未配置 API Key 或 API 调用失败时只记录告警，不会覆盖已有摘要，也不影响页面生成
+- 默认模型 `kimi-k3`，推理强度默认 `low`；可在 `settings.yml` 中调整 `model` / `reasoning_effort`
+- `KIMI_API_KEY` 请使用 `platform.kimi.com` 创建的 Key，`platform.kimi.ai` 的 Key 不能混用
 
 ------
 
@@ -122,6 +133,7 @@ python -m http.server 8000
 | `MAIL_USER` | 否 | 发件邮箱账号；不配置则使用 `settings.yml` 中的默认值 |
 | `MAIL_SMTP` | 否 | SMTP 服务器；不配置则使用 `settings.yml` 中的默认值 |
 | `NVD_API_KEY` | 否 | NVD API Key，仅在回退 REST API 时使用 |
+| `KIMI_API_KEY` | 否 | Moonshot / Kimi API Key，用于生成近 5 天风险研判；不配置则不调用 AI |
 | `WECHAT_WEBHOOK` | 否 | 企业微信群机器人 Webhook |
 | `SERVERCHAN_KEY` | 否 | Server酱 SendKey |
 | `PUSHPLUS_TOKEN` | 否 | PushPlus Token |
@@ -152,6 +164,15 @@ notify:
   wechat_webhook: "<%= ENV['WECHAT_WEBHOOK'] %>"
   serverchan_key: "<%= ENV['SERVERCHAN_KEY'] %>"
   pushplus_token: "<%= ENV['PUSHPLUS_TOKEN'] %>"
+
+kimi:
+  api_key: "<%= ENV['KIMI_API_KEY'] %>"
+  api_url: 'https://api.moonshot.cn/v1/chat/completions'
+  model: 'kimi-k3'          # Kimi K3
+  reasoning_effort: 'low'   # K3 推理强度：low / high / max
+  days: 5                   # 分析最近 N 天
+  max_items: 30             # 最多送给模型的候选条数
+  max_tokens: 800           # 非 K3 输出上限；K3 自动使用 4096
 ```
 
 ------
@@ -165,6 +186,7 @@ threat-broadcast
 ├── config/settings.yml ..................... [运行配置]
 ├── cache ................................... [各来源 MD5 去重缓存]
 ├── data/cves.db ............................ [sqlite: 威胁情报归档]
+├── data/ai_summary.json .................... [Kimi 风险研判缓存]
 ├── docs .................................... [GitHub Page 威胁情报总览]
 │   ├── index.html .......................... [自动生成的播报页面]
 │   ├── CNAME ............................... [GitHub Pages 自定义域名]

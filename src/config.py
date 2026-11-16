@@ -54,6 +54,15 @@ DEFAULT_SETTINGS = {
         'serverchan_key': '',
         'pushplus_token': '',
     },
+    'kimi': {
+        'api_key': '',
+        'api_url': 'https://api.moonshot.cn/v1/chat/completions',
+        'model': 'kimi-k3',
+        'reasoning_effort': 'low',
+        'days': 5,
+        'max_items': 30,
+        'max_tokens': 800,
+    },
 }
 
 
