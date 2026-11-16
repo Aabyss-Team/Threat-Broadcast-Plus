@@ -1,4 +1,4 @@
-# 渊龙Sec安全团队 - 威胁情报播报
+# 渊龙Sec安全团队 - 威胁情报播报Plus升级版
 
 **在线播报地址：[https://threat.aabyss.cn/](https://threat.aabyss.cn/)**
 
@@ -6,9 +6,11 @@
 
 ## 1# 项目介绍
 
+**基于原项目[threat-broadcast](https://github.com/Aabyss-Team/threat-broadcast)的魔改和升级，感谢DeepSeek Cyber网络安全模型的帮助~**
+
 自动从多个公开威胁情报源抓取最新漏洞信息，去重归档后生成静态播报页面，并通过 GitHub Actions 定时更新、提交回仓库。
 
-如果你觉得本项目有用，欢迎点个 Star，感谢各位师傅的关注和支持~
+**如果你觉得本项目有用，欢迎点个 Star，感谢各位师傅的关注和支持~**
 
 ### 当前启用的情报源
 
@@ -212,10 +214,6 @@ threat-broadcast
 本项目 Fork 并参考了 [Mr-xn/threat-broadcast](https://github.com/Mr-xn/threat-broadcast) 和 [EXP-Tools/threat-broadcast](https://github.com/EXP-Tools/threat-broadcast)，由衷感谢这两个项目~
 
 ## 8# 感谢各位师傅🙏
-
-## Stargazers
-
-[![Stargazers repo roster for @Aabyss-Team/threat-broadcast](http://reporoster.com/stars/Aabyss-Team/Threat-Broadcast-Plus)](https://github.com/Aabyss-Team/Threat-Broadcast-Plus/stargazers)
 
 ## Forkers
 
