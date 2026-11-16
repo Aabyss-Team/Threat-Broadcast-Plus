@@ -215,12 +215,12 @@ threat-broadcast
 
 ## Stargazers
 
-[![Stargazers repo roster for @Aabyss-Team/threat-broadcast](http://reporoster.com/stars/Aabyss-Team/threat-broadcast)](https://github.com/Aabyss-Team/threat-broadcast/stargazers)
+[![Stargazers repo roster for @Aabyss-Team/threat-broadcast](http://reporoster.com/stars/Aabyss-Team/Threat-Broadcast-Plus)](https://github.com/Aabyss-Team/Threat-Broadcast-Plus/stargazers)
 
 ## Forkers
 
-[![Forkers repo roster for @Aabyss-Team/threat-broadcast](http://reporoster.com/forks/Aabyss-Team/threat-broadcast/network/members)](https://github.com/Aabyss-Team/threat-broadcast/network/members)
+[![Forkers repo roster for @Aabyss-Team/threat-broadcast](http://reporoster.com/forks/Aabyss-Team/Threat-Broadcast-Plus/network/members)](https://github.com/Aabyss-Team/Threat-Broadcast-Plus/network/members)
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Aabyss-Team/threat-broadcast&type=Date)](https://star-history.com/#Aabyss-Team/threat-broadcast&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=Aabyss-Team/Threat-Broadcast-Plus&type=Date)](https://star-history.com/#Aabyss-Team/Threat-Broadcast-Plus&Date)

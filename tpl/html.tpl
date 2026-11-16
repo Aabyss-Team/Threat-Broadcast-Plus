@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="hero-actions">
-            <a class="btn btn-ghost" href="https://github.com/Aabyss-Team/threat-broadcast" target="_blank" rel="noopener">GitHub 项目</a>
+            <a class="btn btn-ghost" href="https://github.com/Aabyss-Team/Threat-Broadcast-Plus" target="_blank" rel="noopener">GitHub 项目</a>
             <a class="btn btn-primary" href="https://www.aabyss.cn" target="_blank" rel="noopener">团队主页</a>
         </div>
     </div>
@@ -88,9 +88,9 @@ $tables
         </div>
         <div class="footer-links">
             <a href="https://threat.aabyss.cn/" target="_blank" rel="noopener">在线播报页</a>
-            <a href="https://github.com/Aabyss-Team/threat-broadcast" target="_blank" rel="noopener">开源项目</a>
+            <a href="https://github.com/Aabyss-Team/Threat-Broadcast-Plus" target="_blank" rel="noopener">开源项目</a>
             <a href="https://www.aabyss.cn" target="_blank" rel="noopener">团队主页</a>
-            <a href="https://github.com/Aabyss-Team/threat-broadcast/issues" target="_blank" rel="noopener">问题反馈</a>
+            <a href="https://github.com/Aabyss-Team/Threat-Broadcast-Plus/issues" target="_blank" rel="noopener">问题反馈</a>
         </div>
         <div class="footer-qr">
             <img src="imgs/wechat.png" alt="渊龙Sec安全团队公众号二维码" width="96" height="96" loading="lazy">
