@@ -11,7 +11,7 @@
     <meta property="og:title" content="网络安全威胁情报·渊龙Sec安全团队">
     <meta property="og:description" content="自动聚合公开漏洞情报源，每 8 小时更新，聚焦最新披露与在野利用漏洞。">
     <meta property="og:type" content="website">
-    <title>威胁情报播报 · 渊龙Sec安全团队</title>
+    <title>网络安全威胁情报·渊龙Sec安全团队</title>
     <link rel="icon" href="https://www.aabyss.cn/favicon.ico">
     <link rel="stylesheet" href="./css/page.css">
 </head>
