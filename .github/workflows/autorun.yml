@@ -3,8 +3,8 @@ name: Threat Broadcast
 on:
   workflow_dispatch:
   schedule:
-    # 每 3 小时运行一次（UTC）
-    - cron: '0 */8 * * *'
+    # 每 4 小时运行一次（UTC）
+    - cron: '0 20,0,4,8,12,16 * * *'
 
 # 允许流水线把生成的页面 / 数据库提交回仓库
 permissions:

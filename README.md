@@ -12,7 +12,7 @@
 
 网上许多网络安全威胁情报爬取程序，但现在大都已经年久失修，我们团队也注意到了这一点。
 
-通过 DeepSeek Cyber 网安模型，我们团队成功构建新一代威胁情报自动播报程序，能够每隔 8 小时从多个公开威胁情报源抓取最新漏洞信息，去重归档后生成静态播报页面，并提供 Kimi K3 模型的分析，能够马上锁定近 5 天的重大漏洞，自动并通过 GitHub Actions 定时更新、提交回仓库。
+通过 DeepSeek Cyber 网安模型，我们团队成功构建新一代威胁情报自动播报程序，能够每隔 4 小时从多个公开威胁情报源抓取最新漏洞信息，去重归档后生成静态播报页面，并提供 Kimi K3 模型的分析，能够马上锁定近 5 天的重大漏洞，自动并通过 GitHub Actions 定时更新、提交回仓库。
 
 **如果你觉得本项目有用，欢迎点个 Star，感谢各位师傅的关注和支持~**
 
@@ -117,7 +117,7 @@
 python -m pip install -r requirements.txt
 
 # 生成页面 + 写数据库（不发送通知）
-python main.py -g AabyssTeam6666 -t 60 --no-mail --no-wechat
+python main.py -g AabyssTeam-Plus-F5m5bAxpaHE2CwS -t 60 --no-mail --no-wechat
 ```
 
 生成的页面位于 `docs/index.html`。本地预览建议在项目根目录启动一个静态服务器（页面使用了严格 CSP，直接双击打开可能无法运行搜索 / 主题脚本）：
@@ -129,7 +129,7 @@ python -m http.server 8000
 
 ### GitHub Actions
 
-工作流：`.github/workflows/autorun.yml`，默认每 8 小时运行一次，也可以手动 `workflow_dispatch`。
+工作流：`.github/workflows/autorun.yml`，默认每 4 小时运行一次，也可以手动 `workflow_dispatch`。
 
 需要在仓库 `Settings -> Secrets and variables -> Actions` 中配置：
 
@@ -221,7 +221,7 @@ threat-broadcast
 - 默认保留最近 365 天、每个来源最多 3000 条，超出的记录会在每次运行时清理并整理数据库
 - `cache/*.dat` 只保存 MD5，用于跨次运行去重，可安全删除（删除后数据库唯一索引仍会防重复）
 
-> 当前工作流会把 `data/cves.db` 和 `docs/index.html` 提交回仓库，数据库约 4MB。长期每 3 小时提交一次会让仓库体积持续增长；如果介意，建议改为「Actions cache 保存数据库 + Pages artifact 部署页面」，不再提交生成物。
+> 当前工作流会把 `data/cves.db` 和 `docs/index.html` 提交回仓库，数据库约 4MB。长期每 4 小时提交一次会让仓库体积持续增长；如果介意，建议改为「Actions cache 保存数据库 + Pages artifact 部署页面」，不再提交生成物。
 
 ------
 
