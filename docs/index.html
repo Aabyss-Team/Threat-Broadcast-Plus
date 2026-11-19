@@ -25,7 +25,7 @@
             <h1>威胁情报播报</h1>
             <p class="lede">自动聚合公开漏洞情报源，每 4 小时更新一次，聚焦最新披露与已被在野利用的高危漏洞，并提供 Kimi K3 模型的分析，能够马上锁定近 5 天的重大漏洞。</p>
             <div class="hero-meta">
-                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-19T09:35:25+08:00">2026-11-19 09:35:25</time></span>
+                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-19T15:32:05+08:00">2026-11-19 15:32:05</time></span>
                 <span class="meta-item">7 个情报源</span>
                 <span class="meta-item">392 条记录</span>
             </div>
@@ -44,7 +44,7 @@
             <span class="stat-label">当前展示情报</span>
         </div>
         <div class="stat stat-accent">
-            <span class="stat-value">187</span>
+            <span class="stat-value">195</span>
             <span class="stat-label">近两天新增</span>
         </div>
         <div class="stat">
@@ -62,8 +62,8 @@
                 <span class="ai-badge">AI 研判</span>
                 <h2 id="ai-summary-title">近期高风险漏洞研判</h2>
             </div>
-            <p class="ai-summary-text">本时间窗口内最需立即关注的是5个已被CISA确认在野利用的漏洞：CVE-2026-90436（Apache Axis不安全反射）、CVE-2026-90817（REDCap代码注入）、CVE-2026-40217（LiteLLM未授权替代信道）、CVE-2024-10441（群晖DSM输出编码缺陷）和CVE-2026-115731（Puppet Enterprise反序列化），均已遭真实攻击，面向公网的资产应立即排查版本并按厂商补丁或临时缓解措施处置，无法及时修复的应隔离下线。其中群晖DSM和Axis暴露面大、利用门槛低，风险最高。新增NVD严重漏洞中，CVE-2026-126755（ArangoDB认证绕过）和CVE-2026-63189（Dialoqbase未授权API）利用成本低，数据库类资产应优先升级并收紧访问控制。Dell PowerStore SDNAS集中曝出3个严重漏洞（CVE-2026-116441、116446、116448），存储设备运维网络应限制管理面访问。国内产品方面，CVE-2026-114202涉及华硕ASUS Control Center Express硬编码密钥可伪造令牌获取管理员权限，危害极大，应立即升级并轮换凭证；CVE-2026-114938（OpenJDK Java4Shell远程代码执行）影响面广泛，建议结合阿里云通告核查Java运行时版本并升级。总体建议：优先处置在野利用5项，同步完成Dell、华硕、OpenJDK资产盘点与补丁验证。</p>
-            <p class="ai-summary-meta">基于近 5 天 24 条候选情报 · k3 · 2026-11-19 09:35:25</p>
+            <p class="ai-summary-text">本窗口内最需立即处置的是已被 CISA 确认在野利用的 5 个漏洞：CVE-2026-90436（Apache Axis 不安全反射）、CVE-2026-90817（REDCap 代码注入，医疗科研数据平台，泄露与篡改风险高）、CVE-2026-40217（LiteLLM 未授权备用通道，AI 网关被滥用影响面大）、CVE-2024-10441（Synology DSM 输出编码缺陷，NAS 设备暴露广泛）和 CVE-2026-115731（Puppet Enterprise 反序列化，可直接控管整个运维体系）。建议按 CISA KEV 时限要求在边界侧临时阻断并优先打补丁。其次是 nginx2root 系列（CVE-2026-123633、CVE-2026-121810、CVE-2026-123634、CVE-2026-113425）及阿里云通报的 Nginx HTTP/2 窗口下溢 RCE（CVE-2026-123007），nginx 为互联网基础设施核心组件，RCE 利用门槛相对较低，影响范围极广，应立即升级并核查 HTTP/2、HTTP/3 与邮件代理模块暴露面。另有 Dokploy 多个命令注入与授权缺陷（CVE-2026-129991/129989/129986/129316）可致 root 接管主机，使用该平台者应紧急修复。清单未见明确标注为国内厂商产品的高危漏洞，但 Synology、Dell PowerStore、Ubiquiti UniFi 等在国内部署量大，需同步排查。清单未提供上述漏洞的公开 PoC/Exp 链接，目前无法确认已有公开利用代码，建议持续关注 GitHub、Exploit-DB 及厂商公告核实。</p>
+            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-19 15:32:05</p>
         </section>
 
 
@@ -125,7 +125,7 @@
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">阿里云高危漏洞库</span>
-                    <span class="source-meta">最近更新 2026-11-18 · <span class="card-count" data-total="60">60 条</span></span>
+                    <span class="source-meta">最近更新 2026-11-19 · <span class="card-count" data-total="60">60 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://avd.aliyun.com/high-risk/list" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
@@ -144,12 +144,28 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <tr data-search="cve-2026-123007 nginx http/2发送窗口整数下溢远程代码执行漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1795017600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123007</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T00:00:00">2026-11-19</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Nginx HTTP/2发送窗口整数下溢远程代码执行漏洞">Nginx HTTP/2发送窗口整数下溢远程代码执行漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-123007" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
                     <tr data-search="cve-2026-114938 openjdk java4shell base64解码远程代码执行漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1794931200">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-114938</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-18T00:00:00">2026-11-18</time><span class="badge-new">NEW</span></td>
                         <td class="col-title" data-label="标题" title="OpenJDK Java4Shell Base64解码远程代码执行漏洞">OpenJDK Java4Shell Base64解码远程代码执行漏洞</td>
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-114938" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123633 nginx http/2连接释放后重用远程代码执行漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1794931200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123633</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-18T00:00:00">2026-11-18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Nginx HTTP/2连接释放后重用远程代码执行漏洞">Nginx HTTP/2连接释放后重用远程代码执行漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-123633" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
                     <tr data-search="cve-2026-119618 apache http server mod_http2 堆内存损坏漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1794326400">
@@ -608,22 +624,6 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-1850319" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-24061 gnu inetutils telnetd 远程认证绕过漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1768924800">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-24061</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-01-21T00:00:00">2026-01-21</time></td>
-                        <td class="col-title" data-label="标题" title="GNU InetUtils telnetd 远程认证绕过漏洞">GNU InetUtils telnetd 远程认证绕过漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-24061" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-21858 n8n webhook 致远程代码执行漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1767801600">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-21858</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-01-08T00:00:00">2026-01-08</time></td>
-                        <td class="col-title" data-label="标题" title="n8n Webhook 致远程代码执行漏洞">n8n Webhook 致远程代码执行漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-21858" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -636,7 +636,7 @@
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">斗象漏洞情报中心</span>
-                    <span class="source-meta">最近更新 2026-11-19 07:51:16 · <span class="card-count" data-total="60">60 条</span></span>
+                    <span class="source-meta">最近更新 2026-11-19 12:55:43 · <span class="card-count" data-total="60">60 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://vip.tophant.com/intellList" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
@@ -655,6 +655,230 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <tr data-search="cve-2026-130888 nbdkit: qcow2dec zstd heap over-read via incorrect input buffer size 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795064143">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-130888</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:55:43">2026-11-19 12:55:43</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="nbdkit: qcow2dec ZSTD heap over-read via incorrect input buffer size">nbdkit: qcow2dec ZSTD heap over-read via incorrect input buffer size</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295360720965632" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132627 sourcecodester e-commerce shopping cart web application action.php sql injection 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795063523">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132627</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:45:23">2026-11-19 12:45:23</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SourceCodester E-Commerce Shopping Cart Web Application action.php sql injection">SourceCodester E-Commerce Shopping Cart Web Application action.php sql injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295361710821376" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-104357 libtirpc: libtirpc: sunrpc udp datagram-boundary violation (stale buffer bytes decoded as current request) 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795063334">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-104357</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:42:14">2026-11-19 12:42:14</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Libtirpc: libtirpc: sunrpc udp datagram-boundary violation (stale buffer bytes decoded as current request)">Libtirpc: libtirpc: sunrpc udp datagram-boundary violation (stale buffer bytes decoded as current request)</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295358539927552" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-84998 nextscripts: social networks auto-poster &lt;= 4.4.8 - unauthenticated stored cross-site scripting via &#x27;comment_author&#x27; and &#x27;comment_agent&#x27; comment fields 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795063179">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-84998</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:39:39">2026-11-19 12:39:39</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NextScripts: Social Networks Auto-Poster &lt;= 4.4.8 - Unauthenticated Stored Cross-Site Scripting via &#x27;comment_author&#x27; and &#x27;comment_agent&#x27; Comment Fields">NextScripts: Social Networks Auto-Poster &lt;= 4.4.8 - Unauthenticated Stored Cross-Site Scripting via &#x27;comment_author&#x27;…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295362222526464" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132807 unifi access 应用程序证书验证不当漏洞 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795062751">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132807</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:32:31">2026-11-19 12:32:31</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="UniFi Access 应用程序证书验证不当漏洞">UniFi Access 应用程序证书验证不当漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295403943268353" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132808 unifi access应用错误授权漏洞可导致任意命令执行 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795062751">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132808</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:32:31">2026-11-19 12:32:31</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="UniFi Access应用错误授权漏洞可导致任意命令执行">UniFi Access应用错误授权漏洞可导致任意命令执行</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295403943268352" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132805 unifi access 应用服务端请求伪造（ssrf）漏洞 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795062750">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132805</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:32:30">2026-11-19 12:32:30</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="UniFi Access 应用服务端请求伪造（SSRF）漏洞">UniFi Access 应用服务端请求伪造（SSRF）漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295403850993664" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132806 unifi access 应用认证 sql 注入漏洞 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795062750">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132806</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:32:30">2026-11-19 12:32:30</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="UniFi Access 应用认证 SQL 注入漏洞">UniFi Access 应用认证 SQL 注入漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295403892936704" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132803 unifi access 应用认证后 sql 注入导致主机设备权限提升漏洞 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795062749">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132803</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:32:29">2026-11-19 12:32:29</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="UniFi Access 应用认证后 SQL 注入导致主机设备权限提升漏洞">UniFi Access 应用认证后 SQL 注入导致主机设备权限提升漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295403821633538" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132804 unifi access 应用服务端请求伪造漏洞可导致 unifi os 权限提升 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795062749">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132804</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:32:29">2026-11-19 12:32:29</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="UniFi Access 应用服务端请求伪造漏洞可导致 UniFi OS 权限提升">UniFi Access 应用服务端请求伪造漏洞可导致 UniFi OS 权限提升</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295403821633537" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132802 unifi access application 文件访问前链接解析不当导致任意代码执行 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795062748">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132802</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:32:28">2026-11-19 12:32:28</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="UniFi Access Application 文件访问前链接解析不当导致任意代码执行">UniFi Access Application 文件访问前链接解析不当导致任意代码执行</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295403821633536" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132626 sourcecodester modern ticket reservation system validate.php sql injection 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795062621">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132626</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:30:21">2026-11-19 12:30:21</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SourceCodester Modern Ticket Reservation System validate.php sql injection">SourceCodester Modern Ticket Reservation System validate.php sql injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295361689849856" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132625 sourcecodester student project allocation and management system login login.php sql injection 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795061718">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132625</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:15:18">2026-11-19 12:15:18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SourceCodester Student Project Allocation and Management System Login login.php sql injection">SourceCodester Student Project Allocation and Management System Login login.php sql injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295361677266944" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132798 path traversal in temenos application framework java 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795060933">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132798</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:02:13">2026-11-19 12:02:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Path traversal in Temenos Application Framework Java">Path traversal in Temenos Application Framework Java</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295361723404288" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132622 gearup hyperev wlan site survey utils.lua get_wlan_sitesurvey os command injection 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795060821">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132622</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:00:21">2026-11-19 12:00:21</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="GearUP Hyperev WLAN Site Survey utils.lua get_wlan_sitesurvey os command injection">GearUP Hyperev WLAN Site Survey utils.lua get_wlan_sitesurvey os command injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295361656295424" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132621 gearup hyperev on-chip debug and test interface with improper access control 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795059025">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132621</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T11:30:25">2026-11-19 11:30:25</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="GearUP Hyperev on-chip debug and test interface with improper access control">GearUP Hyperev on-chip debug and test interface with improper access control</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295273794015232" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132610 sourcecodester simple form builder web app 1.0 save_form 函数代码注入漏洞 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795058242">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132610</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T11:17:22">2026-11-19 11:17:22</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SourceCodester Simple Form Builder Web App 1.0 save_form 函数代码注入漏洞">SourceCodester Simple Form Builder Web App 1.0 save_form 函数代码注入漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123267528246562816" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132611 sourcecodester simple form builder web app forms.php save_response unrestricted upload 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795058109">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132611</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T11:15:09">2026-11-19 11:15:09</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SourceCodester Simple Form Builder Web App Forms.php save_response unrestricted upload">SourceCodester Simple Form Builder Web App Forms.php save_response unrestricted upload</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123295273781432320" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132609 sourcecodester online food ordering system add_food.php unrestricted upload 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795055428">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132609</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T10:30:28">2026-11-19 10:30:28</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SourceCodester Online Food Ordering System add_food.php unrestricted upload">SourceCodester Online Food Ordering System add_food.php unrestricted upload</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123265030244929536" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-2307 elementor &lt;= 4.0.5 - authenticated (contributor+) sensitive information exposure 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795055267">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-2307</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T10:27:47">2026-11-19 10:27:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Elementor &lt;= 4.0.5 - Authenticated (Contributor+) Sensitive Information Exposure">Elementor &lt;= 4.0.5 - Authenticated (Contributor+) Sensitive Information Exposure</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123265030282678272" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132608 secudocx dmp login forward_login.jsp cross site scripting 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795054521">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132608</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T10:15:21">2026-11-19 10:15:21</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SECUDOCX DMP Login forward_login.jsp cross site scripting">SECUDOCX DMP Login forward_login.jsp cross site scripting</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123265030228152320" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132603 seo panel site auditor siteauditor.ctrl.php sql injection 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795053627">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132603</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T10:00:27">2026-11-19 10:00:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SEO Panel Site Auditor siteauditor.ctrl.php sql injection">SEO Panel Site Auditor siteauditor.ctrl.php sql injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123265030207180800" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132602 seo panel site auditor siteauditor.ctrl.php sql injection 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795052730">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132602</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T09:45:30">2026-11-19 09:45:30</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SEO Panel Site Auditor siteauditor.ctrl.php sql injection">SEO Panel Site Auditor siteauditor.ctrl.php sql injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123265021751463936" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132601 seo panel website import website.ctrl.php mime_content_type unrestricted upload 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795051828">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132601</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T09:30:28">2026-11-19 09:30:28</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SEO Panel Website Import website.ctrl.php mime_content_type unrestricted upload">SEO Panel Website Import website.ctrl.php mime_content_type unrestricted upload</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123265021730492416" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-131914 deserialization of untrusted data in codeplex anticsrf 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795051752">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131914</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T09:29:12">2026-11-19 09:29:12</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Deserialization of untrusted data in CodePlex AntiCSRF">Deserialization of untrusted data in CodePlex AntiCSRF</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123265063698698240" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132560 memtensor memmy-agent memory http service logs information disclosure 斗象漏洞情报中心 low 低危" data-level="low" data-ts="1795048229">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132560</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:30:29">2026-11-19 08:30:29</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="MemTensor memmy-agent Memory HTTP Service logs information disclosure">MemTensor memmy-agent Memory HTTP Service logs information disclosure</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123234821504372736" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132283 directus 认证服务刷新功能会话过期漏洞 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795047462">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132283</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:42">2026-11-19 08:17:42</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Directus 认证服务刷新功能会话过期漏洞">Directus 认证服务刷新功能会话过期漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123237332344770560" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132286 yangzongzhuan ruoyi user registration endpoint syslogincontroller.java input validation 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795047323">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132286</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:15:23">2026-11-19 08:15:23</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="yangzongzhuan RuoYi User Registration Endpoint SysLoginController.java input validation">yangzongzhuan RuoYi User Registration Endpoint SysLoginController.java input validation</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123234821495984128" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
                     <tr data-search="cve-2026-91139 insufficient rsa key strength in tp-link deco be65 local web-management authentication 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795045876">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-91139</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
@@ -909,230 +1133,6 @@
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:03">2026-11-19 07:13:03</time><span class="badge-new">NEW</span></td>
                         <td class="col-title" data-label="标题" title="ScreenTinker before 3.2.4 Stored XSS via Kiosk Page Button javascript: URL">ScreenTinker before 3.2.4 Stored XSS via Kiosk Page Button javascript: URL</td>
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566997323776" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132753 mp4v2 through 2.1.0 null pointer dereference via mp4rtphinttrack::getpayload 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043583">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132753</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:03">2026-11-19 07:13:03</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="MP4v2 through 2.1.0 NULL Pointer Dereference via MP4RtpHintTrack::GetPayload">MP4v2 through 2.1.0 NULL Pointer Dereference via MP4RtpHintTrack::GetPayload</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567009906688" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132754 mediainfolib before 26.10 out-of-bounds read via file_mpeg4::meta_iloc 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043582">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132754</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:02">2026-11-19 07:13:02</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="MediaInfoLib before 26.10 Out-of-Bounds Read via File_Mpeg4::meta_iloc">MediaInfoLib before 26.10 Out-of-Bounds Read via File_Mpeg4::meta_iloc</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567026683904" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132755 mediainfolib before 26.10 heap-based buffer over-read via tfsxml_leave 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043581">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132755</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:01">2026-11-19 07:13:01</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="MediaInfoLib before 26.10 Heap-Based Buffer Over-Read via tfsxml_leave">MediaInfoLib before 26.10 Heap-Based Buffer Over-Read via tfsxml_leave</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567043461120" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132756 geany through 2.1.0 os command injection via filename in build commands 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795043581">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132756</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:01">2026-11-19 07:13:01</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Geany through 2.1.0 OS Command Injection via Filename in Build Commands">Geany through 2.1.0 OS Command Injection via Filename in Build Commands</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567064432640" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132757 gpac before 26.07.0 null pointer dereference in dowritemeta 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043580">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132757</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:00">2026-11-19 07:13:00</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 NULL Pointer Dereference in DoWriteMeta">GPAC before 26.07.0 NULL Pointer Dereference in DoWriteMeta</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567085404160" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132758 gpac mp4box before 26.07.0 null pointer dereference via xmt_node_end 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043579">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132758</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:59">2026-11-19 07:12:59</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC MP4Box before 26.07.0 NULL Pointer Dereference via xmt_node_end">GPAC MP4Box before 26.07.0 NULL Pointer Dereference via xmt_node_end</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567097987072" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132759 gpac before 26.07.0 use-after-free in gf_sg_route_del via freed route source 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043579">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132759</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:59">2026-11-19 07:12:59</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Use-After-Free in gf_sg_route_del via Freed Route Source">GPAC before 26.07.0 Use-After-Free in gf_sg_route_del via Freed Route Source</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567123152896" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132760 gpac mp4box before 26.07.0 null pointer dereference via gf_isom_get_meta 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043578">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132760</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:58">2026-11-19 07:12:58</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC MP4Box before 26.07.0 NULL Pointer Dereference via gf_isom_get_meta">GPAC MP4Box before 26.07.0 NULL Pointer Dereference via gf_isom_get_meta</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567144124416" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132761 gpac before 26.07.0 use-after-free in gf_node_try_destroy via gf_sg_command_del 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043577">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132761</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:57">2026-11-19 07:12:57</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Use-After-Free in gf_node_try_destroy via gf_sg_command_del">GPAC before 26.07.0 Use-After-Free in gf_node_try_destroy via gf_sg_command_del</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567165095936" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132762 gpac mp4box before 26.07.0 divide by zero in dumptrackinfo 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043576">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132762</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:56">2026-11-19 07:12:56</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC MP4Box before 26.07.0 Divide by Zero in DumpTrackInfo">GPAC MP4Box before 26.07.0 Divide by Zero in DumpTrackInfo</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567181873152" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132763 gpac before 26.07.0 integer underflow out-of-bounds write in gf_xml_sax_peek_node 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043576">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132763</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:56">2026-11-19 07:12:56</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Integer Underflow Out-of-Bounds Write in gf_xml_sax_peek_node">GPAC before 26.07.0 Integer Underflow Out-of-Bounds Write in gf_xml_sax_peek_node</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567202844672" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132764 gpac before 26.07.0 use-after-free in xmt_resolve_routes via route commands 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043575">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132764</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:55">2026-11-19 07:12:55</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Use-After-Free in xmt_resolve_routes via ROUTE Commands">GPAC before 26.07.0 Use-After-Free in xmt_resolve_routes via ROUTE Commands</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567219621888" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132765 gpac mp4box through 26.07.0 use-after-free in gf_node_try_destroy via conditional command 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043574">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132765</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:54">2026-11-19 07:12:54</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC MP4Box through 26.07.0 Use-After-Free in gf_node_try_destroy via Conditional Command">GPAC MP4Box through 26.07.0 Use-After-Free in gf_node_try_destroy via Conditional Command</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567244787712" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132766 gpac before 26.07.0 use-after-free in gf_node_unregister via gf_sg_proto_del 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043574">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132766</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:54">2026-11-19 07:12:54</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Use-After-Free in gf_node_unregister via gf_sg_proto_del">GPAC before 26.07.0 Use-After-Free in gf_node_unregister via gf_sg_proto_del</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567265759232" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132767 gpac before 26.07.0 null pointer dereference via xmt_parse_command atindexfield 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043573">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132767</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:53">2026-11-19 07:12:53</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 NULL Pointer Dereference via xmt_parse_command atIndexField">GPAC before 26.07.0 NULL Pointer Dereference via xmt_parse_command atIndexField</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567307702273" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132768 gpac before 26.07.0 use-after-free in xmt_find_node via xmt peeked nodes 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043572">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132768</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:52">2026-11-19 07:12:52</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Use-After-Free in xmt_find_node via XMT Peeked Nodes">GPAC before 26.07.0 Use-After-Free in xmt_find_node via XMT Peeked Nodes</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567307702272" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132769 gpac before 26.07.0 type confusion via xmt_parse_script_field 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043572">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132769</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:52">2026-11-19 07:12:52</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Type Confusion via xmt_parse_script_field">GPAC before 26.07.0 Type Confusion via xmt_parse_script_field</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567328673792" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132770 gpac before 26.07.0 null pointer dereference via xmt_parse_proto 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043571">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132770</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:51">2026-11-19 07:12:51</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 NULL Pointer Dereference via xmt_parse_proto">GPAC before 26.07.0 NULL Pointer Dereference via xmt_parse_proto</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567345451008" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132771 gpac before 26.07.0 use-after-free in replacedefnode via gf_sg_vrml_parent_destroy 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043570">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132771</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:50">2026-11-19 07:12:50</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Use-After-Free in ReplaceDEFNode via gf_sg_vrml_parent_destroy">GPAC before 26.07.0 Use-After-Free in ReplaceDEFNode via gf_sg_vrml_parent_destroy</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567362228224" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132772 gpac mp4box before 26.07.0 use-after-free in xmt_node_start via xmt parser 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043570">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132772</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:50">2026-11-19 07:12:50</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC MP4Box before 26.07.0 Use-After-Free in xmt_node_start via XMT Parser">GPAC MP4Box before 26.07.0 Use-After-Free in xmt_node_start via XMT Parser</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567379005440" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132773 attendize through 2.8.0 authorization bypass via postcancelorder 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795043569">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132773</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:49">2026-11-19 07:12:49</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Attendize through 2.8.0 Authorization Bypass via postCancelOrder">Attendize through 2.8.0 Authorization Bypass via postCancelOrder</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567404171264" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132774 attendize through 2.8.0 authorization bypass via postmessageattendees 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043568">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132774</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:48">2026-11-19 07:12:48</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Attendize through 2.8.0 Authorization Bypass via postMessageAttendees">Attendize through 2.8.0 Authorization Bypass via postMessageAttendees</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567462891520" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132775 gpac before 26.07.0 use-after-free in gf_node_try_destroy via xmt field-replace 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043568">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132775</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:48">2026-11-19 07:12:48</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Use-After-Free in gf_node_try_destroy via XMT Field-Replace">GPAC before 26.07.0 Use-After-Free in gf_node_try_destroy via XMT Field-Replace</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567538388992" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132776 gpac mp4box before 26.07.0 use-after-free in xmt_find_node via sfnode replacement 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043567">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132776</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:47">2026-11-19 07:12:47</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC MP4Box before 26.07.0 Use-After-Free in xmt_find_node via SFNode Replacement">GPAC MP4Box before 26.07.0 Use-After-Free in xmt_find_node via SFNode Replacement</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224567655829504" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132777 gpac before 26.07.0 use-after-free in conditional_execute via freed bifs decoder 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043566">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132777</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:46">2026-11-19 07:12:46</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Use-After-Free in Conditional_execute via Freed BIFS Decoder">GPAC before 26.07.0 Use-After-Free in Conditional_execute via Freed BIFS Decoder</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224569690066944" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132778 gpac before 26.07.0 uncontrolled recursion dos via gf_sg_proto_field_is_sftime_offset 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043565">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132778</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:12:45">2026-11-19 07:12:45</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="GPAC before 26.07.0 Uncontrolled Recursion DoS via gf_sg_proto_field_is_sftime_offset">GPAC before 26.07.0 Uncontrolled Recursion DoS via gf_sg_proto_field_is_sftime_offset</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224569786535936" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-75518 domshell mcp服务器domshell_eval只读分类错误导致权限绕过漏洞 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795040244">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-75518</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:24">2026-11-19 06:17:24</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="DOMShell MCP服务器domshell_eval只读分类错误导致权限绕过漏洞">DOMShell MCP服务器domshell_eval只读分类错误导致权限绕过漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207141010575360" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-75612 yt-mcp 存在任意文件读取与目录遍历漏洞 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795040244">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-75612</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:24">2026-11-19 06:17:24</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="yt-mcp 存在任意文件读取与目录遍历漏洞">yt-mcp 存在任意文件读取与目录遍历漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207141488726016" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
                     </tbody>
@@ -1434,7 +1434,7 @@
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">长亭漏洞库</span>
-                    <span class="source-meta">最近更新 2026-11-17 · <span class="card-count" data-total="60">60 条</span></span>
+                    <span class="source-meta">最近更新 2026-11-18 · <span class="card-count" data-total="60">60 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://stack.chaitin.com/vuldb/index" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
@@ -1453,6 +1453,54 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <tr data-search="cve-2026-113425 nginx 邮件代理认证释放后使用远程代码执行漏洞（nginx2root，cve-2026-113425） 长亭漏洞库 high 高危" data-level="high" data-ts="1794931200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-113425</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-18T00:00:00">2026-11-18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="nginx 邮件代理认证释放后使用远程代码执行漏洞（nginx2root，CVE-2026-113425）">nginx 邮件代理认证释放后使用远程代码执行漏洞（nginx2root，CVE-2026-113425）</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=ad95b374-47e5-43c6-9671-00e8c0f8803b" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123007 nginx http/2 流控窗口整数溢出远程代码执行漏洞（nginx2root，cve-2026-123007） 长亭漏洞库 high 高危" data-level="high" data-ts="1794931200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123007</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-18T00:00:00">2026-11-18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="nginx HTTP/2 流控窗口整数溢出远程代码执行漏洞（nginx2root，CVE-2026-123007）">nginx HTTP/2 流控窗口整数溢出远程代码执行漏洞（nginx2root，CVE-2026-123007）</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=6d86e841-76d3-4925-879c-65e8b2e311ba" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123634 nginx resolver 释放后使用远程代码执行漏洞（nginx2root，cve-2026-123634） 长亭漏洞库 high 高危" data-level="high" data-ts="1794931200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123634</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-18T00:00:00">2026-11-18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="nginx resolver 释放后使用远程代码执行漏洞（nginx2root，CVE-2026-123634）">nginx resolver 释放后使用远程代码执行漏洞（nginx2root，CVE-2026-123634）</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=32690960-596b-472a-82e1-5390a20b36ae" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-121810 nginx http/3 连接释放后使用远程代码执行漏洞（nginx2root，cve-2026-121810） 长亭漏洞库 high 高危" data-level="high" data-ts="1794931200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-121810</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-18T00:00:00">2026-11-18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="nginx HTTP/3 连接释放后使用远程代码执行漏洞（nginx2root，CVE-2026-121810）">nginx HTTP/3 连接释放后使用远程代码执行漏洞（nginx2root，CVE-2026-121810）</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=ac45e2d8-c376-4edd-9508-3e9c1c4c2ad6" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123633 nginx http/2 连接释放后使用远程代码执行漏洞（nginx2root，cve-2026-123633） 长亭漏洞库 high 高危" data-level="high" data-ts="1794931200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123633</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-18T00:00:00">2026-11-18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="nginx HTTP/2 连接释放后使用远程代码执行漏洞（nginx2root，CVE-2026-123633）">nginx HTTP/2 连接释放后使用远程代码执行漏洞（nginx2root，CVE-2026-123633）</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=19b626b1-7084-4cbb-b0bf-60675a0d77c1" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="ct-6318076 vite 开发服务器远程代码执行漏洞（ghsa-p4f5-76q4-ffq7） 长亭漏洞库 high 高危" data-level="high" data-ts="1794931200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CT-6318076</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-18T00:00:00">2026-11-18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Vite 开发服务器远程代码执行漏洞（GHSA-p4f5-76q4-ffq7）">Vite 开发服务器远程代码执行漏洞（GHSA-p4f5-76q4-ffq7）</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=5d158268-126c-4470-b775-0a17bda9d73a" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
                     <tr data-search="cve-2026-114938 openjdk base64 解码器远程代码执行漏洞（java4shell，cve-2026-114938） 长亭漏洞库 high 高危" data-level="high" data-ts="1794844800">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-114938</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
@@ -1829,6 +1877,14 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=57e4d450-8b2b-492b-85f0-ed1ff7caf566" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
+                    <tr data-search="cve-2026-9762 ibm db2 代码执行漏洞 长亭漏洞库 high 高危" data-level="high" data-ts="1784217600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-9762</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-07-17T00:00:00">2026-07-17</time></td>
+                        <td class="col-title" data-label="标题" title="IBM DB2 代码执行漏洞">IBM DB2 代码执行漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=8a2c9a5a-217e-4f75-a6d9-9a0498aaccb1" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
                     <tr data-search="ct-5105476 金蝶eas cloud bshservice 存在远程代码执行漏洞 长亭漏洞库 critical 严重" data-level="critical" data-ts="1784044800">
                         <td class="col-id" data-label="编号"><span class="cve-id">CT-5105476</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
@@ -1877,62 +1933,6 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=5c7d4857-f59b-46cb-af18-b2dba841b545" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-52813 gogs 组织名称路径遍历导致 git hooks 远程代码执行漏洞 长亭漏洞库 critical 严重" data-level="critical" data-ts="1782230400">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-52813</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-06-24T00:00:00">2026-06-24</time></td>
-                        <td class="col-title" data-label="标题" title="Gogs 组织名称路径遍历导致 Git hooks 远程代码执行漏洞">Gogs 组织名称路径遍历导致 Git hooks 远程代码执行漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=3cf9c568-e34d-413a-828e-a35bb049bdc3" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="ct-4898886 广联达oa msgbroadcastcontent.aspx sql注入漏洞 长亭漏洞库 high 高危" data-level="high" data-ts="1782057600">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CT-4898886</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-06-22T00:00:00">2026-06-22</time></td>
-                        <td class="col-title" data-label="标题" title="广联达OA MsgBroadcastContent.aspx SQL注入漏洞">广联达OA MsgBroadcastContent.aspx SQL注入漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=2a0e0a76-dba5-4c3b-a0b5-afb8667c5ab3" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="ct-4893250 宏景人力资源信息管理系统 frreportaddorgtreeservlet sql注入漏洞 长亭漏洞库 high 高危" data-level="high" data-ts="1781712000">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CT-4893250</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-06-18T00:00:00">2026-06-18</time></td>
-                        <td class="col-title" data-label="标题" title="宏景人力资源信息管理系统 FrReportAddOrgTreeServlet SQL注入漏洞">宏景人力资源信息管理系统 FrReportAddOrgTreeServlet SQL注入漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=4ede8126-3ffd-430f-bd8c-b2848ce70727" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="ct-3888102 泛微 e-cology10 远程代码执行漏洞 长亭漏洞库 critical 严重" data-level="critical" data-ts="1773590400">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CT-3888102</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-03-16T00:00:00">2026-03-16</time></td>
-                        <td class="col-title" data-label="标题" title="泛微 E-cology10 远程代码执行漏洞">泛微 E-cology10 远程代码执行漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=6d9990ee-0b20-4d21-8887-193346a40180" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="ct-3888079 泛微 e-cology10 远程代码执行漏洞 长亭漏洞库 critical 严重" data-level="critical" data-ts="1773590400">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CT-3888079</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-03-16T00:00:00">2026-03-16</time></td>
-                        <td class="col-title" data-label="标题" title="泛微 E-cology10 远程代码执行漏洞">泛微 E-cology10 远程代码执行漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=fc27c96b-4c78-46fb-8d04-4015b190c2d9" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="ct-3888044 泛微 e-cology10 远程代码执行漏洞 长亭漏洞库 critical 严重" data-level="critical" data-ts="1773590400">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CT-3888044</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-03-16T00:00:00">2026-03-16</time></td>
-                        <td class="col-title" data-label="标题" title="泛微 E-cology10 远程代码执行漏洞">泛微 E-cology10 远程代码执行漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=c0a3bbac-9af4-41f5-97d4-8c1c3b6cdb00" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="ct-3386465 大蚂蚁 (bigant) 即时通讯系统任意文件读取漏洞 长亭漏洞库 high 高危" data-level="high" data-ts="1770566400">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CT-3386465</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-02-09T00:00:00">2026-02-09</time></td>
-                        <td class="col-title" data-label="标题" title="大蚂蚁 (BigAnt) 即时通讯系统任意文件读取漏洞">大蚂蚁 (BigAnt) 即时通讯系统任意文件读取漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://stack.chaitin.com/vuldb/detail?id=633cdd05-3abb-44d9-8cbf-cdda9d964991" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -1945,7 +1945,7 @@
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">美国国家漏洞数据库（NVD）</span>
-                    <span class="source-meta">最近更新 2026-11-19 08:17:48 · <span class="card-count" data-total="60">60 条</span></span>
+                    <span class="source-meta">最近更新 2026-11-19 13:18:40 · <span class="card-count" data-total="60">60 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://nvd.nist.gov/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
@@ -1964,6 +1964,222 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <tr data-search="cve-2026-84998 the nextscripts: social networks auto-poster plugin for wordpress is vulnerable to stored cross-site scripting via &#x27;comment_author&#x27; and &#x27;comment_agent&#x27; comment fields in all versions up to, and including, 4.4.8 due to insufficient input sanitization and output escaping. this makes it possible for un… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795065520">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-84998</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:40">2026-11-19 13:18:40</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="The NextScripts: Social Networks Auto-Poster plugin for WordPress is vulnerable to Stored Cross-Site Scripting via &#x27;comment_author&#x27; and &#x27;comment_agent&#x27; Comment Fields in all versions up to, and including, 4.4.8 due to insufficient input sanitization and output escaping. This makes it possible for un…">The NextScripts: Social Networks Auto-Poster plugin for WordPress is vulnerable to Stored Cross-Site Scripting via…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-84998" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132808 a malicious actor with access to the network and low privileges could exploit an incorrect authorization vulnerability found in unifi access application to execute arbitrary commands on certain adopted unifi access devices. 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795065519">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132808</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:39">2026-11-19 13:18:39</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A malicious actor with access to the network and low privileges could exploit an Incorrect Authorization vulnerability found in UniFi Access Application to execute arbitrary commands on certain adopted UniFi Access devices.">A malicious actor with access to the network and low privileges could exploit an Incorrect Authorization vulnerability…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132808" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132807 a malicious actor with access to the network and under certain conditions could exploit an improper certificate validation vulnerability found in unifi access application to obtain sensitive information from and make unauthorized changes to an adopted unifi access device. 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795065519">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132807</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:39">2026-11-19 13:18:39</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A malicious actor with access to the network and under certain conditions could exploit an Improper Certificate Validation vulnerability found in UniFi Access Application to obtain sensitive information from and make unauthorized changes to an adopted UniFi Access device.">A malicious actor with access to the network and under certain conditions could exploit an Improper Certificate…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132807" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132806 a malicious actor with access to the network and low privileges could exploit an authenticated sql injection vulnerability found in unifi access application to obtain sensitive information and make unauthorized changes within the unifi access application. 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795065519">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132806</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:39">2026-11-19 13:18:39</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A malicious actor with access to the network and low privileges could exploit an authenticated SQL Injection vulnerability found in UniFi Access Application to obtain sensitive information and make unauthorized changes within the UniFi Access Application.">A malicious actor with access to the network and low privileges could exploit an authenticated SQL Injection…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132806" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132805 a malicious actor with access to the network could exploit a server-side request forgery (ssrf) vulnerability found in unifi access application to obtain information and make unauthorized changes on the host device. 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795065519">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132805</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:39">2026-11-19 13:18:39</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A malicious actor with access to the network could exploit a Server-Side Request Forgery (SSRF) vulnerability found in UniFi Access Application to obtain information and make unauthorized changes on the host device.">A malicious actor with access to the network could exploit a Server-Side Request Forgery (SSRF) vulnerability found in…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132805" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132804 a malicious actor with access to the network and low privileges could exploit a server-side request forgery (ssrf) vulnerability found in unifi access application to escalate privileges within unifi os. 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795065518">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132804</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:38">2026-11-19 13:18:38</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A malicious actor with access to the network and low privileges could exploit a Server-Side Request Forgery (SSRF) vulnerability found in UniFi Access Application to escalate privileges within UniFi OS.">A malicious actor with access to the network and low privileges could exploit a Server-Side Request Forgery (SSRF)…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132804" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132803 a malicious actor with access to the network and low privileges could exploit a series of authenticated sql injection vulnerabilities found in unifi access application to escalate privileges on the host device. 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795065518">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132803</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:38">2026-11-19 13:18:38</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A malicious actor with access to the network and low privileges could exploit a series of authenticated SQL Injection vulnerabilities found in UniFi Access Application to escalate privileges on the host device.">A malicious actor with access to the network and low privileges could exploit a series of authenticated SQL Injection…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132803" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132802 a malicious actor with access to the network and low privileges could exploit an improper link resolution before file access vulnerability found in unifi access application to execute arbitrary code with root privileges on the host device. 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795065518">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132802</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:38">2026-11-19 13:18:38</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A malicious actor with access to the network and low privileges could exploit an Improper Link Resolution Before File Access vulnerability found in UniFi Access Application to execute arbitrary code with root privileges on the host device.">A malicious actor with access to the network and low privileges could exploit an Improper Link Resolution Before File…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132802" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132627 a security flaw has been discovered in sourcecodester e-commerce shopping cart web application 1.0. affected by this issue is some unknown functionality of the file action.php. the manipulation of the argument keyword results in sql injection. it is possible to launch the attack remotely. the exploi… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795065518">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132627</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:38">2026-11-19 13:18:38</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A security flaw has been discovered in SourceCodester E-Commerce Shopping Cart Web Application 1.0. Affected by this issue is some unknown functionality of the file action.php. The manipulation of the argument keyword results in sql injection. It is possible to launch the attack remotely. The exploi…">A security flaw has been discovered in SourceCodester E-Commerce Shopping Cart Web Application 1.0. Affected by this…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132627" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132626 a vulnerability was identified in sourcecodester modern ticket reservation system 1.0. affected by this vulnerability is an unknown functionality of the file /booking/validate.php. the manipulation of the argument ticket leads to sql injection. it is possible to initiate the attack remotely. the exp… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795065518">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132626</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:38">2026-11-19 13:18:38</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability was identified in SourceCodester Modern Ticket Reservation System 1.0. Affected by this vulnerability is an unknown functionality of the file /booking/validate.php. The manipulation of the argument ticket leads to sql injection. It is possible to initiate the attack remotely. The exp…">A vulnerability was identified in SourceCodester Modern Ticket Reservation System 1.0. Affected by this vulnerability…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132626" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132625 a vulnerability was determined in sourcecodester student project allocation and management system 1.0. affected is an unknown function of the file /login.php of the component login handler. executing a manipulation of the argument username/password can lead to sql injection. the attack may be perfor… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795065517">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132625</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:37">2026-11-19 13:18:37</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability was determined in SourceCodester Student Project Allocation and Management System 1.0. Affected is an unknown function of the file /login.php of the component Login Handler. Executing a manipulation of the argument username/password can lead to sql injection. The attack may be perfor…">A vulnerability was determined in SourceCodester Student Project Allocation and Management System 1.0. Affected is an…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132625" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-130888 a flaw was found in nbdkit. the qcow2dec filter&#x27;s zstd_compressed_cluster() function incorrectly sets the zstd input buffer size to the uncompressed cluster size instead of the compressed buffer size. a crafted qcow2 image with zstd-compressed clusters can trigger a heap over-read, leading to a deni… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795065513">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-130888</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:33">2026-11-19 13:18:33</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A flaw was found in nbdkit. The qcow2dec filter&#x27;s zstd_compressed_cluster() function incorrectly sets the ZSTD input buffer size to the uncompressed cluster size instead of the compressed buffer size. A crafted QCOW2 image with ZSTD-compressed clusters can trigger a heap over-read, leading to a deni…">A flaw was found in nbdkit. The qcow2dec filter&#x27;s zstd_compressed_cluster() function incorrectly sets the ZSTD input…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-130888" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-104357 a flaw was found in libtirpc. the sunrpc udp/datagram server transport reuses a single receive buffer across requests and resets the xdr decode position without rebinding the decode length to the size of the datagram actually received. as a result, when a short udp rpc request is received after a lo… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795065504">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-104357</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:18:24">2026-11-19 13:18:24</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A flaw was found in libtirpc. The SunRPC UDP/datagram server transport reuses a single receive buffer across requests and resets the XDR decode position without rebinding the decode length to the size of the datagram actually received. As a result, when a short UDP RPC request is received after a lo…">A flaw was found in libtirpc. The SunRPC UDP/datagram server transport reuses a single receive buffer across requests…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-104357" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132798 improper limitation of a pathname to a restricted directory in the como log viewer in temenos application framework java (tafj) r18.sp76.0 allows remote authenticated attackers to read arbitrary files via path traversal 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795061847">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132798</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:17:27">2026-11-19 12:17:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Improper Limitation of a Pathname to a Restricted Directory in the Como log viewer in Temenos Application Framework Java (TAFJ) R18.SP76.0 allows remote authenticated attackers to read arbitrary files via path traversal">Improper Limitation of a Pathname to a Restricted Directory in the Como log viewer in Temenos Application Framework…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132798" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132622 a vulnerability was found in gearup hyperev up to 20261020. this impacts the function get_wlan_sitesurvey of the file ld/utils.lua of the component wlan site survey. performing a manipulation of the argument line results in os command injection. the attack is possible to be carried out remotely. the… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795061847">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132622</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:17:27">2026-11-19 12:17:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability was found in GearUP Hyperev up to 20261020. This impacts the function get_wlan_sitesurvey of the file ld/utils.lua of the component WLAN Site Survey. Performing a manipulation of the argument line results in os command injection. The attack is possible to be carried out remotely. The…">A vulnerability was found in GearUP Hyperev up to 20261020. This impacts the function get_wlan_sitesurvey of the file…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132622" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132621 a vulnerability has been found in gearup hyperev up to 20261020. this affects an unknown function. such manipulation leads to on-chip debug and test interface with improper access control. the attack can be executed directly on the physical device. the vendor was contacted early about this disclosur… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795061847">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132621</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:17:27">2026-11-19 12:17:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability has been found in GearUP Hyperev up to 20261020. This affects an unknown function. Such manipulation leads to on-chip debug and test interface with improper access control. The attack can be executed directly on the physical device. The vendor was contacted early about this disclosur…">A vulnerability has been found in GearUP Hyperev up to 20261020. This affects an unknown function. Such manipulation…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132621" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132611 a security vulnerability has been detected in sourcecodester simple form builder web app 1.0. this impacts the function save_response of the file /classes/forms.php. the manipulation of the argument q[ ] leads to unrestricted upload. remote exploitation of the attack is possible. the exploit has bee… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795061847">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132611</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T12:17:27">2026-11-19 12:17:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A security vulnerability has been detected in SourceCodester Simple Form Builder Web App 1.0. This impacts the function save_response of the file /classes/Forms.php. The manipulation of the argument q[ ] leads to unrestricted upload. Remote exploitation of the attack is possible. The exploit has bee…">A security vulnerability has been detected in SourceCodester Simple Form Builder Web App 1.0. This impacts the…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132611" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-2307 the elementor website builder – more than just a page builder plugin for wordpress is vulnerable to sensitive information exposure in all versions up to, and including, 4.0.5 via `/wp-json/elementor/v1/user` rest endpoint. this makes it possible for authenticated attackers, with contributor-level ac… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795058242">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-2307</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T11:17:22">2026-11-19 11:17:22</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="The Elementor Website Builder – More Than Just a Page Builder plugin for WordPress is vulnerable to Sensitive Information Exposure in all versions up to, and including, 4.0.5 via `/wp-json/elementor/v1/user` REST endpoint. This makes it possible for authenticated attackers, with Contributor-level ac…">The Elementor Website Builder – More Than Just a Page Builder plugin for WordPress is vulnerable to Sensitive…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-2307" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132610 a security flaw has been discovered in sourcecodester simple form builder web app 1.0. the impacted element is the function save_form of the file /classes/forms.php. performing a manipulation of the argument form_code/form_data results in code injection. the attack may be initiated remotely. the exp… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795058242">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132610</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T11:17:22">2026-11-19 11:17:22</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A security flaw has been discovered in SourceCodester Simple Form Builder Web App 1.0. The impacted element is the function save_form of the file /classes/Forms.php. Performing a manipulation of the argument form_code/form_data results in code injection. The attack may be initiated remotely. The exp…">A security flaw has been discovered in SourceCodester Simple Form Builder Web App 1.0. The impacted element is the…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132610" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132609 a vulnerability was identified in sourcecodester online food ordering system 1.0. the affected element is an unknown function of the file /web/admin/add_food.php. such manipulation leads to unrestricted upload. the attack can be launched remotely. the exploit is publicly available and might be used. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795058242">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132609</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T11:17:22">2026-11-19 11:17:22</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability was identified in SourceCodester Online Food Ordering System 1.0. The affected element is an unknown function of the file /web/admin/add_food.php. Such manipulation leads to unrestricted upload. The attack can be launched remotely. The exploit is publicly available and might be used.">A vulnerability was identified in SourceCodester Online Food Ordering System 1.0. The affected element is an unknown…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132609" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132608 a vulnerability was identified in secudocx dmp up to 9.0.0 build 1027. this affects an unknown function of the file /dmp/public/login/forward_login.jsp of the component login. the manipulation of the argument loginerrormsg leads to cross site scripting. the attack may be initiated remotely. the expl… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795058241">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132608</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T11:17:21">2026-11-19 11:17:21</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability was identified in SECUDOCX DMP up to 9.0.0 Build 1027. This affects an unknown function of the file /DMP/public/login/forward_login.jsp of the component Login. The manipulation of the argument LoginErrorMsg leads to cross site scripting. The attack may be initiated remotely. The expl…">A vulnerability was identified in SECUDOCX DMP up to 9.0.0 Build 1027. This affects an unknown function of the file…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132608" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132603 a flaw has been found in seo panel 6.0.0. affected is an unknown function of the file controllers/siteauditor.ctrl.php of the component site auditor. executing a manipulation of the argument order_col/order_val can lead to sql injection. the attack can be launched remotely. the exploit has been publ… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795058240">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132603</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T11:17:20">2026-11-19 11:17:20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A flaw has been found in SEO Panel 6.0.0. Affected is an unknown function of the file controllers/siteauditor.ctrl.php of the component Site Auditor. Executing a manipulation of the argument order_col/order_val can lead to sql injection. The attack can be launched remotely. The exploit has been publ…">A flaw has been found in SEO Panel 6.0.0. Affected is an unknown function of the file controllers/siteauditor.ctrl.php…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132603" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132602 a vulnerability was detected in seo panel 6.0.0. this impacts an unknown function of the file controllers/siteauditor.ctrl.php of the component site auditor. performing a manipulation of the argument order_col/order_val results in sql injection. the attack can be initiated remotely. the exploit is n… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795054640">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132602</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T10:17:20">2026-11-19 10:17:20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability was detected in SEO Panel 6.0.0. This impacts an unknown function of the file controllers/siteauditor.ctrl.php of the component Site Auditor. Performing a manipulation of the argument order_col/order_val results in sql injection. The attack can be initiated remotely. The exploit is n…">A vulnerability was detected in SEO Panel 6.0.0. This impacts an unknown function of the file…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132602" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132601 a security vulnerability has been detected in seo panel 6.0.0. this affects the function mime_content_type of the file controllers/website.ctrl.php of the component website import. such manipulation of the argument website_csv_file leads to unrestricted upload. it is possible to launch the attack re… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795054640">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132601</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T10:17:20">2026-11-19 10:17:20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A security vulnerability has been detected in SEO Panel 6.0.0. This affects the function mime_content_type of the file controllers/website.ctrl.php of the component Website Import. Such manipulation of the argument website_csv_file leads to unrestricted upload. It is possible to launch the attack re…">A security vulnerability has been detected in SEO Panel 6.0.0. This affects the function mime_content_type of the file…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132601" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-131914 deserialization of untrusted data in double-submit cookie vs. form field validation in idunno.anticsrf versions through 0.9.1 beta on asp.net allows remote unauthenticated attackers to execute code via object injection 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795054640">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131914</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T10:17:20">2026-11-19 10:17:20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Deserialization of untrusted data in double-submit cookie vs. form field validation in Idunno.AntiCsrf versions through 0.9.1 Beta on ASP.NET allows remote unauthenticated attackers to execute code via object injection">Deserialization of untrusted data in double-submit cookie vs. form field validation in Idunno.AntiCsrf versions…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131914" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132560 a flaw has been found in memtensor memmy-agent up to 1.1.1. this impacts an unknown function of the file /api/v1/memory/logs of the component memory http service. this manipulation causes information disclosure. the attack is restricted to local execution. the exploit has been published and may be u… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795051009">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132560</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T09:16:49">2026-11-19 09:16:49</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A flaw has been found in MemTensor memmy-agent up to 1.1.1. This impacts an unknown function of the file /api/v1/memory/logs of the component Memory HTTP Service. This manipulation causes information disclosure. The attack is restricted to local execution. The exploit has been published and may be u…">A flaw has been found in MemTensor memmy-agent up to 1.1.1. This impacts an unknown function of the file…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132560" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132286 a security vulnerability has been detected in yangzongzhuan ruoyi up to 4.8.3. the impacted element is an unknown function of the file ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/syslogincontroller.java of the component user registration endpoint. the manipulation of the argument depti… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795051009">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132286</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T09:16:49">2026-11-19 09:16:49</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A security vulnerability has been detected in yangzongzhuan RuoYi up to 4.8.3. The impacted element is an unknown function of the file ruoyi-admin/src/main/java/com/ruoyi/web/controller/system/SysLoginController.java of the component User Registration Endpoint. The manipulation of the argument deptI…">A security vulnerability has been detected in yangzongzhuan RuoYi up to 4.8.3. The impacted element is an unknown…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132286" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
                     <tr data-search="cve-2026-91139 deco be65 firmware contains a cryptographic weakness in the local web-management authentication flow due to the use of insufficient rsa key sizes. the /login?form=auth endpoint returns a 512-bit rsa public key and sequence value. successful exploitation may compromise the cryptographic protections a… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795047468">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-91139</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
@@ -2226,222 +2442,6 @@
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:42">2026-11-19 08:17:42</time><span class="badge-new">NEW</span></td>
                         <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 contains a PHP code injection vulnerability that allows authenticated administrators to inject code via the updatedFields parameter into config.inc.php. Attackers can supply a crafted HELPDESK_SUPPORT_EMAIL_ID value that passes email validation but closes the PHP string lite…">Vtiger CRM through 8.4.0 contains a PHP code injection vulnerability that allows authenticated administrators to…</td>
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132748" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132747 vtiger crm through 8.4.0 contains an sql injection vulnerability that allows authenticated users with export access to inject sql through unvalidated selected_ids values in exportdata.php. attackers can send a union select payload in selected_ids[] to the exportselectedrecords mode and read password… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795047462">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132747</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:42">2026-11-19 08:17:42</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 contains an SQL injection vulnerability that allows authenticated users with export access to inject SQL through unvalidated selected_ids values in ExportData.php. Attackers can send a UNION SELECT payload in selected_ids[] to the ExportSelectedRecords mode and read password…">Vtiger CRM through 8.4.0 contains an SQL injection vulnerability that allows authenticated users with export access to…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132747" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132746 vtiger crm through 8.4.0 contains a blind sql injection vulnerability that allows authenticated low-privileged users to inject sql via unescaped clientid values in the wsapp_map webservice operation. attackers can register a sync application with wsapp_register, then send delete-mode entries with qu… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795047462">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132746</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:42">2026-11-19 08:17:42</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 contains a blind SQL injection vulnerability that allows authenticated low-privileged users to inject SQL via unescaped clientid values in the wsapp_map webservice operation. Attackers can register a sync application with wsapp_register, then send delete-mode entries with qu…">Vtiger CRM through 8.4.0 contains a blind SQL injection vulnerability that allows authenticated low-privileged users…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132746" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132745 vtiger crm through 8.4.0 contains a blind sql injection vulnerability that allows authenticated non-administrative users to inject sql through the k (does not contain) comparator in list view search_params. attackers can send crafted search_params to the listajax getrecordscount mode, breaking out o… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795047462">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132745</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:42">2026-11-19 08:17:42</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 contains a blind SQL injection vulnerability that allows authenticated non-administrative users to inject SQL through the k (does not contain) comparator in list view search_params. Attackers can send crafted search_params to the ListAjax getRecordsCount mode, breaking out o…">Vtiger CRM through 8.4.0 contains a blind SQL injection vulnerability that allows authenticated non-administrative…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132745" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132283 a vulnerability was identified in directus up to 12.7.0. this issue affects the function authenticationservice.refresh of the file api/src/services/authentication.ts of the component authentication service. such manipulation leads to session expiration. the attack can be launched remotely. the vendo… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795047462">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132283</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:42">2026-11-19 08:17:42</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A vulnerability was identified in Directus up to 12.7.0. This issue affects the function AuthenticationService.refresh of the file api/src/services/authentication.ts of the component Authentication Service. Such manipulation leads to session expiration. The attack can be launched remotely. The vendo…">A vulnerability was identified in Directus up to 12.7.0. This issue affects the function AuthenticationService.refresh…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132283" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132282 a vulnerability was determined in elunez eladmin up to 2.7. this vulnerability affects the function fileutil.upload of the file /api/localstorage of the component file upload handler. this manipulation causes path traversal. the attack can be initiated remotely. the exploit has been publicly disclos… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795047462">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132282</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:42">2026-11-19 08:17:42</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A vulnerability was determined in elunez eladmin up to 2.7. This vulnerability affects the function FileUtil.upload of the file /api/localStorage of the component File Upload Handler. This manipulation causes path traversal. The attack can be initiated remotely. The exploit has been publicly disclos…">A vulnerability was determined in elunez eladmin up to 2.7. This vulnerability affects the function FileUtil.upload of…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132282" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132281 a vulnerability was found in elunez eladmin up to 2.7. this affects the function sqlutils.batchexecute of the file /api/database/upload of the component database maintenance module. the manipulation results in sql injection. it is possible to launch the attack remotely. the exploit has been made pub… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795047461">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132281</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:41">2026-11-19 08:17:41</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A vulnerability was found in elunez eladmin up to 2.7. This affects the function SqlUtils.batchExecute of the file /api/database/upload of the component Database Maintenance Module. The manipulation results in sql injection. It is possible to launch the attack remotely. The exploit has been made pub…">A vulnerability was found in elunez eladmin up to 2.7. This affects the function SqlUtils.batchExecute of the file…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132281" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-127231 a double free in the x.509 name constraints enforcement of gnutls 3.8.13 on all platforms allows a remote attacker to cause a denial of service (application crash) via a certificate chain containing a nameconstraints extension processed while the application is under memory pressure. when an already… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795047461">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127231</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:41">2026-11-19 08:17:41</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A double free in the X.509 name constraints enforcement of GnuTLS 3.8.13 on all platforms allows a remote attacker to cause a denial of service (application crash) via a certificate chain containing a NameConstraints extension processed while the application is under memory pressure. When an already…">A double free in the X.509 name constraints enforcement of GnuTLS 3.8.13 on all platforms allows a remote attacker to…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-127231" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-127040 the rsa-psk clientkeyexchange handler in gnutls before 3.8.14 does not return after detecting a memory allocation failure when copying the psk username, which allows remote attackers to cause a denial of service for a peer under heap pressure. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795047461">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127040</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:41">2026-11-19 08:17:41</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="The RSA-PSK ClientKeyExchange handler in gnutls before 3.8.14 does not return after detecting a memory allocation failure when copying the PSK username, which allows remote attackers to cause a denial of service for a peer under heap pressure.">The RSA-PSK ClientKeyExchange handler in gnutls before 3.8.14 does not return after detecting a memory allocation…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-127040" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-127039 the certificate authentication info handling in gnutls from 2.5.9 up to 3.8.13 does not reset the certificate count and list pointer when re-allocation of raw_certificate_list fails, which allows remote attackers to cause a denial of service for a peer under heap pressure. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795047461">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127039</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:17:41">2026-11-19 08:17:41</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="The certificate authentication info handling in gnutls from 2.5.9 up to 3.8.13 does not reset the certificate count and list pointer when re-allocation of raw_certificate_list fails, which allows remote attackers to cause a denial of service for a peer under heap pressure.">The certificate authentication info handling in gnutls from 2.5.9 up to 3.8.13 does not reset the certificate count…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-127039" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-77283 obsidian-sync-mcp is an mcp server that gives ai agents access to obsidian vaults. prior to 0.5.7, deployments running without mcp_auth_token install no serveroptions.authenticate check for the http /mcp endpoint, so requests are dispatched without validating the host or origin headers. a malicious… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795043841">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-77283</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:21">2026-11-19 07:17:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="obsidian-sync-mcp is an MCP server that gives AI agents access to Obsidian vaults. Prior to 0.5.7, deployments running without MCP_AUTH_TOKEN install no serverOptions.authenticate check for the HTTP /mcp endpoint, so requests are dispatched without validating the Host or Origin headers. A malicious…">obsidian-sync-mcp is an MCP server that gives AI agents access to Obsidian vaults. Prior to 0.5.7, deployments running…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-77283" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-71536 mareforma is a local verification layer for ai-assisted research. from 0.3.0 until 0.3.8, verify_bundle in mareforma/export_bundle.py validates the outer dsse envelope and exporter-signed subject digests, but jsonldexporter._claim_node in mareforma/exporters/jsonld.py supplies no signaturebundle for… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795043841">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-71536</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:21">2026-11-19 07:17:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Mareforma is a local verification layer for AI-assisted research. From 0.3.0 until 0.3.8, verify_bundle in mareforma/export_bundle.py validates the outer DSSE envelope and exporter-signed subject digests, but JSONLDExporter._claim_node in mareforma/exporters/jsonld.py supplies no signatureBundle for…">Mareforma is a local verification layer for AI-assisted research. From 0.3.0 until 0.3.8, verify_bundle in…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-71536" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-71535 mareforma is a local verification layer for ai-assisted research. from 0.3.0 until 0.3.7, the _maybe_update_replicated_unlocked convergence path in mareforma/db/core.py uses generated_by labels without requiring a valid signature_bundle from a distinct enrolled signer, so an unsigned claim written t… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795043841">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-71535</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:21">2026-11-19 07:17:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Mareforma is a local verification layer for AI-assisted research. From 0.3.0 until 0.3.7, the _maybe_update_replicated_unlocked convergence path in mareforma/db/core.py uses generated_by labels without requiring a valid signature_bundle from a distinct enrolled signer, so an unsigned claim written t…">Mareforma is a local verification layer for AI-assisted research. From 0.3.0 until 0.3.7, the…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-71535" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-71534 mareforma is a local verification layer for ai-assisted research. from 0.3.0 until 0.3.8, restore logic in mareforma/db/restore.py derives transparency_logged from the unsigned rekor.uuid field inside signature_bundle without requiring a verified claim-bound rekor_inclusions entry, so an attacker wh… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795043841">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-71534</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:21">2026-11-19 07:17:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Mareforma is a local verification layer for AI-assisted research. From 0.3.0 until 0.3.8, restore logic in mareforma/db/restore.py derives transparency_logged from the unsigned rekor.uuid field inside signature_bundle without requiring a verified claim-bound rekor_inclusions entry, so an attacker wh…">Mareforma is a local verification layer for AI-assisted research. From 0.3.0 until 0.3.8, restore logic in…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-71534" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-71533 mareforma is a local verification layer for ai-assisted research. from 0.3.7 until 0.3.8, search_claims in mareforma/db/core.py does not call _row_verified_on_read and therefore does not provide the same high-trust verification projection as query_claims. a forged or tampered replicated or establish… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795043841">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-71533</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:21">2026-11-19 07:17:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Mareforma is a local verification layer for AI-assisted research. From 0.3.7 until 0.3.8, search_claims in mareforma/db/core.py does not call _row_verified_on_read and therefore does not provide the same high-trust verification projection as query_claims. A forged or tampered REPLICATED or ESTABLISH…">Mareforma is a local verification layer for AI-assisted research. From 0.3.7 until 0.3.8, search_claims in…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-71533" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-71500 mareforma is a local verification layer for ai-assisted research. from 0.3.0 until 0.3.8, _maybe_update_replicated_unlocked in mareforma/db/core.py does not check t_invalid in its new-claim gate, peer-selection query, or final update, so a claim marked invalid by a signed contradiction verdict can s… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795043841">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-71500</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:21">2026-11-19 07:17:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Mareforma is a local verification layer for AI-assisted research. From 0.3.0 until 0.3.8, _maybe_update_replicated_unlocked in mareforma/db/core.py does not check t_invalid in its new-claim gate, peer-selection query, or final update, so a claim marked invalid by a signed contradiction verdict can s…">Mareforma is a local verification layer for AI-assisted research. From 0.3.0 until 0.3.8…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-71500" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132280 a vulnerability has been found in elunez eladmin up to 2.7. affected by this issue is the function checkbean of the file /api/jobs/exec of the component quartz handler. the manipulation of the argument methodname leads to improper input validation. it is possible to initiate the attack remotely. the… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795043840">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132280</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:20">2026-11-19 07:17:20</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A vulnerability has been found in elunez eladmin up to 2.7. Affected by this issue is the function CheckBean of the file /api/jobs/exec of the component Quartz Handler. The manipulation of the argument methodName leads to improper input validation. It is possible to initiate the attack remotely. The…">A vulnerability has been found in elunez eladmin up to 2.7. Affected by this issue is the function CheckBean of the…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132280" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132279 a flaw has been found in elunez eladmin up to 2.7. affected by this vulnerability is the function sqlutils.sanitizejdcurl of the component jdbc url sanitization. executing a manipulation can lead to improper input validation. the attack may be performed from remote. the exploit has been published an… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795043840">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132279</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:20">2026-11-19 07:17:20</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A flaw has been found in elunez eladmin up to 2.7. Affected by this vulnerability is the function SqlUtils.sanitizeJdcUrl of the component JDBC URL Sanitization. Executing a manipulation can lead to improper input validation. The attack may be performed from remote. The exploit has been published an…">A flaw has been found in elunez eladmin up to 2.7. Affected by this vulnerability is the function…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132279" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129992 dokploy is a free, self-hostable platform as a service (paas). prior to 0.31.0, failed railpack builds and database backups propagate an execution error containing the full command, exposing application environment variables, database passwords, and s3 access keys embedded in those commands. when th… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795043839">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129992</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:19">2026-11-19 07:17:19</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.0, failed Railpack builds and database backups propagate an execution error containing the full command, exposing application environment variables, database passwords, and S3 access keys embedded in those commands. When th…">Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.0, failed Railpack builds and database…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129992" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129991 dokploy is a free, self-hostable platform as a service (paas). prior to 0.31.1, the backup prefix field is only checked for a nonempty value, and normalizes3path preserves shell metacharacters before the prefix is interpolated into rclone upload and retention-cleanup command strings. an authenticate… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795043839">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129991</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:19">2026-11-19 07:17:19</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the backup prefix field is only checked for a nonempty value, and normalizeS3Path preserves shell metacharacters before the prefix is interpolated into rclone upload and retention-cleanup command strings. An authenticate…">Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the backup prefix field is only…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129991" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129990 dokploy is a free, self-hostable platform as a service (paas). prior to 0.31.1, every network.* procedure is only authentication-protected and does not require the docker permission, allowing a standard member to list, inspect, create, import, recreate, resynchronize, and delete docker networks. a m… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129990</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, every network.* procedure is only authentication-protected and does not require the Docker permission, allowing a standard member to list, inspect, create, import, recreate, resynchronize, and delete Docker networks. A m…">Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, every network.* procedure is only…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129990" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129989 dokploy is a free, self-hostable platform as a service (paas). prior to 0.31.1, the nixpacks publishdirectory build setting accepts shell metacharacters and is interpolated into a docker cp command executed through child_process.exec. an authenticated user with access to an application can execute a… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129989</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the Nixpacks publishDirectory build setting accepts shell metacharacters and is interpolated into a docker cp command executed through child_process.exec. An authenticated user with access to an application can execute a…">Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, the Nixpacks publishDirectory build…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129989" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129986 dokploy is a free, self-hostable platform as a service (paas). prior to 0.31.1, mount.deletefilemount passes a path containing the user-controlled filepath to the local removefileordirectory helper, which interpolates it unquoted into rm -rf, while the remote branch is quoted. an authenticated membe… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129986</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, mount.deleteFileMount passes a path containing the user-controlled filePath to the local removeFileOrDirectory helper, which interpolates it unquoted into rm -rf, while the remote branch is quoted. An authenticated membe…">Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, mount.deleteFileMount passes a path…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129986" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129985 dokploy is a free, self-hostable platform as a service (paas). prior to 0.31.1, a user-controlled schedule appname is joined into the schedule directory path and interpolated without shell quoting into commands that create the directory and write the schedule script. an authenticated user who can cr… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129985</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, a user-controlled schedule appName is joined into the schedule directory path and interpolated without shell quoting into commands that create the directory and write the schedule script. An authenticated user who can cr…">Dokploy is a free, self-hostable Platform as a Service (PaaS). Prior to 0.31.1, a user-controlled schedule appName is…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129985" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129316 dokploy is a free, self-hostable platform as a service (paas). from 0.29.13 until 0.31.0, the docker terminal, container-log, and monitoring websocket handlers accept a caller-controlled serviceid as authorization but do not consistently bind the requested containerid or appname to that service. a m… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129316</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy is a free, self-hostable Platform as a Service (PaaS). From 0.29.13 until 0.31.0, the Docker terminal, container-log, and monitoring WebSocket handlers accept a caller-controlled serviceId as authorization but do not consistently bind the requested containerId or appName to that service. A m…">Dokploy is a free, self-hostable Platform as a Service (PaaS). From 0.29.13 until 0.31.0, the Docker terminal…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129316" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129315 dokploy is a free, self-hostable platform as a service (paas). in 0.31.0 and earlier, the hosted installer and manual installation instructions set /etc/dokploy to mode 0777, allowing a local non-root user on a shared host to replace root-owned schedule or traefik configuration directories. dokploy… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129315</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy is a free, self-hostable Platform as a Service (PaaS). In 0.31.0 and earlier, the hosted installer and manual installation instructions set /etc/dokploy to mode 0777, allowing a local non-root user on a shared host to replace root-owned schedule or Traefik configuration directories. Dokploy…">Dokploy is a free, self-hostable Platform as a Service (PaaS). In 0.31.0 and earlier, the hosted installer and manual…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129315" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-125353 an incorrect permission assignment vulnerability in omada sdn controller prior to 6.2.20 may cause a database backup generated during the uninstall workflow to remain readable by other local users on the host. successful exploitation requires local, low-privileged access to the affected host and a r… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795043837">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125353</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:17">2026-11-19 07:17:17</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="An incorrect permission assignment vulnerability in Omada SDN Controller prior to 6.2.20 may cause a database backup generated during the uninstall workflow to remain readable by other local users on the host. Successful exploitation requires local, low-privileged access to the affected host and a r…">An incorrect permission assignment vulnerability in Omada SDN Controller prior to 6.2.20 may cause a database backup…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-125353" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-76818 axon is an agent-agnostic context engine that gives ai coding agents continuous memory across sessions, tools, and machines. prior to 0.1.1, rtk-install in src/axon/context/rtk_bootstrap.py uses _http_download() to fetch a prebuilt rtkx release archive and _extract_binary() to mark it executable, af… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795040244">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-76818</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:24">2026-11-19 06:17:24</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Axon is an agent-agnostic context engine that gives AI coding agents continuous memory across sessions, tools, and machines. Prior to 0.1.1, rtk-install in src/axon/context/rtk_bootstrap.py uses _http_download() to fetch a prebuilt rtkx release archive and _extract_binary() to mark it executable, af…">Axon is an agent-agnostic context engine that gives AI coding agents continuous memory across sessions, tools, and…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-76818" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
                     </tbody>
@@ -3494,7 +3494,7 @@
         </div>
     </div>
     <div class="wrap copyright">
-        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-19 09:35:25</p>
+        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-19 15:32:05</p>
     </div>
 </footer>
 
