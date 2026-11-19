@@ -44,6 +44,7 @@ DEFAULT_SETTINGS = {
     'crawler': {
         'top': 60,
         'timeout': 45,
+        'max_age_days': 90,
     },
     'notify': {
         'mail_smtp': 'smtp.qq.com',

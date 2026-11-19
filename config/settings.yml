@@ -15,6 +15,7 @@ github:
 crawler:
   top: 60                                  # 每个来源最多展示 / 抓取前 N 条
   timeout: 45                              # 单次 HTTP 请求超时（秒）
+  max_age_days: 90                         # 厂商通告 / AI 发现类来源只收录最近 N 天的披露
 
 notify:
   mail_smtp: 'smtp.qq.com'

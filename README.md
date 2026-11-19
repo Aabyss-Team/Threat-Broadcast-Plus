@@ -27,8 +27,19 @@
 | NVD | https://nvd.nist.gov/ | 官方 2.0 recent JSON 源，失败时回退 REST API |
 | Tenable (Nessus) | https://www.tenable.com/cve/feeds?sort=newest | RSS 源，含严重等级与英文描述 |
 | CISA KEV | https://www.cisa.gov/known-exploited-vulnerabilities-catalog | 已被在野利用的漏洞目录 |
+| Palo Alto Networks | https://security.paloaltonetworks.com/ | 官方 JSON 通告，含 CVSS、受影响产品与修复建议 |
+| Fortinet | https://fortiguard.fortinet.com/psirt | 官方 RSS + 详情页，含 CVSS、是否已知被利用 |
+| Cisco | https://sec.cloudapps.cisco.com/security/center/ | 官方 RSS，详情优先取 CSAF JSON |
+| ZDI | https://www.zerodayinitiative.com/ | 官方 RSS + 详情页，含 CVSS 与受影响产品 |
+| Red Hat | https://access.redhat.com/ | 官方 Hydra API，含 CVSS v3 与软件包修复状态 |
+| Microsoft MSRC | https://msrc.microsoft.com/update-guide/ | 官方 CVRF API，合并同一 CVE 跨月更新 |
+| AISLE | https://aisle.com/cve-discoveries | AI 发现的 CVE 目录，披露时间取自 JSON-LD 元数据 |
+| Mozilla | https://www.mozilla.org/en-US/security/advisories/ | 官方通告中由 AI 工具发现的漏洞 |
+| Vulnerability-Wiki-PoC | https://github.com/SourByte05/Vulnerability-Wiki-PoC | 公开漏洞分析文档索引（只索引，不下载 PoC） |
 
 > 微步的漏洞详情页需要登录，列表接口本身是公开的；未登录时点击详情会跳转到登录页。
+
+> 厂商通告与 AI 发现类来源只收录最近 `crawler.max_age_days` 天（默认 90 天）的披露。
 
 ### 已停用的来源
 
@@ -165,6 +176,7 @@ database:
 crawler:
   top: 60                   # 每个来源抓取 / 展示前 N 条
   timeout: 45               # 单次 HTTP 超时（秒）
+  max_age_days: 90          # 厂商通告 / AI 发现类来源只收录最近 N 天
 
 notify:
   mail_smtp: 'smtp.qq.com'

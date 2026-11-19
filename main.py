@@ -23,6 +23,9 @@ from src.crawler.cert360 import Cert360
 from src.crawler.nvd import NVD
 from src.crawler.tenable import Tenable
 from src.crawler.cisa_kev import CisaKev
+from src.crawler.ai_discoveries import AISLE, MozillaAI
+from src.crawler.vendor_advisories import PaloAlto, Fortinet, Cisco, ZDI, RedHat, MSRC
+from src.crawler.vulnerability_wiki import VulnerabilityWiki
 
 import src.notice.page as page
 import src.notice.mail as mail
@@ -96,6 +99,9 @@ def build_sources():
       - QiAnXin / RedQueen / Nsfocus：站点改版或接口失效
       - CNVD / CNNVD / AnQuanKe：反爬或停止 CVE 分析
       - Vas：旧版斗象接口，已由 Tophant 替代
+
+    厂商官方通告（Palo Alto / Fortinet / Cisco / ZDI / Red Hat / MSRC）与
+    AI 发现来源（AISLE / Mozilla）只收录最近 max_age_days 天的披露。
     """
     return [
         AliyunAVD(),
@@ -106,6 +112,15 @@ def build_sources():
         NVD(),
         Tenable(),
         CisaKev(),
+        PaloAlto(),
+        Fortinet(),
+        Cisco(),
+        ZDI(),
+        RedHat(),
+        MSRC(),
+        AISLE(),
+        MozillaAI(),
+        VulnerabilityWiki(),
     ]
 
 
