@@ -101,6 +101,7 @@
 - 未配置 API Key 或 API 调用失败时只记录告警，不会覆盖已有摘要，也不影响页面生成
 - **Kimi Code Console 默认配置**：模型 `k3`，地址 `https://api.kimi.com/coding/v1/chat/completions`
 - 推理强度默认 `low`，可在 `settings.yml` 中调整 `reasoning_effort`
+- 默认开启联网搜索（`web_search: true`）：通过 Kimi 服务端内置工具 `$web_search` 检索漏洞的公开 PoC / EXP 链接，Kimi Code 与开放平台地址均支持；开放平台按次计费，不需要时在 `settings.yml` 中关闭
 - Key 与地址必须配套：
   - `www.kimi.com/code/console` 的 Key → `https://api.kimi.com/coding/v1/chat/completions`，模型 `k3` / `k3.1-pro`
   - `platform.kimi.com` 的 Key → `https://api.moonshot.cn/v1/chat/completions`，模型 `kimi-k3`
@@ -179,6 +180,7 @@ kimi:
   api_url: "<%= ENV['KIMI_API_URL'] %>"  # 留空默认 Kimi Code 国内地址
   model: 'k3'               # Kimi Code: k3 / k3.1-pro / k3-256k
   reasoning_effort: 'low'   # K3 推理强度：low / high / max
+  web_search: true          # 联网搜索（$web_search 内置工具）；开放平台按次计费，置 false 关闭
   days: 5                   # 分析最近 N 天
   max_items: 30             # 最多送给模型的候选条数
   max_tokens: 800           # 非 K3 输出上限；K3 自动使用 4096

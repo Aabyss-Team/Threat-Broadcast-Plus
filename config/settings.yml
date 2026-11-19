@@ -35,6 +35,7 @@ kimi:
   api_url: "<%= ENV['KIMI_API_URL'] %>"              # 留空默认 Kimi Code 国内地址
   model: 'k3'                                         # Kimi Code: k3 / k3.1-pro / k3-256k
   reasoning_effort: 'low'                             # K3 推理强度：low / high / max
+  web_search: true                                    # 联网搜索（$web_search 服务端内置工具，Kimi Code / 开放平台均支持）；开放平台按次计费，置 false 关闭
   days: 5                                             # 分析最近 N 天的情报
   max_items: 30                                       # 最多送给模型的候选条数
   max_tokens: 800                                     # 非 K3 模型的输出上限（K3 自动放宽）

@@ -19,6 +19,12 @@ SUMMARY_PATH = os.path.join(config.PRJ_DIR, 'data', 'ai_summary.json')
 DEFAULT_API_URL = 'https://api.kimi.com/coding/v1/chat/completions'
 DEFAULT_MODEL = 'k3'
 
+# Kimi 服务端内置联网搜索工具：模型返回该工具的 tool_calls 后，
+# 客户端只需把 arguments 原样回传，搜索由 Kimi 服务端完成。
+# Kimi Code（api.kimi.com/coding）与开放平台（api.moonshot.cn / api.moonshot.ai）均支持。
+WEB_SEARCH_TOOL = {'type': 'builtin_function', 'function': {'name': '$web_search'}}
+MAX_SEARCH_ROUNDS = 3      # 首轮请求之后，最多允许的联网搜索回传轮数
+
 LEVEL_RANK = {
     'KEV': 0,
     'CRITICAL': 1,
@@ -36,8 +42,13 @@ SYSTEM_PROMPT = (
     '输出一段中文研判，约 250-350 字，不要标题、列表、Markdown 或 JSON。'
     '只输出最终研判正文，不要输出思考过程。'
     '必须点名 3-6 个最值得立即关注的漏洞编号，并说明关注原因和处置建议。'
-     '同时还需要查看是否有国内产品的高危漏洞，如果有的话，也将其列出来。'
-    '请检索互联网，查找以上列出的漏洞是否有公开的Poc或者Exp，如果有的话，将相关链接地址列出来。'
+    '同时还需要查看是否有国内产品的高危漏洞，如果有的话，也将其列出来。'
+)
+
+# 仅在开启联网搜索时追加：要求模型实际调用搜索工具而不是凭空编造链接
+WEB_SEARCH_PROMPT = (
+    '请使用联网搜索工具，查找以上列出的漏洞是否有公开的 PoC 或 EXP，'
+    '如果有的话，将相关链接地址列出来；搜不到就说明未检索到，不要编造链接。'
 )
 
 
@@ -64,6 +75,7 @@ def to_summary(conn):
     reasoning_effort = (config.settings.get('kimi', 'reasoning_effort', 'low') or 'low').strip().lower()
     if reasoning_effort not in ('low', 'high', 'max'):
         reasoning_effort = 'low'
+    web_search = _as_bool(config.settings.get('kimi', 'web_search', True))
 
     cutoff = (datetime.now(CST) - timedelta(days=days)).strftime('%Y-%m-%d %H:%M:%S')
     rows = conn.execute(
@@ -77,8 +89,8 @@ def to_summary(conn):
         log.info('[AI] 最近 %d 天没有可用于研判的情报' % days)
         return False
 
-    messages = _build_messages(candidates, days)
-    content = _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort)
+    messages = _build_messages(candidates, days, web_search)
+    content = _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort, web_search)
     if not content:
         return False
 
@@ -87,6 +99,7 @@ def to_summary(conn):
         'window_days': days,
         'count': len(candidates),
         'model': model,
+        'web_search': web_search,
         'content': content,
     }
     _write_summary(data)
@@ -133,7 +146,7 @@ def _select_candidates(rows, limit):
     return selected
 
 
-def _build_messages(candidates, days):
+def _build_messages(candidates, days, web_search=False):
     end = datetime.now(CST)
     start = end - timedelta(days=days)
 
@@ -153,13 +166,14 @@ def _build_messages(candidates, days):
         )
 
     lines.append('请基于以上清单输出一段中文风险研判。')
+    system = SYSTEM_PROMPT + WEB_SEARCH_PROMPT if web_search else SYSTEM_PROMPT
     return [
-        {'role': 'system', 'content': SYSTEM_PROMPT},
+        {'role': 'system', 'content': system},
         {'role': 'user', 'content': '\n'.join(lines)},
     ]
 
 
-def _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort='low'):
+def _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort='low', web_search=False):
     payload = {
         'model': model,
         'messages': messages,
@@ -181,16 +195,80 @@ def _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort='l
         payload['temperature'] = 0.3
         payload['max_tokens'] = max_tokens
 
+    if web_search:
+        payload['tools'] = [WEB_SEARCH_TOOL]
+        if not is_k3:
+            # K2 系列使用 $web_search 时必须关闭 thinking；K3 恒为思考模式，无需处理
+            payload['thinking'] = {'type': 'disabled'}
+
     headers = {
         'Authorization': 'Bearer %s' % api_key,
         'Content-Type': 'application/json',
     }
 
+    messages = list(messages)
+    tools_enabled = web_search
+    for _ in range(MAX_SEARCH_ROUNDS + 1):
+        payload['messages'] = messages
+        data, status = _post(api_url, headers, payload)
+        if data is None:
+            if tools_enabled and status in (400, 404, 422):
+                # 端点不支持工具调用（如第三方网关）：首轮降级为不联网重试一次
+                tools_enabled = False
+                payload.pop('tools', None)
+                payload.pop('thinking', None)
+                log.warning('[AI] 该端点可能不支持联网工具，降级为不联网重试一次')
+                continue
+            return ''
+
+        try:
+            choice = data['choices'][0]
+        except (KeyError, IndexError, TypeError):
+            log.warning('[AI] Kimi API 返回结构异常')
+            return ''
+
+        message = choice.get('message') or {}
+        tool_calls = message.get('tool_calls') or []
+
+        if tools_enabled and tool_calls:
+            # 模型请求联网搜索：回传 assistant 消息，并把每个 tool_call 的
+            # arguments 原样回传为 tool 结果，Kimi 服务端据此执行搜索
+            messages.append({
+                'role': 'assistant',
+                'content': message.get('content') or '',
+                'tool_calls': tool_calls,
+            })
+            for tool_call in tool_calls:
+                function = tool_call.get('function') or {}
+                messages.append({
+                    'role': 'tool',
+                    'tool_call_id': tool_call.get('id') or '',
+                    'name': function.get('name') or '',
+                    'content': function.get('arguments') or '',
+                })
+            continue
+
+        content = re.sub(r'\s+', ' ', (message.get('content') or '').strip())
+        if not content:
+            log.warning('[AI] Kimi API 返回内容为空')
+            return ''
+
+        content = content.replace('**', '').strip()
+        if len(content) > 1200:
+            content = content[:1200].rstrip() + '…'
+        return content
+
+    log.warning('[AI] 联网搜索超过 %d 轮仍未完成，放弃' % MAX_SEARCH_ROUNDS)
+    return ''
+
+
+def _post(api_url, headers, payload):
+    """POST 一次 Chat Completions，返回 (data, status_code)；失败返回 (None, status)。"""
     try:
         response = requests.post(api_url, headers=headers, json=payload, timeout=90)
     except requests.RequestException as error:
         log.warning('[AI] Kimi API 请求失败：%s' % error)
-        return ''
+        return None, 0
 
     if response.status_code != 200:
         if response.status_code == 401:
@@ -206,29 +284,26 @@ def _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort='l
         else:
             log.warning('[AI] Kimi API 返回 HTTP %s：%s'
                         % (response.status_code, (response.text or '')[:300]))
-        return ''
+        return None, response.status_code
 
     try:
         data = response.json()
     except ValueError:
         log.warning('[AI] Kimi API 返回内容不是 JSON')
-        return ''
+        return None, response.status_code
 
     if data.get('error'):
         log.warning('[AI] Kimi API 返回错误：%s' % data.get('error'))
-        return ''
+        return None, response.status_code
 
-    try:
-        content = data['choices'][0]['message']['content']
-    except (KeyError, IndexError, TypeError):
-        log.warning('[AI] Kimi API 返回结构异常')
-        return ''
+    return data, response.status_code
 
-    content = re.sub(r'\s+', ' ', (content or '').strip())
-    content = content.replace('**', '').strip()
-    if len(content) > 1200:
-        content = content[:1200].rstrip() + '…'
-    return content
+
+def _as_bool(value):
+    """兼容 YAML 布尔值和 'true' / 'false' 这类字符串配置。"""
+    if isinstance(value, str):
+        return value.strip().lower() not in ('', '0', 'false', 'no', 'off')
+    return bool(value)
 
 
 def _epoch(value):

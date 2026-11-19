@@ -59,6 +59,7 @@ DEFAULT_SETTINGS = {
         'api_url': 'https://api.kimi.com/coding/v1/chat/completions',
         'model': 'k3',
         'reasoning_effort': 'low',
+        'web_search': True,
         'days': 5,
         'max_items': 30,
         'max_tokens': 800,
