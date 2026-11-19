@@ -25,7 +25,7 @@
             <h1>威胁情报播报</h1>
             <p class="lede">自动聚合公开漏洞情报源，每 4 小时更新一次，聚焦最新披露与已被在野利用的高危漏洞，并提供 Kimi K3 模型的分析，能够马上锁定近 5 天的重大漏洞。</p>
             <div class="hero-meta">
-                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-19T15:32:05+08:00">2026-11-19 15:32:05</time></span>
+                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-19T19:04:10+08:00">2026-11-19 19:04:10</time></span>
                 <span class="meta-item">7 个情报源</span>
                 <span class="meta-item">392 条记录</span>
             </div>
@@ -44,7 +44,7 @@
             <span class="stat-label">当前展示情报</span>
         </div>
         <div class="stat stat-accent">
-            <span class="stat-value">195</span>
+            <span class="stat-value">196</span>
             <span class="stat-label">近两天新增</span>
         </div>
         <div class="stat">
@@ -62,8 +62,8 @@
                 <span class="ai-badge">AI 研判</span>
                 <h2 id="ai-summary-title">近期高风险漏洞研判</h2>
             </div>
-            <p class="ai-summary-text">本窗口内最需立即处置的是已被 CISA 确认在野利用的 5 个漏洞：CVE-2026-90436（Apache Axis 不安全反射）、CVE-2026-90817（REDCap 代码注入，医疗科研数据平台，泄露与篡改风险高）、CVE-2026-40217（LiteLLM 未授权备用通道，AI 网关被滥用影响面大）、CVE-2024-10441（Synology DSM 输出编码缺陷，NAS 设备暴露广泛）和 CVE-2026-115731（Puppet Enterprise 反序列化，可直接控管整个运维体系）。建议按 CISA KEV 时限要求在边界侧临时阻断并优先打补丁。其次是 nginx2root 系列（CVE-2026-123633、CVE-2026-121810、CVE-2026-123634、CVE-2026-113425）及阿里云通报的 Nginx HTTP/2 窗口下溢 RCE（CVE-2026-123007），nginx 为互联网基础设施核心组件，RCE 利用门槛相对较低，影响范围极广，应立即升级并核查 HTTP/2、HTTP/3 与邮件代理模块暴露面。另有 Dokploy 多个命令注入与授权缺陷（CVE-2026-129991/129989/129986/129316）可致 root 接管主机，使用该平台者应紧急修复。清单未见明确标注为国内厂商产品的高危漏洞，但 Synology、Dell PowerStore、Ubiquiti UniFi 等在国内部署量大，需同步排查。清单未提供上述漏洞的公开 PoC/Exp 链接，目前无法确认已有公开利用代码，建议持续关注 GitHub、Exploit-DB 及厂商公告核实。</p>
-            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-19 15:32:05</p>
+            <p class="ai-summary-text">本周期最需警惕的是一批已被 CISA 确认在野利用的漏洞，攻击门槛普遍较低且目标分布广泛：CVE-2026-90436（Apache Axis 不安全反射）与 CVE-2026-115731（Puppet Enterprise 反序列化）均属经典远程代码执行路径，企业基础设施暴露面大，建议立即停用受影响组件或升级补丁并排查失陷迹象；CVE-2026-90817（REDCap 代码注入）直接影响科研医疗数据平台，存在数据泄露与篡改风险；CVE-2026-40217（LiteLLM 未受保护备用通道）威胁 AI 网关安全，需核查访问控制与通道配置；CVE-2024-10441（群晖 DSM 输出转义缺陷）面向大量 NAS 用户，易被自动化利用，应紧急升级 DSM 并限制公网暴露。同时需高度关注 nginx 系列&quot;nginx2root&quot;漏洞（CVE-2026-123633、CVE-2026-121810、CVE-2026-123634、CVE-2026-113425），均为释放后使用导致的 RCE，nginx 覆盖面极广，建议尽快升级并收敛 HTTP/2、HTTP/3 与邮件代理功能面。国内产品方面，清单中 Vite 开发服务器 RCE（AVD-2026-1968828/GHSA-p4f5-76q4-ffq7）值得国内研发团队注意，应确保开发服务不对公网开放。需说明的是，我当前无法实时检索互联网，故无法核实并列出各漏洞的公开 PoC/EXP 链接，建议通过 GitHub、Exploit-DB、PacketStorm 及 CISA KEV 目录按编号自行核查，对已有利用证据的条目优先处置。</p>
+            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-19 19:04:10</p>
         </section>
 
 
@@ -150,6 +150,14 @@
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T00:00:00">2026-11-19</time><span class="badge-new">NEW</span></td>
                         <td class="col-title" data-label="标题" title="Nginx HTTP/2发送窗口整数下溢远程代码执行漏洞">Nginx HTTP/2发送窗口整数下溢远程代码执行漏洞</td>
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-123007" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="avd-2026-1968828 vite开发服务器虚拟模块 远程代码执行漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1795017600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">AVD-2026-1968828</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T00:00:00">2026-11-19</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Vite开发服务器虚拟模块 远程代码执行漏洞">Vite开发服务器虚拟模块 远程代码执行漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-1968828" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
                     <tr data-search="cve-2026-114938 openjdk java4shell base64解码远程代码执行漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1794931200">
@@ -616,14 +624,6 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2025-64111" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="avd-2026-1850319 moltbot（clawdbot）gateway 未授权访问漏洞 阿里云高危漏洞库 high 高危" data-level="high" data-ts="1769529600">
-                        <td class="col-id" data-label="编号"><span class="cve-id">AVD-2026-1850319</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-01-28T00:00:00">2026-01-28</time></td>
-                        <td class="col-title" data-label="标题" title="Moltbot（Clawdbot）Gateway 未授权访问漏洞">Moltbot（Clawdbot）Gateway 未授权访问漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://avd.aliyun.com/detail?id=AVD-2026-1850319" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
                     </tbody>
                 </table>
             </div>
@@ -636,7 +636,7 @@
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">斗象漏洞情报中心</span>
-                    <span class="source-meta">最近更新 2026-11-19 12:55:43 · <span class="card-count" data-total="60">60 条</span></span>
+                    <span class="source-meta">最近更新 2026-11-19 17:18:18 · <span class="card-count" data-total="60">60 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://vip.tophant.com/intellList" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
@@ -655,6 +655,142 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <tr data-search="cve-2026-99320 linux内核ipv6 raw套接字rawv6_send_hdrinc()中的释放后重用漏洞 斗象漏洞情报中心" data-level="none" data-ts="1795079898">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99320</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T17:18:18">2026-11-19 17:18:18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Linux内核ipv6 raw套接字rawv6_send_hdrinc()中的释放后重用漏洞">Linux内核ipv6 raw套接字rawv6_send_hdrinc()中的释放后重用漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123358124067917824" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132043 eclipse yasson @jsonbnumberformat 处理存在竞态条件漏洞 斗象漏洞情报中心 low 低危" data-level="low" data-ts="1795079863">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132043</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T17:17:43">2026-11-19 17:17:43</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Eclipse Yasson @JsonbNumberFormat 处理存在竞态条件漏洞">Eclipse Yasson @JsonbNumberFormat 处理存在竞态条件漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123358124063723520" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-101167 dataper访问控制与安全系统缺失授权导致权限提升漏洞 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795079857">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-101167</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T17:17:37">2026-11-19 17:17:37</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="DataPer访问控制与安全系统缺失授权导致权限提升漏洞">DataPer访问控制与安全系统缺失授权导致权限提升漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123358165826408448" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-128999 wordpress saphali woocommerce lite plugin &lt;= 2.0.2 - cross site scripting (xss) vulnerability 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795075217">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-128999</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:17">2026-11-19 16:00:17</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="WordPress Saphali Woocommerce Lite plugin &lt;= 2.0.2 - Cross Site Scripting (XSS) vulnerability">WordPress Saphali Woocommerce Lite plugin &lt;= 2.0.2 - Cross Site Scripting (XSS) vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123356630723727360" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129001 wordpress asset cleanup: page speed booster plugin &lt;= 1.4.0.6 - cross site scripting (xss) vulnerability 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795075213">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129001</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:13">2026-11-19 16:00:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="WordPress Asset CleanUp: Page Speed Booster plugin &lt;= 1.4.0.6 - Cross Site Scripting (XSS) vulnerability">WordPress Asset CleanUp: Page Speed Booster plugin &lt;= 1.4.0.6 - Cross Site Scripting (XSS) vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123356630736310272" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129013 wordpress video conferencing with zoom plugin &lt;= 4.6.12 - broken access control vulnerability 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795075213">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129013</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:13">2026-11-19 16:00:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="WordPress Video Conferencing with Zoom plugin &lt;= 4.6.12 - Broken Access Control vulnerability">WordPress Video Conferencing with Zoom plugin &lt;= 4.6.12 - Broken Access Control vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123356630757281792" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129014 wordpress frontend admin by dynamiapps plugin &lt;= 3.30.2 - broken access control vulnerability 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795075213">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129014</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:13">2026-11-19 16:00:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="WordPress Frontend Admin by DynamiApps plugin &lt;= 3.30.2 - Broken Access Control vulnerability">WordPress Frontend Admin by DynamiApps plugin &lt;= 3.30.2 - Broken Access Control vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123356630790836224" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129030 wordpress shopbuilder – elementor woocommerce builder addons plugin &lt;= 3.4.3 - sensitive data exposure vulnerability 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795075213">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129030</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:13">2026-11-19 16:00:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="WordPress ShopBuilder – Elementor WooCommerce Builder Addons plugin &lt;= 3.4.3 - Sensitive Data Exposure vulnerability">WordPress ShopBuilder – Elementor WooCommerce Builder Addons plugin &lt;= 3.4.3 - Sensitive Data Exposure vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123356630807613440" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129048 wordpress wp photo album plus plugin &lt;= 9.3.06.003 - remote code execution (rce) vulnerability 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795075213">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129048</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:13">2026-11-19 16:00:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="WordPress WP Photo Album Plus plugin &lt;= 9.3.06.003 - Remote Code Execution (RCE) vulnerability">WordPress WP Photo Album Plus plugin &lt;= 9.3.06.003 - Remote Code Execution (RCE) vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123356630824390656" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-112163 xss in kayaport&#x27;s buluttahsilat – virtual pos infrastructure 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795074827">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-112163</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T15:53:47">2026-11-19 15:53:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="XSS in Kayaport&#x27;s BulutTahsilat – Virtual POS Infrastructure">XSS in Kayaport&#x27;s BulutTahsilat – Virtual POS Infrastructure</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123356670762553344" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-19609 unblu spark cross-site scripting through synchronized page attributes in embedded co-browsing 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795071144">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-19609</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T14:52:24">2026-11-19 14:52:24</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Unblu Spark Cross-Site Scripting through Synchronized Page Attributes in Embedded Co-Browsing">Unblu Spark Cross-Site Scripting through Synchronized Page Attributes in Embedded Co-Browsing</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123325712004943872" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132825 ruby 大小写转换堆缓冲区溢出漏洞 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795070066">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132825</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T14:34:26">2026-11-19 14:34:26</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Ruby 大小写转换堆缓冲区溢出漏洞">Ruby 大小写转换堆缓冲区溢出漏洞</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123325669873160192" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-110462 comelit 1456b multi-user gateway exposes all role passwords in cleartext via installer-accessible backup 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795069851">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-110462</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T14:30:51">2026-11-19 14:30:51</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Comelit 1456B Multi-User Gateway exposes all role passwords in cleartext via Installer-accessible backup">Comelit 1456B Multi-User Gateway exposes all role passwords in cleartext via Installer-accessible backup</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123325708536254464" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-110461 comelit 1456b multi-user gateway ships with default administrative credentials 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795069707">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-110461</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T14:28:27">2026-11-19 14:28:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Comelit 1456B Multi-User Gateway ships with default administrative credentials">Comelit 1456B Multi-User Gateway ships with default administrative credentials</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123325708464951296" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-117678 idna: punycode labels are decoded before the 63-octet length check, so a long xn-- label causes super-linear cpu use 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795066590">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-117678</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:36:30">2026-11-19 13:36:30</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="idna: punycode labels are decoded before the 63-octet length check, so a long xn-- label causes super-linear CPU use">idna: punycode labels are decoded before the 63-octet length check, so a long xn-- label causes super-linear CPU use</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123325751322349568" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-117678 idna: punycode labels are decoded before the 63-octet length check, so a long xn-- label causes super-linear cpu use 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795066590">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-117678</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:36:30">2026-11-19 13:36:30</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="idna: punycode labels are decoded before the 63-octet length check, so a long xn-- label causes super-linear CPU use">idna: punycode labels are decoded before the 63-octet length check, so a long xn-- label causes super-linear CPU use</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123325689754161152" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-109555 wp staging &lt;= 4.17.0 and wp staging pro &lt;= 6.17.0 - authenticated (subscriber+) php object injection to remote code execution via database restore and staging reset 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795066401">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-109555</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T13:33:21">2026-11-19 13:33:21</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="WP STAGING &lt;= 4.17.0 and WP STAGING Pro &lt;= 6.17.0 - Authenticated (Subscriber+) PHP Object Injection to Remote Code Execution via Database Restore and Staging Reset">WP STAGING &lt;= 4.17.0 and WP STAGING Pro &lt;= 6.17.0 - Authenticated (Subscriber+) PHP Object Injection to Remote Code…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123325605415096320" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
                     <tr data-search="cve-2026-130888 nbdkit: qcow2dec zstd heap over-read via incorrect input buffer size 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795064143">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-130888</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
@@ -997,142 +1133,6 @@
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:19">2026-11-19 07:17:19</time><span class="badge-new">NEW</span></td>
                         <td class="col-title" data-label="标题" title="Dokploy 备份前缀字段命令注入导致以 root 身份执行任意命令漏洞">Dokploy 备份前缀字段命令注入导致以 root 身份执行任意命令漏洞</td>
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207151701856256" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129992 dokploy 构建与数据库备份错误信息泄露敏感凭据漏洞 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043839">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129992</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:19">2026-11-19 07:17:19</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy 构建与数据库备份错误信息泄露敏感凭据漏洞">Dokploy 构建与数据库备份错误信息泄露敏感凭据漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207158014283776" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129315 dokploy /etc/dokploy 目录权限配置不当导致本地权限提升 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129315</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy /etc/dokploy 目录权限配置不当导致本地权限提升">Dokploy /etc/dokploy 目录权限配置不当导致本地权限提升</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207149332074496" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129316 dokploy websocket 处理器授权缺陷导致越权访问容器并接管主机 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129316</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy WebSocket 处理器授权缺陷导致越权访问容器并接管主机">Dokploy WebSocket 处理器授权缺陷导致越权访问容器并接管主机</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207149990580224" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129985 dokploy 计划任务应用名称命令注入漏洞 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129985</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy 计划任务应用名称命令注入漏洞">Dokploy 计划任务应用名称命令注入漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207152897232896" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129986 dokploy 本地文件挂载删除功能命令注入导致远程代码执行漏洞 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129986</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy 本地文件挂载删除功能命令注入导致远程代码执行漏洞">Dokploy 本地文件挂载删除功能命令注入导致远程代码执行漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207158320467968" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129989 dokploy nixpacks publishdirectory 构建配置命令注入导致主机接管漏洞 斗象漏洞情报中心 critical 严重" data-level="critical" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129989</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy Nixpacks publishDirectory 构建配置命令注入导致主机接管漏洞">Dokploy Nixpacks publishDirectory 构建配置命令注入导致主机接管漏洞</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207159276769280" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129990 dokploy 网络接口权限校验缺失导致普通成员可管理 docker 网络 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795043838">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129990</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:18">2026-11-19 07:17:18</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Dokploy 网络接口权限校验缺失导致普通成员可管理 Docker 网络">Dokploy 网络接口权限校验缺失导致普通成员可管理 Docker 网络</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207162284085248" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-125353 omada sdn controller 卸载流程数据库备份权限分配不当导致信息泄露 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043837">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125353</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:17:17">2026-11-19 07:17:17</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Omada SDN Controller 卸载流程数据库备份权限分配不当导致信息泄露">Omada SDN Controller 卸载流程数据库备份权限分配不当导致信息泄露</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123207146362507264" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132281 elunez eladmin database maintenance upload sqlutils.batchexecute sql injection 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043716">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132281</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:15:16">2026-11-19 07:15:16</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="elunez eladmin Database Maintenance upload SqlUtils.batchExecute sql injection">elunez eladmin Database Maintenance upload SqlUtils.batchExecute sql injection</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566640807936" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132745 vtiger crm through 8.4.0 blind sql injection via search_params k comparator 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043588">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132745</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:08">2026-11-19 07:13:08</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 Blind SQL Injection via search_params k Comparator">Vtiger CRM through 8.4.0 Blind SQL Injection via search_params k Comparator</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566888271872" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132746 vtiger crm through 8.4.0 blind sql injection via wsapp wsapp_map 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043588">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132746</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:08">2026-11-19 07:13:08</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 Blind SQL Injection via WSAPP wsapp_map">Vtiger CRM through 8.4.0 Blind SQL Injection via WSAPP wsapp_map</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566905049088" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132747 vtiger crm through 8.4.0 sql injection via selected_ids in exportdata 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043587">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132747</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:07">2026-11-19 07:13:07</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 SQL Injection via selected_ids in ExportData">Vtiger CRM through 8.4.0 SQL Injection via selected_ids in ExportData</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566905049089" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132748 vtiger crm through 8.4.0 php code injection via configuration editor 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795043586">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132748</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:06">2026-11-19 07:13:06</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 PHP Code Injection via Configuration Editor">Vtiger CRM through 8.4.0 PHP Code Injection via Configuration Editor</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566926020608" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132749 vtiger crm through 8.4.0 blind sql injection via reports advanced_filter 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043586">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132749</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:06">2026-11-19 07:13:06</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Vtiger CRM through 8.4.0 Blind SQL Injection via Reports advanced_filter">Vtiger CRM through 8.4.0 Blind SQL Injection via Reports advanced_filter</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566942797824" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132750 meilisearch before 1.55.1 and 1.56.x before 1.56.1 denial of service via filter-parser quadratic memory consumption 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043585">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132750</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:05">2026-11-19 07:13:05</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Meilisearch before 1.55.1 and 1.56.x before 1.56.1 Denial of Service via filter-parser Quadratic Memory Consumption">Meilisearch before 1.55.1 and 1.56.x before 1.56.1 Denial of Service via filter-parser Quadratic Memory Consumption</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566959575040" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132751 yt through 4.4.4 code injection via con_args eval() in ytdata hdf5 斗象漏洞情报中心 high 高危" data-level="high" data-ts="1795043584">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132751</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:04">2026-11-19 07:13:04</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="yt through 4.4.4 Code Injection via con_args eval() in ytdata HDF5">yt through 4.4.4 Code Injection via con_args eval() in ytdata HDF5</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566976352256" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-132752 screentinker before 3.2.4 stored xss via kiosk page button javascript: url 斗象漏洞情报中心 medium 中危" data-level="medium" data-ts="1795043583">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132752</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:13:03">2026-11-19 07:13:03</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="ScreenTinker before 3.2.4 Stored XSS via Kiosk Page Button javascript: URL">ScreenTinker before 3.2.4 Stored XSS via Kiosk Page Button javascript: URL</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://vip.tophant.com/detail/2123224566997323776" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
                     </tbody>
@@ -3494,7 +3494,7 @@
         </div>
     </div>
     <div class="wrap copyright">
-        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-19 15:32:05</p>
+        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-19 19:04:10</p>
     </div>
 </footer>
 
