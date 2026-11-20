@@ -30,10 +30,10 @@ notify:
 kimi:
   api_key: "<%= ENV['KIMI_API_KEY'] %>"               # Kimi Code / Kimi API Key
   # Kimi Code（www.kimi.com/code/console）：
+  #   海外 https://api.kimi.ai/coding/v1/chat/completions（默认）
   #   国内 https://api.kimi.com/coding/v1/chat/completions
-  #   海外 https://api.kimi.ai/coding/v1/chat/completions
   # Kimi API 开放平台（platform.kimi.com）：https://api.moonshot.cn/v1/chat/completions
-  api_url: "<%= ENV['KIMI_API_URL'] %>"              # 留空默认 Kimi Code 国内地址
+  api_url: "<%= ENV['KIMI_API_URL'] %>"              # 留空默认 Kimi Code 海外地址
   model: 'k3'                                         # Kimi Code: k3 / k3.1-pro / k3-256k
   reasoning_effort: 'low'                             # K3 推理强度：low / high / max
   web_search: true                                    # 联网搜索（$web_search 服务端内置工具，Kimi Code / 开放平台均支持）；开放平台按次计费，置 false 关闭

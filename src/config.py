@@ -57,7 +57,7 @@ DEFAULT_SETTINGS = {
     },
     'kimi': {
         'api_key': '',
-        'api_url': 'https://api.kimi.com/coding/v1/chat/completions',
+        'api_url': 'https://api.kimi.ai/coding/v1/chat/completions',
         'model': 'k3',
         'reasoning_effort': 'low',
         'web_search': True,

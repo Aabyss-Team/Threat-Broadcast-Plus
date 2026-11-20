@@ -112,11 +112,11 @@
 - 让模型从候选清单中筛出真正需要立即关注的漏洞，输出一段 250-350 字的中文研判
 - 结果写入 `data/ai_summary.json`，并展示在页面顶部「近期高风险漏洞研判」卡片中
 - 未配置 API Key 或 API 调用失败时只记录告警，不会覆盖已有摘要，也不影响页面生成
-- **Kimi Code Console 默认配置**：模型 `k3`，地址 `https://api.kimi.com/coding/v1/chat/completions`
+- **Kimi Code Console 默认配置**：模型 `k3`，地址 `https://api.kimi.ai/coding/v1/chat/completions`（海外）
 - 推理强度默认 `low`，可在 `settings.yml` 中调整 `reasoning_effort`
 - 默认开启联网搜索（`web_search: true`）：通过 Kimi 服务端内置工具 `$web_search` 检索漏洞的公开 PoC / EXP 链接，Kimi Code 与开放平台地址均支持；开放平台按次计费，不需要时在 `settings.yml` 中关闭
 - Key 与地址必须配套：
-  - `www.kimi.com/code/console` 的 Key → `https://api.kimi.com/coding/v1/chat/completions`，模型 `k3` / `k3.1-pro`
+  - `www.kimi.com/code/console` 的 Key → `https://api.kimi.ai/coding/v1/chat/completions`（海外，默认）或 `https://api.kimi.com/coding/v1/chat/completions`（国内），模型 `k3` / `k3.1-pro`
   - `platform.kimi.com` 的 Key → `https://api.moonshot.cn/v1/chat/completions`，模型 `kimi-k3`
   - `platform.kimi.ai` 的 Key → `https://api.moonshot.ai/v1/chat/completions`，模型 `kimi-k3`
 
