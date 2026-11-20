@@ -25,7 +25,7 @@
             <h1>威胁情报播报</h1>
             <p class="lede">自动聚合公开漏洞情报源，每 4 小时更新一次，聚焦最新披露与已被在野利用的高危漏洞，并提供 Kimi K3 模型的分析，能够马上锁定近 5 天的重大漏洞。</p>
             <div class="hero-meta">
-                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-21T01:14:52+08:00">2026-11-21 01:14:52</time></span>
+                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-21T02:07:56+08:00">2026-11-21 02:07:56</time></span>
                 <span class="meta-item">18 个情报源</span>
                 <span class="meta-item">956 条记录</span>
             </div>
@@ -44,7 +44,7 @@
             <span class="stat-label">当前展示情报</span>
         </div>
         <div class="stat stat-accent">
-            <span class="stat-value">383</span>
+            <span class="stat-value">387</span>
             <span class="stat-label">近两天新增</span>
         </div>
         <div class="stat">
@@ -62,8 +62,8 @@
                 <span class="ai-badge">AI 研判</span>
                 <h2 id="ai-summary-title">近期高风险漏洞研判</h2>
             </div>
-            <p class="ai-summary-text">本时间窗口内最值得立即处置的是已被 CISA 列入在野利用目录的五条漏洞：CVE-2026-90436（Apache Axis 不安全反射）、CVE-2026-90817（REDCap 代码注入）、CVE-2026-40217（LiteLLM 未受保护的备用通道）和 CVE-2024-10441（Synology DSM 输出转义不当）。其中 LiteLLM 作为 AI 网关组件部署面快速扩大，攻击者可借此绕过鉴权直接访问后端大模型与管理接口，数据泄露与算力盗用风险极高；REDCap 在医疗科研机构广泛使用，代码注入可直接危及敏感研究数据；Synology DSM 面向大量中小企业与个人 NAS 用户，暴露面广、利用门槛低；Apache Axis 虽属老旧组件，但在政企遗留系统中仍有大量存量，且反射类缺陷易被武器化。上述四条应作为最高优先级，按 CISA 要求限期打补丁或临时下线隔离。此外 CVE-2026-115731（Puppet Enterprise 反序列化）同属在野利用，影响企业自动化运维中枢，一旦被控可导致大规模横向移动，需立即升级并审计节点通信。新增严重漏洞中，建议同步关注 CVE-2026-127027（Poste.io DMARC 报告处理 RCE，邮件服务器直接暴露互联网）和 CVE-2026-77312（Flyto2 Core 沙箱绕过任意文件写入与代码执行），二者均可实现未授权远程代码执行；NGINX 系列漏洞（CVE-2026-113425、CVE-2026-123633、CVE-2026-123007、CVE-2026-123634）虽细节有限，但 NGINX 作为互联网基础设施影响面极广，应密切关注厂商补丁动态。本清单未明确出现国内厂商产品的高危漏洞，但国内企业广泛使用的 Apache Axis、NGINX、WordPress 插件等开源组件涉及多条，同样需排查。关于公开利用代码情况：经核查，受检索条件所限，目前未能在 github.com、www.exploit-db.com、sploitus.com 等平台检索到上述 CVE 的可靠公开 PoC/EXP 链接，后续建议持续监控这些平台及 CISA KEV 更新，一旦出现公开利用代码，LiteLLM、REDCap 与 Poste.io 相关漏洞的利用门槛将进一步降低，风险等级需相应上调。</p>
-            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-21 01:14:52</p>
+            <p class="ai-summary-text">本周期风险以已确认在野利用的边界与基础设施漏洞为主。最需立即关注的是 CVE-2026-123890（VMware vCenter Directory Service 认证绕过，CVSS 9.8），Google/Mandiant 确认疑似国家级攻击者自 2026 年 9 月起已将其作为 0day 利用，官方无缓解措施，vCenter 直接关系整个虚拟化资产安全，须立即升级至修复版本并排查入侵痕迹；目前未检索到公开 PoC。其次是 CVE-2026-90436（Apache Axis 1.x 不安全反射 RCE），已被用于攻击 Atlassian Confluence Data Center 与 N-able N-central，且上游不发布 1.x 修复版本，公开 PoC 见 https://github.com/dinosn/axis-cve-2026-90436-lab-poc，建议禁用或隔离 SOAP 接口、升级受影响产品。CVE-2026-129448（Apache Roller XML-RPC 反序列化 RCE）已确认在野利用且已有公开 PoC（https://securityvulnerability.io/exploits/latest），须立即升级至 6.1.6。CVE-2026-76466（Cisco Expressway 硬编码凭据 RCE，CVSS 9.8）PoC 公开后已出现真实入侵案例，集群部署应紧急打补丁并核查 4372 端口暴露面，参考 https://thehackernews.com/2026/11/hackers-exploit-critical-cisco.html。CVE-2026-90817（REDCap 未认证代码注入，CVSS 9.8）已被 CISA 列入 KEV，医疗科研机构广泛部署，应按厂商指引修复（CISA 截止日 11 月 21 日）。此外 CVE-2025-42884（SAP NetWeaver JNDI 注入）在野利用，需尽快应用补丁。清单中未发现明确的国内厂商产品漏洞，但 Flyto2 Core 等漏洞在国内有使用场景，建议一并排查。</p>
+            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-21 02:07:56</p>
         </section>
 
 
@@ -1956,7 +1956,7 @@
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">美国国家漏洞数据库（NVD）</span>
-                    <span class="source-meta">最近更新 2026-11-20 22:17:54 · <span class="card-count" data-total="60">60 条</span></span>
+                    <span class="source-meta">最近更新 2026-11-21 00:18:04 · <span class="card-count" data-total="60">60 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://nvd.nist.gov/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
@@ -1975,6 +1975,286 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <tr data-search="cve-2026-44908 improper following of a certificate’s chain of trust in the remote-attestation verifier used to establish trust with meta ai&#x27;s confidential computing backend in whatsapp for ios before 2.26.24.72, whatsapp business for ios and whatsapp for mac desktop before v2.26.23.72, whatsapp for android before… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795191484">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-44908</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-21T00:18:04">2026-11-21 00:18:04</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Improper following of a certificate’s chain of trust in the remote-attestation verifier used to establish trust with Meta AI&#x27;s confidential computing backend in WhatsApp for iOS before 2.26.24.72, WhatsApp Business for iOS and WhatsApp for Mac Desktop before v2.26.23.72, WhatsApp for Android before…">Improper following of a certificate’s chain of trust in the remote-attestation verifier used to establish trust with…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-44908" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-102769 a sql injection vulnerability when the recipient tapped on a specially crafted “order details” message from an unofficial client in whatsapp for android prior to version 2.26.35.74 could have allowed deletion of locally-stored whatsapp files and, only if the user is online at time of receipt, leaked… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795191479">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-102769</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-21T00:17:59">2026-11-21 00:17:59</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A SQL injection vulnerability when the recipient tapped on a specially crafted “order details” message from an unofficial client in WhatsApp for Android prior to version 2.26.35.74 could have allowed deletion of locally-stored WhatsApp files and, only if the user is online at time of receipt, leaked…">A SQL injection vulnerability when the recipient tapped on a specially crafted “order details” message from an…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-102769" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133855 flowintel contains an information disclosure vulnerability in its case history feature. when a user views the history of a case they are authorized to access, the history output includes references to other cases (linked, unlinked, or forked) without verifying whether the requesting user has permiss… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187874">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133855</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:54">2026-11-20 23:17:54</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel contains an information disclosure vulnerability in its case history feature. When a user views the history of a case they are authorized to access, the history output includes references to other cases (linked, unlinked, or forked) without verifying whether the requesting user has permiss…">flowintel contains an information disclosure vulnerability in its case history feature. When a user views the history…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133855" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133854 flowintel contains a vulnerability in the case and task classification usage endpoints that allows authenticated users to view classification data associated with cases they do not have permission to access. the affected endpoints, which provide lists of used taxonomies, tags, galaxies, clusters, an… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187874">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133854</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:54">2026-11-20 23:17:54</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel contains a vulnerability in the case and task classification usage endpoints that allows authenticated users to view classification data associated with cases they do not have permission to access. The affected endpoints, which provide lists of used taxonomies, tags, galaxies, clusters, an…">flowintel contains a vulnerability in the case and task classification usage endpoints that allows authenticated users…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133854" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133853 flowintel&#x27;s chatbot component used a single shared mcp (model context protocol) session and process-wide environment variable to pass per-user api credentials to a child process. because the session and the ambient flowintel_api_key environment variable were shared across all concurrent requests, a… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187873">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133853</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:53">2026-11-20 23:17:53</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="FlowIntel&#x27;s chatbot component used a single shared MCP (Model Context Protocol) session and process-wide environment variable to pass per-user API credentials to a child process. Because the session and the ambient FLOWINTEL_API_KEY environment variable were shared across all concurrent requests, a…">FlowIntel&#x27;s chatbot component used a single shared MCP (Model Context Protocol) session and process-wide environment…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133853" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133852 flowintel is a case management application that enforces an approval workflow for tasks in privileged cases. tasks in such cases are required to start in a requested status, meaning they must receive explicit approval before becoming active. a logic flaw in the task-creation path allowed tasks to be… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187873">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133852</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:53">2026-11-20 23:17:53</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel is a case management application that enforces an approval workflow for tasks in privileged cases. Tasks in such cases are required to start in a Requested status, meaning they must receive explicit approval before becoming active. A logic flaw in the task-creation path allowed tasks to be…">flowintel is a case management application that enforces an approval workflow for tasks in privileged cases. Tasks in…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133852" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133851 flowintel&#x27;s alerting module contained an authorization bypass in the alert access control logic. when an alert was linked to a private case, the system relied solely on connector ownership (user or organization) to determine access, without verifying that the requesting user still held valid members… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187873">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133851</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:53">2026-11-20 23:17:53</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="FlowIntel&#x27;s alerting module contained an authorization bypass in the alert access control logic. When an alert was linked to a private case, the system relied solely on connector ownership (user or organization) to determine access, without verifying that the requesting user still held valid members…">FlowIntel&#x27;s alerting module contained an authorization bypass in the alert access control logic. When an alert was…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133851" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133850 flowintel contains an authorization flaw in its recurring reminder notification subsystem. when a user is subscribed to recurring notifications for a case, the system does not re-verify the recipient&#x27;s current access rights to that case before generating or displaying the notification. as a result,… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187873">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133850</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:53">2026-11-20 23:17:53</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel contains an authorization flaw in its recurring reminder notification subsystem. When a user is subscribed to recurring notifications for a case, the system does not re-verify the recipient&#x27;s current access rights to that case before generating or displaying the notification. As a result,…">flowintel contains an authorization flaw in its recurring reminder notification subsystem. When a user is subscribed…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133850" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133849 a vulnerability exists in the flowintel application&#x27;s calendar functionality that allows unauthorized access to private case data. the task calendar queries failed to enforce visibility checks on the parent case associated with tasks. specifically, tasks assigned to a user or belonging to the user&#x27;s… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187873">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133849</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:53">2026-11-20 23:17:53</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability exists in the flowintel application&#x27;s calendar functionality that allows unauthorized access to private case data. The task calendar queries failed to enforce visibility checks on the parent case associated with tasks. Specifically, tasks assigned to a user or belonging to the user&#x27;s…">A vulnerability exists in the flowintel application&#x27;s calendar functionality that allows unauthorized access to…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133849" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133848 flowintel contains an authorization flaw in its user deletion functionality. organization-scoped administrators (org admins) are able to delete platform-level administrator accounts through both the browser-based admin interface and the rest api. the existing authorization logic verified that an org… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187872">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133848</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:52">2026-11-20 23:17:52</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel contains an authorization flaw in its user deletion functionality. Organization-scoped administrators (org admins) are able to delete platform-level administrator accounts through both the browser-based admin interface and the REST API. The existing authorization logic verified that an org…">flowintel contains an authorization flaw in its user deletion functionality. Organization-scoped administrators (org…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133848" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133847 flowintel contains an authorization bypass in the browser-based admin user editing interface. the edit_user view in the admin panel verified that a non-platform-admin user could only edit accounts belonging to their own organization, but it did not verify that the target account was not a platform-a… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187872">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133847</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:52">2026-11-20 23:17:52</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel contains an authorization bypass in the browser-based admin user editing interface. The edit_user view in the admin panel verified that a non-platform-admin user could only edit accounts belonging to their own organization, but it did not verify that the target account was not a platform-a…">flowintel contains an authorization bypass in the browser-based admin user editing interface. The edit_user view in…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133847" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133846 flowintel contains an authorization bypass in its task management workflow. when a user reopens a completed task (by toggling its completion state or changing its status to a non-finished value) or creates a new task within a completed privileged case, the parent case is automatically revived (un-co… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187872">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133846</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:52">2026-11-20 23:17:52</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="FlowIntel contains an authorization bypass in its task management workflow. When a user reopens a completed task (by toggling its completion state or changing its status to a non-finished value) or creates a new task within a completed privileged case, the parent case is automatically revived (un-co…">FlowIntel contains an authorization bypass in its task management workflow. When a user reopens a completed task (by…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133846" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133844 flowintel, a threat intelligence case management platform, contains an information disclosure vulnerability in its case serialization logic. when a case is rendered via the rest api or browser views, all connector instances associated with that case were included in the response regardless of the re… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187872">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133844</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:52">2026-11-20 23:17:52</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="FlowIntel, a threat intelligence case management platform, contains an information disclosure vulnerability in its case serialization logic. When a case is rendered via the REST API or browser views, all connector instances associated with that case were included in the response regardless of the re…">FlowIntel, a threat intelligence case management platform, contains an information disclosure vulnerability in its…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133844" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133843 flowintel contains a vulnerability in the misp correlation feature that allows unauthorized disclosure of case identifiers. the application failed to enforce proper access controls when generating correlation lists for misp attributes. specifically, the system did not verify whether the requesting u… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187872">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133843</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:52">2026-11-20 23:17:52</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel contains a vulnerability in the MISP correlation feature that allows unauthorized disclosure of case identifiers. The application failed to enforce proper access controls when generating correlation lists for MISP attributes. Specifically, the system did not verify whether the requesting u…">flowintel contains a vulnerability in the MISP correlation feature that allows unauthorized disclosure of case…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133843" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133841 flowintel contains an authorization bypass in its case serialization logic that allows an authenticated user to view metadata of private cases they do not have access to. when a case is linked to another case, the json representation of the source case included the id, title, and description of ever… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187871">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133841</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:51">2026-11-20 23:17:51</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="FlowIntel contains an authorization bypass in its case serialization logic that allows an authenticated user to view metadata of private cases they do not have access to. When a case is linked to another case, the JSON representation of the source case included the ID, title, and description of ever…">FlowIntel contains an authorization bypass in its case serialization logic that allows an authenticated user to view…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133841" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133840 flowintel contains an authorization bypass in the file-to-note conversion feature for case tasks. when a task is in a restricted workflow state (requested, rejected, or request review) within a privileged case, the conversion endpoint did not enforce elevated role requirements. any authenticated use… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187871">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133840</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:51">2026-11-20 23:17:51</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel contains an authorization bypass in the file-to-note conversion feature for case tasks. When a task is in a restricted workflow state (Requested, Rejected, or Request Review) within a privileged case, the conversion endpoint did not enforce elevated role requirements. Any authenticated use…">flowintel contains an authorization bypass in the file-to-note conversion feature for case tasks. When a task is in a…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133840" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133839 flowintel contains a missing authorization vulnerability in its task file deletion functionality. when a privileged task is in a restricted state (requested, rejected, or request review), any authenticated user with basic case membership (e.g., editor or queuer) was able to delete evidence files ass… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187871">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133839</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:51">2026-11-20 23:17:51</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="FlowIntel contains a missing authorization vulnerability in its task file deletion functionality. When a privileged task is in a restricted state (Requested, Rejected, or Request Review), any authenticated user with basic case membership (e.g., editor or queuer) was able to delete evidence files ass…">FlowIntel contains a missing authorization vulnerability in its task file deletion functionality. When a privileged…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133839" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133838 flowintel contains an authorization bypass that allows non-approver case members to modify restricted tasks (those in requested, rejected, or request review status) through several indirect code paths that lacked the required approver permission check. affected operations include: - self-unassignmen… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187871">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133838</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:51">2026-11-20 23:17:51</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="FlowIntel contains an authorization bypass that allows non-approver case members to modify restricted tasks (those in Requested, Rejected, or Request Review status) through several indirect code paths that lacked the required approver permission check. Affected operations include: - Self-unassignmen…">FlowIntel contains an authorization bypass that allows non-approver case members to modify restricted tasks (those in…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133838" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133837 flowintel contains an authorization bypass in its task completion workflow for privileged cases. users with lower-privilege roles (editor, queuer) were able to mark tasks as completed without the required approver review (admin, case admin, or queue admin), undermining the approval workflow. the vul… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187871">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133837</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:51">2026-11-20 23:17:51</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="flowintel contains an authorization bypass in its task completion workflow for privileged cases. Users with lower-privilege roles (editor, queuer) were able to mark tasks as completed without the required approver review (Admin, Case Admin, or Queue Admin), undermining the approval workflow. The vul…">flowintel contains an authorization bypass in its task completion workflow for privileged cases. Users with…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133837" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133629 a vulnerability was determined in sunnet ctms up to 10.11. impacted is an unknown function of the file /cltcms/api/external-training/ext-course of the component external training application form feature. this manipulation of the argument memberids causes improper control of resource identifiers. re… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795187870">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133629</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:50">2026-11-20 23:17:50</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability was determined in Sunnet CTMS up to 10.11. Impacted is an unknown function of the file /cltcms/api/external-training/ext-course of the component External Training Application Form Feature. This manipulation of the argument memberids causes improper control of resource identifiers. Re…">A vulnerability was determined in Sunnet CTMS up to 10.11. Impacted is an unknown function of the file…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133629" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133621 a flaw has been found in shader-slang slangpy up to 0.43.1. this vulnerability affects the function tinyexr::decodepixeldata in the library external/include/tinyexr.h of the component exr image loader. executing a manipulation can lead to out-of-bounds read. the attack may be performed from remote. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187870">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133621</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:50">2026-11-20 23:17:50</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A flaw has been found in shader-slang slangpy up to 0.43.1. This vulnerability affects the function tinyexr::DecodePixelData in the library external/include/tinyexr.h of the component EXR Image Loader. Executing a manipulation can lead to out-of-bounds read. The attack may be performed from remote.">A flaw has been found in shader-slang slangpy up to 0.43.1. This vulnerability affects the function…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133621" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133616 a vulnerability was found in sonos tract up to 0.23.4. the affected element is the function inferencerulesop::rules of the file onnx/src/ops/math/gemm.rs of the component operand arity indexing. the manipulation of the argument inputs/outputs results in out-of-bounds read. the attack can be executed… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795187869">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133616</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:49">2026-11-20 23:17:49</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A vulnerability was found in sonos tract up to 0.23.4. The affected element is the function InferenceRulesOp::rules of the file onnx/src/ops/math/gemm.rs of the component Operand Arity Indexing. The manipulation of the argument inputs/outputs results in out-of-bounds read. The attack can be executed…">A vulnerability was found in sonos tract up to 0.23.4. The affected element is the function InferenceRulesOp::rules of…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133616" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133612 a weakness has been identified in squeezeailab squeezellm up to a5fd71f353bf569feb7b55737c1c1493e78e8f31. this vulnerability affects the function vecquant4matmul_spmv_hybrid_nuq_perchannel of the file quant_cuda_kernel.cu of the component cuda matvec kernel. executing a manipulation of the argument… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795187869">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133612</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:49">2026-11-20 23:17:49</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A weakness has been identified in SqueezeAILab SqueezeLLM up to a5fd71f353bf569feb7b55737c1c1493e78e8f31. This vulnerability affects the function vecquant4matmul_spmv_hybrid_nuq_perchannel of the file quant_cuda_kernel.cu of the component CUDA Matvec Kernel. Executing a manipulation of the argument…">A weakness has been identified in SqueezeAILab SqueezeLLM up to a5fd71f353bf569feb7b55737c1c1493e78e8f31. This…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133612" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132668 in postgres enterprise manager (pem), any pem user can run the pem.send_webhook() function, which runs with elevated privileges and queues a payload for any configured webhook. the pem agent then delivers it with that webhook&#x27;s stored headers, oauth token or client certificate, so a user can send fo… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795187868">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132668</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:48">2026-11-20 23:17:48</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), any PEM user can run the pem.send_webhook() function, which runs with elevated privileges and queues a payload for any configured webhook. The PEM agent then delivers it with that webhook&#x27;s stored headers, OAuth token or client certificate, so a user can send fo…">In Postgres Enterprise Manager (PEM), any PEM user can run the pem.send_webhook() function, which runs with elevated…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132668" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132665 in postgres enterprise manager (pem), the pem.deploy_job_template() function does not check that the caller can access the servers, groups and agents it deploys a job template to. when pem teams are used to separate access, a user with the scheduled tasks role (pem_manage_schedule_task) can deploy a… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187868">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132665</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:48">2026-11-20 23:17:48</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), the pem.deploy_job_template() function does not check that the caller can access the servers, groups and agents it deploys a job template to. When PEM teams are used to separate access, a user with the scheduled tasks role (pem_manage_schedule_task) can deploy a…">In Postgres Enterprise Manager (PEM), the pem.deploy_job_template() function does not check that the caller can access…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132665" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132664 in postgres enterprise manager (pem), any pem user can read the encrypted passwords that pem agents use to connect to monitored servers, including the pem backend superuser password stored when the pem server is configured. unless a custom encryption key is configured, these passwords are encrypted… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187868">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132664</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:48">2026-11-20 23:17:48</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), any PEM user can read the encrypted passwords that PEM agents use to connect to monitored servers, including the PEM backend superuser password stored when the PEM server is configured. Unless a custom encryption key is configured, these passwords are encrypted…">In Postgres Enterprise Manager (PEM), any PEM user can read the encrypted passwords that PEM agents use to connect to…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132664" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132663 in postgres enterprise manager (pem), webhook urls are not validated, and the pem agent does not restrict the url schemes it uses to deliver webhooks. a user with the alert configuration role (pem_config_alert) can set up a webhook with a file:// url. when the webhook is sent, the agent on the pem s… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187868">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132663</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:48">2026-11-20 23:17:48</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), webhook URLs are not validated, and the PEM agent does not restrict the URL schemes it uses to deliver webhooks. A user with the alert configuration role (pem_config_alert) can set up a webhook with a file:// URL. When the webhook is sent, the agent on the PEM s…">In Postgres Enterprise Manager (PEM), webhook URLs are not validated, and the PEM agent does not restrict the URL…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132663" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132662 in postgres enterprise manager (pem), the sql profiler save and load functions in the pem web application do not keep the client-supplied file name inside the user&#x27;s storage directory. a user with the sql profiler role (pem_comp_sqlprofiler) can read json files, and overwrite files that the pem web… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187868">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132662</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:48">2026-11-20 23:17:48</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), the SQL Profiler save and load functions in the PEM web application do not keep the client-supplied file name inside the user&#x27;s storage directory. A user with the SQL Profiler role (pem_comp_sqlprofiler) can read JSON files, and overwrite files that the PEM web…">In Postgres Enterprise Manager (PEM), the SQL Profiler save and load functions in the PEM web application do not keep…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132662" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132661 in postgres enterprise manager (pem), multi-factor authentication (mfa) is not enforced on the pem web application&#x27;s own routes. an attacker who knows the password of a user who has enrolled a second factor can skip the second factor and call pem&#x27;s pages and apis directly, with that user&#x27;s permissio… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795187867">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132661</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:47">2026-11-20 23:17:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), multi-factor authentication (MFA) is not enforced on the PEM web application&#x27;s own routes. An attacker who knows the password of a user who has enrolled a second factor can skip the second factor and call PEM&#x27;s pages and APIs directly, with that user&#x27;s permissio…">In Postgres Enterprise Manager (PEM), multi-factor authentication (MFA) is not enforced on the PEM web application&#x27;s…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132661" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132660 in postgres enterprise manager (pem), several security definer functions in the pem schema of the pem backend database are owned by a superuser but do not set a safe search_path. any pem user who can connect to the pem backend database can create objects that these functions use in place of the inte… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795187867">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132660</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:47">2026-11-20 23:17:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), several SECURITY DEFINER functions in the pem schema of the PEM backend database are owned by a superuser but do not set a safe search_path. Any PEM user who can connect to the PEM backend database can create objects that these functions use in place of the inte…">In Postgres Enterprise Manager (PEM), several SECURITY DEFINER functions in the pem schema of the PEM backend database…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132660" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132659 in postgres enterprise manager (pem), the row-level security policies on pem.job and pem.jobstep that apply to pem agents do not limit an agent to its own jobs. an attacker who controls one monitored host, and so its pem agent certificate, can create, change or delete jobs for every other agent, inc… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795187867">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132659</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:47">2026-11-20 23:17:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), the row-level security policies on pem.job and pem.jobstep that apply to PEM agents do not limit an agent to its own jobs. An attacker who controls one monitored host, and so its PEM agent certificate, can create, change or delete jobs for every other agent, inc…">In Postgres Enterprise Manager (PEM), the row-level security policies on pem.job and pem.jobstep that apply to PEM…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132659" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132658 in postgres enterprise manager (pem), the pem_agent role, which every pem agent login inherits, is a member of the postgresql pg_read_server_files and pg_write_server_files roles on the pem backend database. an attacker who controls any monitored host, and so its pem agent certificate, can read and… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795187867">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132658</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:47">2026-11-20 23:17:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="In Postgres Enterprise Manager (PEM), the pem_agent role, which every PEM agent login inherits, is a member of the PostgreSQL pg_read_server_files and pg_write_server_files roles on the PEM backend database. An attacker who controls any monitored host, and so its PEM agent certificate, can read and…">In Postgres Enterprise Manager (PEM), the pem_agent role, which every PEM agent login inherits, is a member of the…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-132658" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-127027 poste.io is vulnerable to remote code execution in dmarc report processing. email sent to dmarc-reports@ is saved without sender verification. script that runs as root unpacks the attachments using unsafe shell commands, allowing command injection through crafted attachments (e.g. file names or arch… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795187860">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127027</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:40">2026-11-20 23:17:40</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Poste.io is vulnerable to remote code execution in DMARC report processing. Email sent to dmarc-reports@ is saved without sender verification. Script that runs as root unpacks the attachments using unsafe shell commands, allowing command injection through crafted attachments (e.g. file names or arch…">Poste.io is vulnerable to remote code execution in DMARC report processing. Email sent to dmarc-reports@ is saved…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-127027" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-126334 incorrect authorization vulnerability in phoenixframework phoenix_live_view allows an authenticated user to mount a router-mounted liveview without the on_mount hooks of its live_session via a phx_join message that carries neither a &quot;url&quot; nor a &quot;redirect&quot; key. the catch-all clause of the private pho… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795187860">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-126334</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:40">2026-11-20 23:17:40</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Incorrect Authorization vulnerability in phoenixframework phoenix_live_view allows an authenticated user to mount a router-mounted LiveView without the on_mount hooks of its live_session via a phx_join message that carries neither a &quot;url&quot; nor a &quot;redirect&quot; key. The catch-all clause of the private Pho…">Incorrect Authorization vulnerability in phoenixframework phoenix_live_view allows an authenticated user to mount a…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-126334" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-126054 a path traversal vulnerability in workspace directory handling and git integration in google cloud dataform, bigquery studio and colab enterprise on google cloud platform allows an authenticated remote attacker to read private files and create arbitrary files across tenant repositories using crafted… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795187859">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-126054</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T23:17:39">2026-11-20 23:17:39</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="A Path Traversal vulnerability in workspace directory handling and Git integration in Google Cloud Dataform, BigQuery Studio and Colab Enterprise on Google Cloud Platform allows an authenticated remote attacker to read private files and create arbitrary files across tenant repositories using crafted…">A Path Traversal vulnerability in workspace directory handling and Git integration in Google Cloud Dataform, BigQuery…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-126054" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
                     <tr data-search="cve-2026-80188 the buddyboss addons plugin for wordpress is vulnerable to authentication bypass leading to account takeover in versions up to, and including, 1.2.1. this is due to the social login rest endpoint trusting unverified apple and facebook identity-token claims and linking an attacker-controlled provider… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795184274">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-80188</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
@@ -2173,286 +2453,6 @@
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:45">2026-11-20 21:18:45</time><span class="badge-new">NEW</span></td>
                         <td class="col-title" data-label="标题" title="A vulnerability was identified in OpenZipkin Zipkin 3.6.1. This affects the function UnzippingBytesRequestConverter.convertRequest of the file zipkin-server/src/main/java/zipkin2/server/internal/ZipkinHttpCollector.java of the component HTTP Collector. Such manipulation leads to highly compressed da…">A vulnerability was identified in OpenZipkin Zipkin 3.6.1. This affects the function…</td>
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133608" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-133607 a vulnerability was determined in tianshiyeben wgcloud up to 4.0.1. this vulnerability affects unknown code of the file agentcontroller.java of the component mintask endpoint. executing a manipulation can lead to allocation of resources. the attack can be executed remotely. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795180725">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133607</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:45">2026-11-20 21:18:45</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A vulnerability was determined in tianshiyeben wgcloud up to 4.0.1. This vulnerability affects unknown code of the file AgentController.java of the component minTask Endpoint. Executing a manipulation can lead to allocation of resources. The attack can be executed remotely.">A vulnerability was determined in tianshiyeben wgcloud up to 4.0.1. This vulnerability affects unknown code of the…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133607" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-133606 a weakness has been identified in powerjob up to 5.1.7. this affects the function customhttpservletrequestwrapper of the file powerjob-server/powerjob-server-starter/src/main/java/tech/powerjob/server/config/cachingrequestbodyfilter.java of the component cachingrequestbodyfilter. executing a manipul… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795180724">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133606</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:44">2026-11-20 21:18:44</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A weakness has been identified in PowerJob up to 5.1.7. This affects the function CustomHttpServletRequestWrapper of the file powerjob-server/powerjob-server-starter/src/main/java/tech/powerjob/server/config/CachingRequestBodyFilter.java of the component CachingRequestBodyFilter. Executing a manipul…">A weakness has been identified in PowerJob up to 5.1.7. This affects the function CustomHttpServletRequestWrapper of…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133606" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131171 a bug caused room permissions to leak into the world permissions of the acting user during certain actions. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795180722">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131171</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:42">2026-11-20 21:18:42</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A bug caused room permissions to leak into the world permissions of the acting user during certain actions.">A bug caused room permissions to leak into the world permissions of the acting user during certain actions.</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131171" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129424 joomla extension - solidres.com - unauthenticated stored xss through guest reservation details in solidres extension 1.0.0-3.4.1, 4.0.0-4.6.0 - the customer details layout of the administrator reservation view printed guest-supplied booking details, including the email and phone number inside mailto… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795180722">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129424</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:42">2026-11-20 21:18:42</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Joomla Extension - solidres.com - Unauthenticated stored XSS through guest reservation details in Solidres extension 1.0.0-3.4.1, 4.0.0-4.6.0 - The customer details layout of the administrator reservation view printed guest-supplied booking details, including the email and phone number inside mailto…">Joomla Extension - solidres.com - Unauthenticated stored XSS through guest reservation details in Solidres extension…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129424" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129423 joomla extension - phoca.cz - stored xss through author website in frontend upload in phoca download extension 3.0.6-6.1.6 - the author website field of the frontend upload form was validated with an overly permissive url check and rendered without escaping, allowing users with frontend upload permi… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795180722">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129423</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:42">2026-11-20 21:18:42</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Joomla Extension - phoca.cz - Stored XSS through author website in frontend upload in Phoca Download extension 3.0.6-6.1.6 - The author website field of the frontend upload form was validated with an overly permissive URL check and rendered without escaping, allowing users with frontend upload permi…">Joomla Extension - phoca.cz - Stored XSS through author website in frontend upload in Phoca Download extension…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129423" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129421 joomla extension - joomlatools.com - server-side request forgery in url uploads in docman extension &lt; 6.2.2 - the url proxy and url upload features were available to users below manager level and fetched arbitrary addresses, allowing server-side requests to internal or private network resources. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795180721">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129421</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:41">2026-11-20 21:18:41</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Joomla Extension - joomlatools.com - Server-side request forgery in URL uploads in DOCman extension &lt; 6.2.2 - The URL proxy and URL upload features were available to users below manager level and fetched arbitrary addresses, allowing server-side requests to internal or private network resources.">Joomla Extension - joomlatools.com - Server-side request forgery in URL uploads in DOCman extension &lt; 6.2.2 - The URL…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129421" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129420 joomla extension - joomlatools.com - local file read through remote document links in docman extension &lt; 6.2.2 - remote document links accepted the file:// scheme, allowing users with permission to create or edit documents to download arbitrary local files from the server, such as the joomla configu… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795180721">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129420</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:41">2026-11-20 21:18:41</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Joomla Extension - joomlatools.com - Local file read through remote document links in DOCman extension &lt; 6.2.2 - Remote document links accepted the file:// scheme, allowing users with permission to create or edit documents to download arbitrary local files from the server, such as the Joomla configu…">Joomla Extension - joomlatools.com - Local file read through remote document links in DOCman extension &lt; 6.2.2 -…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129420" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129073 authentication bypass using an alternate path or channel vulnerability in miniorange miniorange otp verification miniorange-otp-verification allows authentication abuse.this issue affects miniorange otp verification: from n/a through 5.6.1. 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795180717">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129073</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:37">2026-11-20 21:18:37</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Authentication Bypass Using an Alternate Path or Channel vulnerability in miniOrange miniorange otp verification miniorange-otp-verification allows Authentication Abuse.This issue affects miniorange otp verification: from n/a through 5.6.1.">Authentication Bypass Using an Alternate Path or Channel vulnerability in miniOrange miniorange otp verification…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129073" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-128997 missing authorization vulnerability in romancode mapsvg mapsvg-lite-interactive-vector-maps allows exploiting incorrectly configured access control security levels.this issue affects mapsvg: from n/a through 9.0.5. 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795180716">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-128997</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:36">2026-11-20 21:18:36</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Missing Authorization vulnerability in RomanCode MapSVG mapsvg-lite-interactive-vector-maps allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects MapSVG: from n/a through 9.0.5.">Missing Authorization vulnerability in RomanCode MapSVG mapsvg-lite-interactive-vector-maps allows Exploiting…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-128997" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-109878 improper neutralization of input during web page generation (&#x27;cross-site scripting&#x27;) vulnerability in elementor elementor website builder elementor allows reflected xss.this issue affects elementor website builder: from n/a through 4.4.0. 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795180715">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-109878</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:35">2026-11-20 21:18:35</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Improper Neutralization of Input During Web Page Generation (&#x27;Cross-site Scripting&#x27;) vulnerability in Elementor Elementor Website Builder elementor allows Reflected XSS.This issue affects Elementor Website Builder: from n/a through 4.4.0.">Improper Neutralization of Input During Web Page Generation (&#x27;Cross-site Scripting&#x27;) vulnerability in Elementor…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-109878" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-101340 net::dns uses a 16-bit query id to match responses to the corresponding requests. in versions up to and including 1.57, the id is obtained from perl&#x27;s built-in rand() function. an attacker that can observe the sequence of query ids is able to expose the internal state of the pnrg and hence predict q… 美国国家漏洞数据库（nvd） critical 严重" data-level="critical" data-ts="1795180714">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-101340</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T21:18:34">2026-11-20 21:18:34</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Net::DNS uses a 16-bit query ID to match responses to the corresponding requests. In versions up to and including 1.57, the ID is obtained from Perl&#x27;s built-in rand() function. An attacker that can observe the sequence of query IDs is able to expose the internal state of the PNRG and hence predict q…">Net::DNS uses a 16-bit query ID to match responses to the corresponding requests. In versions up to and including…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-101340" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-133601 a vulnerability was found in hiparker opsli-boot up to 2.2.1. this affects the function getinputstream of the file opsli-plugins/opsli-plugins-waf/src/main/java/org/opsli/plugins/waf/servlet/wafhttpservletrequestwrapper.java of the component waf plugin. the manipulation results in denial of service.… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177104">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133601</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:24">2026-11-20 20:18:24</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A vulnerability was found in hiparker opsli-boot up to 2.2.1. This affects the function getInputStream of the file opsli-plugins/opsli-plugins-waf/src/main/java/org/opsli/plugins/waf/servlet/WafHttpServletRequestWrapper.java of the component WAF Plugin. The manipulation results in denial of service.…">A vulnerability was found in hiparker opsli-boot up to 2.2.1. This affects the function getInputStream of the file…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133601" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-133578 a vulnerability was detected in itsourcecode banking management system 1.0. this impacts an unknown function of the file manage_donation.php of the component donor management. the manipulation of the argument id results in sql injection. the attack may be performed from remote. the exploit is now pu… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177104">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133578</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:24">2026-11-20 20:18:24</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A vulnerability was detected in itsourcecode Banking Management System 1.0. This impacts an unknown function of the file manage_donation.php of the component Donor Management. The manipulation of the argument ID results in sql injection. The attack may be performed from remote. The exploit is now pu…">A vulnerability was detected in itsourcecode Banking Management System 1.0. This impacts an unknown function of the…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133578" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131804 the seraphinite accelerator plugin for wordpress is vulnerable to stored cross-site scripting via the &#x27;http_user_agent&#x27; parameter in all versions up to, and including, 2.31 due to insufficient input sanitization and output escaping. this makes it possible for unauthenticated attackers to inject arbi… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795177104">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131804</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:24">2026-11-20 20:18:24</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="The Seraphinite Accelerator plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the &#x27;HTTP_USER_AGENT&#x27; parameter in all versions up to, and including, 2.31 due to insufficient input sanitization and output escaping. This makes it possible for unauthenticated attackers to inject arbi…">The Seraphinite Accelerator plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131804" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131789 missing authorization vulnerability in mycred mycred mycred allows exploiting incorrectly configured access control security levels.this issue affects mycred: from n/a through 4.0.3. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177103">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131789</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:23">2026-11-20 20:18:23</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Missing Authorization vulnerability in myCred myCred mycred allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects myCred: from n/a through 4.0.3.">Missing Authorization vulnerability in myCred myCred mycred allows Exploiting Incorrectly Configured Access Control…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131789" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131787 improper neutralization of input during web page generation (&#x27;cross-site scripting&#x27;) vulnerability in liquid web / stellarwp gutenberg blocks by kadence blocks kadence-blocks allows stored xss.this issue affects gutenberg blocks by kadence blocks: from n/a through 3.9.1.1. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177103">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131787</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:23">2026-11-20 20:18:23</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Improper Neutralization of Input During Web Page Generation (&#x27;Cross-site Scripting&#x27;) vulnerability in Liquid Web / StellarWP Gutenberg Blocks by Kadence Blocks kadence-blocks allows Stored XSS.This issue affects Gutenberg Blocks by Kadence Blocks: from n/a through 3.9.1.1.">Improper Neutralization of Input During Web Page Generation (&#x27;Cross-site Scripting&#x27;) vulnerability in Liquid Web /…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131787" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131785 missing authorization vulnerability in publishpress publishpress permissions press-permit-core allows exploiting incorrectly configured access control security levels.this issue affects publishpress permissions: from n/a through 5.0.1. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177103">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131785</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:23">2026-11-20 20:18:23</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Missing Authorization vulnerability in PublishPress PublishPress Permissions press-permit-core allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects PublishPress Permissions: from n/a through 5.0.1.">Missing Authorization vulnerability in PublishPress PublishPress Permissions press-permit-core allows Exploiting…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131785" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131784 missing authorization vulnerability in wedevs dokan dokan-lite allows exploiting incorrectly configured access control security levels.this issue affects dokan: from n/a through 5.3.4. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177103">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131784</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:23">2026-11-20 20:18:23</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Missing Authorization vulnerability in weDevs Dokan dokan-lite allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Dokan: from n/a through 5.3.4.">Missing Authorization vulnerability in weDevs Dokan dokan-lite allows Exploiting Incorrectly Configured Access Control…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131784" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131783 missing authorization vulnerability in mycred mycred mycred allows exploiting incorrectly configured access control security levels.this issue affects mycred: from n/a through 4.0.3. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177103">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131783</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:23">2026-11-20 20:18:23</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Missing Authorization vulnerability in myCred myCred mycred allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects myCred: from n/a through 4.0.3.">Missing Authorization vulnerability in myCred myCred mycred allows Exploiting Incorrectly Configured Access Control…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131783" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131781 improper neutralization of input during web page generation (&#x27;cross-site scripting&#x27;) vulnerability in brainstorm force spectra ultimate-addons-for-gutenberg allows stored xss.this issue affects spectra: from n/a through 2.20.6. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177103">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131781</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:23">2026-11-20 20:18:23</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Improper Neutralization of Input During Web Page Generation (&#x27;Cross-site Scripting&#x27;) vulnerability in Brainstorm Force Spectra ultimate-addons-for-gutenberg allows Stored XSS.This issue affects Spectra: from n/a through 2.20.6.">Improper Neutralization of Input During Web Page Generation (&#x27;Cross-site Scripting&#x27;) vulnerability in Brainstorm Force…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131781" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131732 missing authorization vulnerability in magepeople inc. taxi booking manager for woocommerce ecab-taxi-booking-manager allows exploiting incorrectly configured access control security levels.this issue affects taxi booking manager for woocommerce: from n/a through 2.2.10. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177103">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131732</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:23">2026-11-20 20:18:23</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Missing Authorization vulnerability in Magepeople inc. Taxi Booking Manager for WooCommerce ecab-taxi-booking-manager allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Taxi Booking Manager for WooCommerce: from n/a through 2.2.10.">Missing Authorization vulnerability in Magepeople inc. Taxi Booking Manager for WooCommerce ecab-taxi-booking-manager…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131732" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131170 our payment integration with stripe did not properly validate payment status responses. an attacker could use a successful payment status response from one payment and supply it to the system for a different payment, gaining access to multiple valid tickets with only one payment. however, the attack… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177102">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131170</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:22">2026-11-20 20:18:22</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Our payment integration with Stripe did not properly validate payment status responses. An attacker could use a successful payment status response from one payment and supply it to the system for a different payment, gaining access to multiple valid tickets with only one payment. However, the attack…">Our payment integration with Stripe did not properly validate payment status responses. An attacker could use a…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131170" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131169 when a scheduled export is copied, the permissions of the original export&#x27;s owner are used when running the export. this allows users to create exports with data they usually shouldn&#x27;t be able to see, but only within events they already have permissions to. 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795177102">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131169</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:22">2026-11-20 20:18:22</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="When a scheduled export is copied, the permissions of the original export&#x27;s owner are used when running the export. This allows users to create exports with data they usually shouldn&#x27;t be able to see, but only within events they already have permissions to.">When a scheduled export is copied, the permissions of the original export&#x27;s owner are used when running the export…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131169" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131168 a legacy code path allowed users to craft requests to a ticket shop that bypass some validation steps for the selected products. in consequence, this could lead to an attacker purchasing products that are in fact sold out. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177102">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131168</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:22">2026-11-20 20:18:22</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A legacy code path allowed users to craft requests to a ticket shop that bypass some validation steps for the selected products. In consequence, this could lead to an attacker purchasing products that are in fact sold out.">A legacy code path allowed users to craft requests to a ticket shop that bypass some validation steps for the selected…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131168" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131167 pretix offloads certain processes to background tasks that are run by a different server to avoid http workers being clogged with processes that take longer than a usual web request. the browser periodically polls the server to see if the task is already finished using a uuid-shaped task id. once th… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795177102">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131167</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:22">2026-11-20 20:18:22</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="pretix offloads certain processes to background tasks that are run by a different server to avoid HTTP workers being clogged with processes that take longer than a usual web request. The browser periodically polls the server to see if the task is already finished using a UUID-shaped task ID. Once th…">pretix offloads certain processes to background tasks that are run by a different server to avoid HTTP workers being…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131167" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131166 when configuring a device to use the security profile &quot;pretixscan (kiosk mode, no order sync, no search)&quot;, the api search endpoint introduced in pretix 4.12 was not blocked correctly. this theoretically allows these devices to perform searches for orders even if that was not intended. if the device… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177102">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131166</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:22">2026-11-20 20:18:22</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="When configuring a device to use the security profile &quot;pretixSCAN (kiosk mode, no order sync, no search)&quot;, the API search endpoint introduced in pretix 4.12 was not blocked correctly. This theoretically allows these devices to perform searches for orders even if that was not intended. If the device…">When configuring a device to use the security profile &quot;pretixSCAN (kiosk mode, no order sync, no search)&quot;, the API…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131166" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131165 the fix for cve-2026-127174 published in 2026.9.2 is incomplete: when expanding an export from &quot;some events&quot; to &quot;all events&quot;, it is checked that the acting user is part of a team with permission to all events, but this check is not correctly bound to the organizer and could also be passed through pe… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795177102">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131165</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:22">2026-11-20 20:18:22</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="The fix for CVE-2026-127174 published in 2026.9.2 is incomplete: When expanding an export from &quot;some events&quot; to &quot;all events&quot;, it is checked that the acting user is part of a team with permission to all events, but this check is not correctly bound to the organizer and could also be passed through pe…">The fix for CVE-2026-127174 published in 2026.9.2 is incomplete: When expanding an export from &quot;some events&quot; to &quot;all…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131165" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131164 when a ticket holder opens the ticket page of a ticket that is an add-on (possible since 2026.9) the html content of the page contains the secret link to the parent product, creating a potential data leak. under different specific conditions, when a ticket contains user-uploaded files in response to… 美国国家漏洞数据库（nvd） low 低危" data-level="low" data-ts="1795177102">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131164</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:22">2026-11-20 20:18:22</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="When a ticket holder opens the ticket page of a ticket that is an add-on (possible since 2026.9) the HTML content of the page contains the secret link to the parent product, creating a potential data leak. Under different specific conditions, when a ticket contains user-uploaded files in response to…">When a ticket holder opens the ticket page of a ticket that is an add-on (possible since 2026.9) the HTML content of…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131164" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-131163 a stored xss in pretix-adyen has been discovered where an attacker could configure his own ticket shop in a way that api calls are not made to adyen, but an attacker-controlled server. results of these api calls would then be embedded in a part of the shop without proper escaping, leading to full xs… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795177101">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131163</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:21">2026-11-20 20:18:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="A stored XSS in pretix-adyen has been discovered where an attacker could configure his own ticket shop in a way that API calls are not made to Adyen, but an attacker-controlled server. Results of these API calls would then be embedded in a part of the shop without proper escaping, leading to full XS…">A stored XSS in pretix-adyen has been discovered where an attacker could configure his own ticket shop in a way that…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-131163" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-129082 missing authorization vulnerability in omnisend newsletters, email marketing, sms and popups by omnisend omnisend allows exploiting incorrectly configured access control security levels.this issue affects newsletters, email marketing, sms and popups by omnisend: from n/a through 1.9.1. 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177101">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129082</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:21">2026-11-20 20:18:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Missing Authorization vulnerability in Omnisend Newsletters, Email Marketing, SMS and Popups by Omnisend omnisend allows Exploiting Incorrectly Configured Access Control Security Levels.This issue affects Newsletters, Email Marketing, SMS and Popups by Omnisend: from n/a through 1.9.1.">Missing Authorization vulnerability in Omnisend Newsletters, Email Marketing, SMS and Popups by Omnisend omnisend…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129082" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-127201 the simple membership wp user import plugin for wordpress is vulnerable to cross-site request forgery in all versions up to, and including, 1.9.2 this is due to missing or incorrect nonce validation on the add function. this makes it possible for unauthenticated attackers to import arbitrary wordpre… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795177101">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127201</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:21">2026-11-20 20:18:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="The Simple Membership WP user Import plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions up to, and including, 1.9.2 This is due to missing or incorrect nonce validation on the add function. This makes it possible for unauthenticated attackers to import arbitrary WordPre…">The Simple Membership WP user Import plugin for WordPress is vulnerable to Cross-Site Request Forgery in all versions…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-127201" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-125094 the optimole – optimize images | convert webp &amp; avif | cdn &amp; lazy load | image optimization plugin for wordpress is vulnerable to stored cross-site scripting via the &#x27;comment&#x27; parameter in all versions up to, and including, 4.2.19 due to insufficient input sanitization and output escaping. this make… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795177101">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125094</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T20:18:21">2026-11-20 20:18:21</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="The Optimole – Optimize Images | Convert WebP &amp; AVIF | CDN &amp; Lazy Load | Image Optimization plugin for WordPress is vulnerable to Stored Cross-Site Scripting via the &#x27;comment&#x27; parameter in all versions up to, and including, 4.2.19 due to insufficient input sanitization and output escaping. This make…">The Optimole – Optimize Images | Convert WebP &amp; AVIF | CDN &amp; Lazy Load | Image Optimization plugin for WordPress is…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-125094" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-96295 authenticated users can bypass normal controls on the reading and writing of workflow execution results. this allows any authenticated user to read or modify any other user&#x27;s workflow execution results. this issue affects apache texera (incubating): from 1.1.0-incubating before 1.3.0-incubating. use… 美国国家漏洞数据库（nvd）" data-level="none" data-ts="1795173516">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-96295</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T19:18:36">2026-11-20 19:18:36</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="Authenticated users can bypass normal controls on the reading and writing of workflow execution results. This allows any authenticated user to read or modify any other user&#x27;s workflow execution results. This issue affects Apache Texera (incubating): from 1.1.0-incubating before 1.3.0-incubating. Use…">Authenticated users can bypass normal controls on the reading and writing of workflow execution results. This allows…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-96295" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-133667 flowintel contains multiple related flaws that allow an authenticated attacker to inject arbitrary html or script into pages viewed by other users. - timeline rendering: the timeline library&#x27;s autolinking feature rewrote already-sanitised case notes and imported misp attribute values into generated… 美国国家漏洞数据库（nvd） medium 中危" data-level="medium" data-ts="1795173515">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133667</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T19:18:35">2026-11-20 19:18:35</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="flowintel contains multiple related flaws that allow an authenticated attacker to inject arbitrary HTML or script into pages viewed by other users. - Timeline rendering: the timeline library&#x27;s autolinking feature rewrote already-sanitised case notes and imported MISP attribute values into generated…">flowintel contains multiple related flaws that allow an authenticated attacker to inject arbitrary HTML or script into…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133667" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-133665 flowintel contains an information disclosure vulnerability that allows authenticated non-administrative users to access sensitive configuration data and logs intended for administrators only. the notification page and alert api responses exposed sensitive fields, including webhook urls, signing secr… 美国国家漏洞数据库（nvd） high 高危" data-level="high" data-ts="1795173514">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133665</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T19:18:34">2026-11-20 19:18:34</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="flowintel contains an information disclosure vulnerability that allows authenticated non-administrative users to access sensitive configuration data and logs intended for administrators only. The notification page and alert API responses exposed sensitive fields, including webhook URLs, signing secr…">flowintel contains an information disclosure vulnerability that allows authenticated non-administrative users to…</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-133665" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
                     </tbody>
@@ -2978,7 +2978,7 @@
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">CISA 在野利用漏洞</span>
-                    <span class="source-meta">最近更新 2026-11-18 · <span class="card-count" data-total="60">60 条</span></span>
+                    <span class="source-meta">最近更新 2026-11-20 · <span class="card-count" data-total="60">60 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://www.cisa.gov/known-exploited-vulnerabilities-catalog" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
@@ -2997,6 +2997,38 @@
                         </tr>
                     </thead>
                     <tbody>
+                    <tr data-search="cve-2026-129448 apache roller deserialization of untrusted data vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129448</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Apache Roller Deserialization of Untrusted Data Vulnerability">Apache Roller Deserialization of Untrusted Data Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-129448" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123890 broadcom：vmware vcenter authentication bypass using an alternate path or channel vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123890</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Broadcom：VMWare vCenter Authentication Bypass Using an Alternate Path or Channel Vulnerability">Broadcom：VMWare vCenter Authentication Bypass Using an Alternate Path or Channel Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-123890" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2025-42884 sap netweaver improper neutralization of special elements in data query logic vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2025-42884</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="SAP NetWeaver Improper Neutralization of Special Elements in Data Query Logic Vulnerability">SAP NetWeaver Improper Neutralization of Special Elements in Data Query Logic Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2025-42884" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-76466 cisco expressway series use of hard-coded credentials vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-76466</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Cisco Expressway Series Use of Hard-coded Credentials Vulnerability">Cisco Expressway Series Use of Hard-coded Credentials Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-76466" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
                     <tr data-search="cve-2024-10441 synology diskstation manager (dsm) improper encoding or escaping of output vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1794931200">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2024-10441</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
@@ -3443,38 +3475,6 @@
                         <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
                         <td class="col-title" data-label="标题" title="Fortinet FortiMail Path Traversal Vulnerability">Fortinet FortiMail Path Traversal Vulnerability</td>
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-104286" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-76504 cisco catalyst sd-wan manager hex encoding vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1790697600">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-76504</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-30T00:00:00">2026-09-30</time></td>
-                        <td class="col-title" data-label="标题" title="Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability">Cisco Catalyst SD-WAN Manager Hex Encoding Vulnerability</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-76504" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-86950 apple multiple products out-of-bounds write vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1790611200">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-86950</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-29T00:00:00">2026-09-29</time></td>
-                        <td class="col-title" data-label="标题" title="Apple Multiple Products Out-of-Bounds Write Vulnerability">Apple Multiple Products Out-of-Bounds Write Vulnerability</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-86950" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-88772 citrix netscaler improper restriction of operations within the bounds of a memory buffer vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1790438400">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-88772</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-27T00:00:00">2026-09-27</time></td>
-                        <td class="col-title" data-label="标题" title="Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability">Citrix NetScaler Improper Restriction of Operations within the Bounds of a Memory Buffer Vulnerability</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-88772" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-88771 citrix netscaler improper input validation vulnerability cisa 在野利用漏洞 kev 在野利用" data-level="kev" data-ts="1790438400">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-88771</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-kev">在野利用</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-27T00:00:00">2026-09-27</time></td>
-                        <td class="col-title" data-label="标题" title="Citrix NetScaler Improper Input Validation Vulnerability">Citrix NetScaler Improper Input Validation Vulnerability</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://nvd.nist.gov/vuln/detail/CVE-2026-88771" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
                     </tbody>
@@ -8358,7 +8358,7 @@
         </div>
     </div>
     <div class="wrap copyright">
-        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-21 01:14:52</p>
+        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-21 02:07:56</p>
     </div>
 </footer>
 
