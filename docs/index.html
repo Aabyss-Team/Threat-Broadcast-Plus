@@ -25,9 +25,9 @@
             <h1>威胁情报播报</h1>
             <p class="lede">自动聚合公开漏洞情报源，每 4 小时更新一次，聚焦最新披露与已被在野利用的高危漏洞，并提供 Kimi K3 模型的分析，能够马上锁定近 5 天的重大漏洞。</p>
             <div class="hero-meta">
-                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-21T00:34:24+08:00">2026-11-21 00:34:24</time></span>
-                <span class="meta-item">16 个情报源</span>
-                <span class="meta-item">836 条记录</span>
+                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-21T01:14:52+08:00">2026-11-21 01:14:52</time></span>
+                <span class="meta-item">18 个情报源</span>
+                <span class="meta-item">956 条记录</span>
             </div>
         </div>
         <div class="hero-actions">
@@ -40,15 +40,15 @@
 <main id="main">
     <section class="wrap stats" aria-label="数据概览">
         <div class="stat">
-            <span class="stat-value">836</span>
+            <span class="stat-value">956</span>
             <span class="stat-label">当前展示情报</span>
         </div>
         <div class="stat stat-accent">
-            <span class="stat-value">263</span>
+            <span class="stat-value">383</span>
             <span class="stat-label">近两天新增</span>
         </div>
         <div class="stat">
-            <span class="stat-value">16</span>
+            <span class="stat-value">18</span>
             <span class="stat-label">活跃情报源</span>
         </div>
         <div class="stat">
@@ -62,8 +62,8 @@
                 <span class="ai-badge">AI 研判</span>
                 <h2 id="ai-summary-title">近期高风险漏洞研判</h2>
             </div>
-            <p class="ai-summary-text">本期清单中风险最高、最需立即处置的是五条已进入 CISA 在野利用目录的漏洞。CVE-2026-90817（REDCap 代码注入）直接影响全球大量医疗机构的临床研究电子数据采集系统，代码注入可致敏感医疗数据泄露与篡改，且在高校和医院中暴露面广、利用门槛低，须第一时间升级并排查日志。CVE-2026-40217（BerriAI LiteLLM 未受保护的备用通道）针对 AI 大模型网关，攻击者可能绕过认证直接调用后端模型接口、窃取 API 密钥，鉴于 LLM 网关在近期企业部署中激增，横向扩散风险极大。CVE-2026-115731（Puppet Enterprise 反序列化）一旦被利用即可获得配置管理平台的控制权，进而向全网受管节点下发恶意指令，属于典型&quot;一点突破、全内网沦陷&quot;场景。CVE-2026-90436（Apache Axis 不安全反射）和 CVE-2024-10441（Synology DSM 输出编码不当）虽为较老组件，但 Axis 仍广泛存在于遗留 Java 业务系统中，Synology NAS 在中小企业和边缘环境保有量巨大，均应纳入紧急补丁或下线隔离范围。除此之外，CVE-2026-35273（Oracle PeopleSoft 授权不当 RCE，ZDI 披露）和 CVE-2026-127027（Poste.io DMARC 报告处理 RCE）也值得关注：PeopleSoft 是大型企业核心 ERP，RCE 后果严重；Poste.io 常用于自建邮件服务，处理外部 DMARC 报告时触发，属预认证攻击面。国内产品方面，本清单未见明确指向国产软件的高危条目，但 PHP 相关的三条（CVE-2026-129289 PHP-FPM 请求走私、CVE-2026-129474 PHP 8.5 UAF、CVE-2026-126714 Session 文件覆盖反序列化）由阿里云库收录，对国内大量使用 PHP 的建站与业务系统影响广泛，建议运维侧优先升级 PHP-FPM 与 PHP 版本并限制 FastCGI 端口暴露。处置建议：对五条 CISA 在野利用漏洞按 24-48 小时内完成补丁或缓解，无法修复的即刻断网隔离；对 PeopleSoft、Wing FTP（CVE-2026-133310 文件掩码绕过上传）等面向互联网的服务收敛暴露面；同时加强 IDS/WAF 对上述漏洞特征流量的检测。关于 PoC/EXP 检索：受当前环境限制，未能实时访问 github.com、exploit-db.com、sploitus.com 进行核实，故不列出具体链接；针对上述在野利用漏洞，建议分析师自行在 GitHub 以 CVE 编号检索，并在 sploitus.com 汇总查询，通常在 CISA KEV 收录后数日内即有公开验证代码流出。</p>
-            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-21 00:34:24</p>
+            <p class="ai-summary-text">本时间窗口内最值得立即处置的是已被 CISA 列入在野利用目录的五条漏洞：CVE-2026-90436（Apache Axis 不安全反射）、CVE-2026-90817（REDCap 代码注入）、CVE-2026-40217（LiteLLM 未受保护的备用通道）和 CVE-2024-10441（Synology DSM 输出转义不当）。其中 LiteLLM 作为 AI 网关组件部署面快速扩大，攻击者可借此绕过鉴权直接访问后端大模型与管理接口，数据泄露与算力盗用风险极高；REDCap 在医疗科研机构广泛使用，代码注入可直接危及敏感研究数据；Synology DSM 面向大量中小企业与个人 NAS 用户，暴露面广、利用门槛低；Apache Axis 虽属老旧组件，但在政企遗留系统中仍有大量存量，且反射类缺陷易被武器化。上述四条应作为最高优先级，按 CISA 要求限期打补丁或临时下线隔离。此外 CVE-2026-115731（Puppet Enterprise 反序列化）同属在野利用，影响企业自动化运维中枢，一旦被控可导致大规模横向移动，需立即升级并审计节点通信。新增严重漏洞中，建议同步关注 CVE-2026-127027（Poste.io DMARC 报告处理 RCE，邮件服务器直接暴露互联网）和 CVE-2026-77312（Flyto2 Core 沙箱绕过任意文件写入与代码执行），二者均可实现未授权远程代码执行；NGINX 系列漏洞（CVE-2026-113425、CVE-2026-123633、CVE-2026-123007、CVE-2026-123634）虽细节有限，但 NGINX 作为互联网基础设施影响面极广，应密切关注厂商补丁动态。本清单未明确出现国内厂商产品的高危漏洞，但国内企业广泛使用的 Apache Axis、NGINX、WordPress 插件等开源组件涉及多条，同样需排查。关于公开利用代码情况：经核查，受检索条件所限，目前未能在 github.com、www.exploit-db.com、sploitus.com 等平台检索到上述 CVE 的可靠公开 PoC/EXP 链接，后续建议持续监控这些平台及 CISA KEV 更新，一旦出现公开利用代码，LiteLLM、REDCap 与 Poste.io 相关漏洞的利用门槛将进一步降低，风险等级需相应上调。</p>
+            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-21 01:14:52</p>
         </section>
 
 
@@ -121,9 +121,11 @@
 <a class="chip" href="#src-11"><span>Fortinet</span><b>52</b></a>
 <a class="chip" href="#src-12"><span>Cisco</span><b>60</b></a>
 <a class="chip" href="#src-13"><span>ZDI</span><b>60</b></a>
-<a class="chip" href="#src-14"><span>AISLE</span><b>60</b></a>
-<a class="chip" href="#src-15"><span>Mozilla</span><b>25</b></a>
-<a class="chip" href="#src-16"><span>Vulnerability-Wiki-PoC</span><b>60</b></a>
+<a class="chip" href="#src-14"><span>Red Hat</span><b>60</b></a>
+<a class="chip" href="#src-15"><span>Microsoft MSRC</span><b>60</b></a>
+<a class="chip" href="#src-16"><span>AISLE</span><b>60</b></a>
+<a class="chip" href="#src-17"><span>Mozilla</span><b>25</b></a>
+<a class="chip" href="#src-18"><span>Vulnerability-Wiki-PoC</span><b>60</b></a>
     </nav>
 
     <div class="wrap">
@@ -6059,9 +6061,1031 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-14" data-source="AISLE">
+    <section class="source-card is-collapsed" id="src-14" data-source="Red Hat">
         <header class="source-head">
             <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-14-body">
+                <span class="toggle-icon" aria-hidden="true"></span>
+                <span class="source-heading">
+                    <span class="source-name" role="heading" aria-level="2">Red Hat</span>
+                    <span class="source-meta">最近更新 2026-11-20 16:40:26 · <span class="card-count" data-total="60">60 条</span></span>
+                </span>
+            </button>
+            <a class="source-more" href="https://access.redhat.com/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
+        </header>
+        <div class="source-body" id="src-14-body">
+            <div class="table-wrap">
+                <table>
+                    <caption class="sr-only">Red Hat 最新威胁情报</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-id">编号</th>
+                            <th scope="col" class="col-level">等级</th>
+                            <th scope="col" class="col-time">披露时间</th>
+                            <th scope="col" class="col-title">漏洞标题</th>
+                            <th scope="col" class="col-link">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-search="cve-2026-133622 certmonger: missing size limits and timeouts in scep ca reply handling lead to denial of service red hat low 低危" data-level="low" data-ts="1795164026">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133622</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T16:40:26">2026-11-20 16:40:26</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="certmonger: Missing size limits and timeouts in SCEP CA reply handling lead to denial of service">certmonger: Missing size limits and timeouts in SCEP CA reply handling lead to denial of service</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-133622" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133424 pydantic: pydantic: validation bypass via aliased fields red hat medium 中危" data-level="medium" data-ts="1795159998">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133424</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T15:33:18">2026-11-20 15:33:18</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="pydantic: pydantic: Validation bypass via aliased fields">pydantic: pydantic: Validation bypass via aliased fields</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-133424" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99793 kernel: kernel: security bypass in bluetooth l2cap via premature connection response red hat medium 中危" data-level="medium" data-ts="1795153913">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99793</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:53">2026-11-20 13:51:53</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Security bypass in Bluetooth L2CAP via premature connection response">kernel: kernel: Security bypass in Bluetooth L2CAP via premature connection response</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99793" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99790 kernel: kernel: denial of service via repeated rpcbind timeouts during listener setup red hat medium 中危" data-level="medium" data-ts="1795153910">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99790</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:50">2026-11-20 13:51:50</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via repeated rpcbind timeouts during listener setup">kernel: kernel: Denial of Service via repeated rpcbind timeouts during listener setup</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99790" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99789 kernel: kernel: denial of service via out-of-bounds read in block i/o handling red hat medium 中危" data-level="medium" data-ts="1795153910">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99789</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:50">2026-11-20 13:51:50</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via out-of-bounds read in block I/O handling">kernel: kernel: Denial of Service via out-of-bounds read in block I/O handling</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99789" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99788 kernel: kernel: denial of service via unvalidated acpi cppc register fields red hat medium 中危" data-level="medium" data-ts="1795153909">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99788</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:49">2026-11-20 13:51:49</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via unvalidated ACPI CPPC register fields">kernel: kernel: Denial of Service via unvalidated ACPI CPPC register fields</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99788" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99786 kernel: kernel: ipsec policy bypass via race condition during xfrm policy lookup red hat medium 中危" data-level="medium" data-ts="1795153907">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99786</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:47">2026-11-20 13:51:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: IPsec policy bypass via race condition during xfrm policy lookup">kernel: kernel: IPsec policy bypass via race condition during xfrm policy lookup</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99786" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99784 kernel: kernel: denial of service via reference count leak in xen 9p transport red hat medium 中危" data-level="medium" data-ts="1795153906">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99784</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:46">2026-11-20 13:51:46</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via reference count leak in Xen 9P transport">kernel: kernel: Denial of Service via reference count leak in Xen 9P transport</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99784" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99780 kernel: kernel: denial of service via stale completion state in 9p usb gadget transport red hat medium 中危" data-level="medium" data-ts="1795153903">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99780</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:43">2026-11-20 13:51:43</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via stale completion state in 9P USB gadget transport">kernel: kernel: Denial of Service via stale completion state in 9P USB gadget transport</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99780" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99777 kernel: kernel: denial of service via improper context initialization in 9p usb gadget transport red hat medium 中危" data-level="medium" data-ts="1795153900">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99777</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:40">2026-11-20 13:51:40</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via improper context initialization in 9P USB gadget transport">kernel: kernel: Denial of Service via improper context initialization in 9P USB gadget transport</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99777" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99776 kernel: kernel: denial of service via use-after-free in 9p usb gadget transport red hat medium 中危" data-level="medium" data-ts="1795153900">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99776</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:40">2026-11-20 13:51:40</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free in 9P USB gadget transport">kernel: kernel: Denial of Service via use-after-free in 9P USB gadget transport</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99776" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99773 kernel: kernel: denial of service via use-after-free during drm device unbind red hat medium 中危" data-level="medium" data-ts="1795153897">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99773</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:37">2026-11-20 13:51:37</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free during DRM device unbind">kernel: kernel: Denial of Service via use-after-free during DRM device unbind</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99773" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99770 kernel: kernel: vc4: denial of service via lock inversion deadlock red hat medium 中危" data-level="medium" data-ts="1795153895">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99770</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:35">2026-11-20 13:51:35</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: vc4: Denial of Service via lock inversion deadlock">kernel: kernel: vc4: Denial of Service via lock inversion deadlock</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99770" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99769 kernel: kernel: denial of service via sleep in atomic context in vc4 driver red hat medium 中危" data-level="medium" data-ts="1795153895">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99769</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:35">2026-11-20 13:51:35</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via sleep in atomic context in VC4 driver">kernel: kernel: Denial of Service via sleep in atomic context in VC4 driver</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99769" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99767 kernel: kernel: denial of service via out-of-bounds read in xfrm4 local error handling red hat medium 中危" data-level="medium" data-ts="1795153893">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99767</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:33">2026-11-20 13:51:33</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via out-of-bounds read in xfrm4 local error handling">kernel: kernel: Denial of Service via out-of-bounds read in xfrm4 local error handling</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99767" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99765 kernel: kernel: denial of service via use-after-free in scsi target subsystem red hat medium 中危" data-level="medium" data-ts="1795153891">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99765</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:31">2026-11-20 13:51:31</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free in SCSI target subsystem">kernel: kernel: Denial of Service via use-after-free in SCSI target subsystem</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99765" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99760 kernel: kernel: batman-adv: denial of service via invalid roaming flags in translation tables red hat medium 中危" data-level="medium" data-ts="1795153888">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99760</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:28">2026-11-20 13:51:28</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: batman-adv: Denial of Service via invalid roaming flags in translation tables">kernel: kernel: batman-adv: Denial of Service via invalid roaming flags in translation tables</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99760" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99758 kernel: kernel: sctp: denial of service via missing chunk padding check in sctp_init_cause() red hat high 高危" data-level="high" data-ts="1795153886">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99758</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:26">2026-11-20 13:51:26</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: sctp: Denial of Service via missing chunk padding check in sctp_init_cause()">kernel: kernel: sctp: Denial of Service via missing chunk padding check in sctp_init_cause()</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99758" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99754 kernel: kernel: denial of service via unterminated iscsi session identifier red hat high 高危" data-level="high" data-ts="1795153883">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99754</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:23">2026-11-20 13:51:23</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via unterminated iSCSI session identifier">kernel: kernel: Denial of Service via unterminated iSCSI session identifier</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99754" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99753 kernel: kernel: denial of service via double free in loongson display controller driver red hat medium 中危" data-level="medium" data-ts="1795153882">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99753</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:22">2026-11-20 13:51:22</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via double free in Loongson display controller driver">kernel: kernel: Denial of Service via double free in Loongson display controller driver</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99753" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99752 kernel: kernel: denial of service via null pointer dereference in loongson display driver red hat medium 中危" data-level="medium" data-ts="1795153882">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99752</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:22">2026-11-20 13:51:22</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via null pointer dereference in Loongson display driver">kernel: kernel: Denial of Service via null pointer dereference in Loongson display driver</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99752" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99751 kernel: kernel: denial of service via crafted bpf packet redirection red hat medium 中危" data-level="medium" data-ts="1795153881">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99751</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:21">2026-11-20 13:51:21</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via crafted BPF packet redirection">kernel: kernel: Denial of Service via crafted BPF packet redirection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99751" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99745 kernel: kernel: information disclosure via improper branch history injection mitigation selection red hat medium 中危" data-level="medium" data-ts="1795153876">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99745</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:16">2026-11-20 13:51:16</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Information disclosure via improper Branch History Injection mitigation selection">kernel: kernel: Information disclosure via improper Branch History Injection mitigation selection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99745" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99742 kernel: kernel: denial of service via memory control group bypass in mempolicy red hat medium 中危" data-level="medium" data-ts="1795153874">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99742</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:14">2026-11-20 13:51:14</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via memory control group bypass in mempolicy">kernel: kernel: Denial of Service via memory control group bypass in mempolicy</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99742" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99741 kernel: kernel: quota limit bypass via discarded tmpfs soft limits red hat low 低危" data-level="low" data-ts="1795153873">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99741</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:13">2026-11-20 13:51:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Quota limit bypass via discarded tmpfs soft limits">kernel: kernel: Quota limit bypass via discarded tmpfs soft limits</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99741" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99737 kernel: kernel: denial of service via endless loop in shared memory truncation red hat medium 中危" data-level="medium" data-ts="1795153870">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99737</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:10">2026-11-20 13:51:10</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via endless loop in shared memory truncation">kernel: kernel: Denial of Service via endless loop in shared memory truncation</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99737" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99735 kernel: kernel: denial of service via race condition in mglru page table walks red hat medium 中危" data-level="medium" data-ts="1795153869">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99735</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:09">2026-11-20 13:51:09</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via race condition in MGLRU page table walks">kernel: kernel: Denial of Service via race condition in MGLRU page table walks</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99735" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99733 kernel: kernel: data corruption via race condition in page cache invalidation red hat medium 中危" data-level="medium" data-ts="1795153867">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99733</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:07">2026-11-20 13:51:07</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: data corruption via race condition in page cache invalidation">kernel: kernel: data corruption via race condition in page cache invalidation</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99733" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99730 kernel: kernel: denial of service via use-after-free during file fault cleanup red hat medium 中危" data-level="medium" data-ts="1795153865">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99730</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:05">2026-11-20 13:51:05</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free during file fault cleanup">kernel: kernel: Denial of Service via use-after-free during file fault cleanup</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99730" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99728 kernel: kernel: denial of service via race condition in huge memory deferred split red hat medium 中危" data-level="medium" data-ts="1795153863">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99728</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:51:03">2026-11-20 13:51:03</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via race condition in huge memory deferred split">kernel: kernel: Denial of Service via race condition in huge memory deferred split</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99728" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99723 kernel: kernel: denial of service via memory leak in vhost-vdpa red hat low 低危" data-level="low" data-ts="1795153859">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99723</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:59">2026-11-20 13:50:59</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via memory leak in vhost-vdpa">kernel: kernel: Denial of Service via memory leak in vhost-vdpa</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99723" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99722 kernel: kernel: vringh: denial of service via cyclic indirect descriptor loop red hat medium 中危" data-level="medium" data-ts="1795153859">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99722</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:59">2026-11-20 13:50:59</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: vringh: Denial of Service via cyclic indirect descriptor loop">kernel: kernel: vringh: Denial of Service via cyclic indirect descriptor loop</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99722" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99719 kernel: kernel: memory corruption in lm87 driver via vrm sysfs attribute red hat medium 中危" data-level="medium" data-ts="1795153856">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99719</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:56">2026-11-20 13:50:56</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: memory corruption in lm87 driver via vrm sysfs attribute">kernel: kernel: memory corruption in lm87 driver via vrm sysfs attribute</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99719" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99718 kernel: kernel: denial of service via use-after-free in peci dimmtemp driver red hat medium 中危" data-level="medium" data-ts="1795153856">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99718</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:56">2026-11-20 13:50:56</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free in PECI dimmtemp driver">kernel: kernel: Denial of Service via use-after-free in PECI dimmtemp driver</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99718" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99715 kernel: kernel: nvme-rdma: denial of service via null pointer dereference during reconnect red hat medium 中危" data-level="medium" data-ts="1795153853">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99715</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:53">2026-11-20 13:50:53</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: nvme-rdma: Denial of Service via NULL pointer dereference during reconnect">kernel: kernel: nvme-rdma: Denial of Service via NULL pointer dereference during reconnect</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99715" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99714 kernel: kernel: denial of service via use-after-free in nvme subsystem red hat medium 中危" data-level="medium" data-ts="1795153853">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99714</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:53">2026-11-20 13:50:53</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free in NVMe subsystem">kernel: kernel: Denial of Service via use-after-free in NVMe subsystem</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99714" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99713 kernel: kernel: kvm: denial of service via guest page table walk retry loop red hat medium 中危" data-level="medium" data-ts="1795153852">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99713</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:52">2026-11-20 13:50:52</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: kvm: Denial of Service via guest page table walk retry loop">kernel: kernel: kvm: Denial of Service via guest page table walk retry loop</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99713" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99710 kernel: kernel: denial of service via unbounded parent page table entries in kvm red hat medium 中危" data-level="medium" data-ts="1795153850">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99710</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:50">2026-11-20 13:50:50</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via unbounded parent page table entries in KVM">kernel: kernel: Denial of Service via unbounded parent page table entries in KVM</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99710" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99707 kernel: kernel: privilege escalation via missing tlb flush in khugepaged red hat high 高危" data-level="high" data-ts="1795153847">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99707</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:47">2026-11-20 13:50:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: privilege escalation via missing TLB flush in khugepaged">kernel: kernel: privilege escalation via missing TLB flush in khugepaged</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99707" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99706 kernel: kernel: denial of service via address wraparound in large folio mapping red hat medium 中危" data-level="medium" data-ts="1795153847">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99706</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:47">2026-11-20 13:50:47</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of service via address wraparound in large folio mapping">kernel: kernel: Denial of service via address wraparound in large folio mapping</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99706" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99703 kernel: kernel: denial of service via mremap deadlock in hugetlb red hat medium 中危" data-level="medium" data-ts="1795153844">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99703</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:44">2026-11-20 13:50:44</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via mremap deadlock in hugetlb">kernel: kernel: Denial of Service via mremap deadlock in hugetlb</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99703" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99701 kernel: kernel: memory protection bypass via ksm page merging and unmerging red hat medium 中危" data-level="medium" data-ts="1795153843">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99701</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:43">2026-11-20 13:50:43</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: memory protection bypass via KSM page merging and unmerging">kernel: kernel: memory protection bypass via KSM page merging and unmerging</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99701" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99700 kernel: kernel: denial of service via race condition in hugetlb vmemmap optimization red hat medium 中危" data-level="medium" data-ts="1795153842">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99700</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:42">2026-11-20 13:50:42</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via race condition in HugeTLB vmemmap optimization">kernel: kernel: Denial of Service via race condition in HugeTLB vmemmap optimization</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99700" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99699 kernel: kernel: denial of service via unaccepted memory in multi-range cma areas red hat medium 中危" data-level="medium" data-ts="1795153841">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99699</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:41">2026-11-20 13:50:41</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via unaccepted memory in multi-range CMA areas">kernel: kernel: Denial of Service via unaccepted memory in multi-range CMA areas</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99699" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99697 kernel: kernel: denial of service via use-after-free during memory cgroup teardown red hat medium 中危" data-level="medium" data-ts="1795153840">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99697</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:40">2026-11-20 13:50:40</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free during memory cgroup teardown">kernel: kernel: Denial of Service via use-after-free during memory cgroup teardown</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99697" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99694 kernel: kernel: file system metadata corruption via out-of-bounds read in ocfs2 red hat medium 中危" data-level="medium" data-ts="1795153838">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99694</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:38">2026-11-20 13:50:38</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: File system metadata corruption via out-of-bounds read in OCFS2">kernel: kernel: File system metadata corruption via out-of-bounds read in OCFS2</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99694" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99689 kernel: kernel: denial of service via memory leak in xfs btree operations red hat low 低危" data-level="low" data-ts="1795153834">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99689</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:34">2026-11-20 13:50:34</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via memory leak in XFS btree operations">kernel: kernel: Denial of Service via memory leak in XFS btree operations</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99689" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99688 kernel: kernel: denial of service via use-after-free in sch_qfq red hat medium 中危" data-level="medium" data-ts="1795153833">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99688</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:33">2026-11-20 13:50:33</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free in sch_qfq">kernel: kernel: Denial of Service via use-after-free in sch_qfq</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99688" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99684 kernel: kernel: denial of service via use-after-free in virtio-rng red hat medium 中危" data-level="medium" data-ts="1795153830">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99684</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:30">2026-11-20 13:50:30</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via use-after-free in virtio-rng">kernel: kernel: Denial of Service via use-after-free in virtio-rng</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99684" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99683 kernel: kernel: arbitrary physical memory access via address confusion in vduse red hat medium 中危" data-level="medium" data-ts="1795153829">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99683</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:29">2026-11-20 13:50:29</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: arbitrary physical memory access via address confusion in VDUSE">kernel: kernel: arbitrary physical memory access via address confusion in VDUSE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99683" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99681 kernel: kernel: denial of service via out-of-bounds read in blk-mq red hat medium 中危" data-level="medium" data-ts="1795153827">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99681</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:27">2026-11-20 13:50:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via out-of-bounds read in blk-mq">kernel: kernel: Denial of Service via out-of-bounds read in blk-mq</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99681" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99680 kernel: kernel: data corruption via premature block reclamation in xfs pnfs red hat medium 中危" data-level="medium" data-ts="1795153827">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99680</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:27">2026-11-20 13:50:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: data corruption via premature block reclamation in XFS pNFS">kernel: kernel: data corruption via premature block reclamation in XFS pNFS</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99680" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99679 kernel: kernel: xfs: denial of service via invalid pnfs layoutcommit range red hat high 高危" data-level="high" data-ts="1795153826">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99679</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:26">2026-11-20 13:50:26</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: xfs: Denial of Service via invalid pNFS LAYOUTCOMMIT range">kernel: kernel: xfs: Denial of Service via invalid pNFS LAYOUTCOMMIT range</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99679" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99677 kernel: kernel: xfs: information disclosure via improper pnfs layout range validation red hat high 高危" data-level="high" data-ts="1795153824">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99677</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:24">2026-11-20 13:50:24</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: XFS: information disclosure via improper pNFS layout range validation">kernel: kernel: XFS: information disclosure via improper pNFS layout range validation</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99677" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99674 kernel: kernel: buffer overflow via invalid can xl frames on non-can xl devices red hat medium 中危" data-level="medium" data-ts="1795153822">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99674</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:22">2026-11-20 13:50:22</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Buffer overflow via invalid CAN XL frames on non-CAN XL devices">kernel: kernel: Buffer overflow via invalid CAN XL frames on non-CAN XL devices</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99674" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99670 kernel: kernel: denial of service via querying inactive can network interfaces red hat medium 中危" data-level="medium" data-ts="1795153819">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99670</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:19">2026-11-20 13:50:19</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Denial of Service via querying inactive CAN network interfaces">kernel: kernel: Denial of Service via querying inactive CAN network interfaces</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99670" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99667 kernel: kernel: denial of service via race condition during huge page collapse red hat medium 中危" data-level="medium" data-ts="1795153817">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99667</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:17">2026-11-20 13:50:17</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: denial of service via race condition during huge page collapse">kernel: kernel: denial of service via race condition during huge page collapse</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99667" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99662 kernel: kernel: out-of-bounds write in gup-fast via zero page count red hat high 高危" data-level="high" data-ts="1795153813">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99662</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:13">2026-11-20 13:50:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Out-of-bounds write in GUP-fast via zero page count">kernel: kernel: Out-of-bounds write in GUP-fast via zero page count</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99662" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99661 kernel: kernel: memory corruption via integer overflow in gup-fast red hat high 高危" data-level="high" data-ts="1795153812">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99661</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:12">2026-11-20 13:50:12</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Memory corruption via integer overflow in GUP-fast">kernel: kernel: Memory corruption via integer overflow in GUP-fast</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99661" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99659 kernel: kernel: memory corruption via integer truncation during tlb range flushing red hat high 高危" data-level="high" data-ts="1795153810">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99659</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T13:50:10">2026-11-20 13:50:10</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="kernel: kernel: Memory corruption via integer truncation during TLB range flushing">kernel: kernel: Memory corruption via integer truncation during TLB range flushing</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://access.redhat.com/security/cve/CVE-2026-99659" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="source-card is-collapsed" id="src-15" data-source="Microsoft MSRC">
+        <header class="source-head">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-15-body">
+                <span class="toggle-icon" aria-hidden="true"></span>
+                <span class="source-heading">
+                    <span class="source-name" role="heading" aria-level="2">Microsoft MSRC</span>
+                    <span class="source-meta">最近更新 2026-11-20 09:03:11 · <span class="card-count" data-total="60">60 条</span></span>
+                </span>
+            </button>
+            <a class="source-more" href="https://msrc.microsoft.com/update-guide/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
+        </header>
+        <div class="source-body" id="src-15-body">
+            <div class="table-wrap">
+                <table>
+                    <caption class="sr-only">Microsoft MSRC 最新威胁情报</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-id">编号</th>
+                            <th scope="col" class="col-level">等级</th>
+                            <th scope="col" class="col-time">披露时间</th>
+                            <th scope="col" class="col-title">漏洞标题</th>
+                            <th scope="col" class="col-link">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-search="cve-2026-132825 ruby before 3.3.14, 3.4.13, and 4.0.10 has a heap-based buffer overflow during case conversion. one byte can be written outside a buffer for, for example, iso-8859-1 or windows-1252. microsoft msrc medium 中危" data-level="medium" data-ts="1795136591">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132825</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:03:11">2026-11-20 09:03:11</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Ruby before 3.3.14, 3.4.13, and 4.0.10 has a heap-based buffer overflow during case conversion. One byte can be written outside a buffer for, for example, ISO-8859-1 or Windows-1252.">Ruby before 3.3.14, 3.4.13, and 4.0.10 has a heap-based buffer overflow during case conversion. One byte can be…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-132825" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99320 ipv6: raw: fix use-after-free in rawv6_send_hdrinc() microsoft msrc medium 中危" data-level="medium" data-ts="1795136586">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99320</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:03:06">2026-11-20 09:03:06</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="ipv6: raw: fix use-after-free in rawv6_send_hdrinc()">ipv6: raw: fix use-after-free in rawv6_send_hdrinc()</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-99320" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-109908 x.org libfontenc file parsing validation failure microsoft msrc high 高危" data-level="high" data-ts="1795136581">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-109908</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:03:01">2026-11-20 09:03:01</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="X.Org libfontenc File Parsing Validation Failure">X.Org libfontenc File Parsing Validation Failure</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109908" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-109909 libxfont2 pcf font parsing negative skip out-of-bounds read microsoft msrc medium 中危" data-level="medium" data-ts="1795136574">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-109909</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:54">2026-11-20 09:02:54</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="libXfont2 PCF Font Parsing Negative Skip Out-Of-Bounds Read">libXfont2 PCF Font Parsing Negative Skip Out-Of-Bounds Read</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109909" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-127231 gnutls: double free in x.509 name constraints deinitialization after failed memory allocation microsoft msrc medium 中危" data-level="medium" data-ts="1795136565">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127231</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:45">2026-11-20 09:02:45</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="gnutls: double free in X.509 name constraints deinitialization after failed memory allocation">gnutls: double free in X.509 name constraints deinitialization after failed memory allocation</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-127231" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-127040 gnutls: denial of service via memory allocation failure in rsa-psk clientkeyexchange microsoft msrc medium 中危" data-level="medium" data-ts="1795136559">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127040</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:39">2026-11-20 09:02:39</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="gnutls: denial of service via memory allocation failure in RSA-PSK ClientKeyExchange">gnutls: denial of service via memory allocation failure in RSA-PSK ClientKeyExchange</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-127040" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-127039 gnutls: denial of service via certificate authentication info reallocation failure microsoft msrc medium 中危" data-level="medium" data-ts="1795136553">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127039</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:33">2026-11-20 09:02:33</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="gnutls: denial of service via certificate authentication info reallocation failure">gnutls: denial of service via certificate authentication info reallocation failure</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-127039" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123640 nginx ngx_stream_ssl_preread_module vulnerability microsoft msrc medium 中危" data-level="medium" data-ts="1795136547">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123640</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:27">2026-11-20 09:02:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NGINX ngx_stream_ssl_preread_module vulnerability">NGINX ngx_stream_ssl_preread_module vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-123640" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-120967 nginx ngx_stream_ssl_module vulnerability microsoft msrc medium 中危" data-level="medium" data-ts="1795136541">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-120967</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:21">2026-11-20 09:02:21</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NGINX ngx_stream_ssl_module vulnerability">NGINX ngx_stream_ssl_module vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-120967" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-125283 nginx try_files vulnerability microsoft msrc medium 中危" data-level="medium" data-ts="1795136533">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125283</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:13">2026-11-20 09:02:13</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NGINX try_files vulnerability">NGINX try_files vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-125283" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-113425 nginx ngx_mail_proxy_module vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795136527">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-113425</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:07">2026-11-20 09:02:07</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NGINX ngx_mail_proxy_module vulnerability">NGINX ngx_mail_proxy_module vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-113425" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-118899 nginx tlsv1.3 vulnerability microsoft msrc high 高危" data-level="high" data-ts="1795136521">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-118899</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:02:01">2026-11-20 09:02:01</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NGINX TLSv1.3 vulnerability">NGINX TLSv1.3 vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-118899" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123633 nginx ngx_http_v2_module vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795136515">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123633</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:01:55">2026-11-20 09:01:55</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NGINX ngx_http_v2_module vulnerability">NGINX ngx_http_v2_module vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-123633" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123007 nginx ngx_http_v2_module vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795136509">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123007</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:01:49">2026-11-20 09:01:49</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NGINX ngx_http_v2_module vulnerability">NGINX ngx_http_v2_module vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-123007" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123634 nginx resolver vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795136504">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123634</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T09:01:44">2026-11-20 09:01:44</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="NGINX resolver vulnerability">NGINX resolver vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-123634" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-81962 azure machine learning information disclosure vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-81962</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure Machine Learning Information Disclosure Vulnerability">Azure Machine Learning Information Disclosure Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-81962" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-70305 azure portal spoofing vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-70305</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure Portal Spoofing Vulnerability">Azure Portal Spoofing Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70305" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-70193 microsoft office sharepoint remote code execution vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-70193</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Microsoft Office SharePoint Remote Code Execution Vulnerability">Microsoft Office SharePoint Remote Code Execution Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-70193" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-69899 azure devtest labs spoofing vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-69899</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure DevTest Labs Spoofing Vulnerability">Azure DevTest Labs Spoofing Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69899" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-69437 azure ai foundry information disclosure vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-69437</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure AI Foundry Information Disclosure Vulnerability">Azure AI Foundry Information Disclosure Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-69437" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-65817 azure managed instance for apache cassandra remote code execution vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-65817</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure Managed Instance for Apache Cassandra Remote Code Execution Vulnerability">Azure Managed Instance for Apache Cassandra Remote Code Execution Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-65817" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-62841 azure event grid elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-62841</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure Event Grid Elevation of Privilege Vulnerability">Azure Event Grid Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62841" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-50691 microsoft 365 copilot elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-50691</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Microsoft 365 Copilot Elevation of Privilege Vulnerability">Microsoft 365 Copilot Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-50691" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-120777 azure managed service identity elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-120777</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure Managed Service Identity Elevation of Privilege Vulnerability">Azure Managed Service Identity Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-120777" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-118286 azure site recovery elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-118286</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure Site Recovery Elevation of Privilege Vulnerability">Azure Site Recovery Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-118286" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-118285 azure machine learning elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-118285</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure Machine Learning Elevation of Privilege Vulnerability">Azure Machine Learning Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-118285" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-113824 microsoft clarity elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-113824</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Microsoft Clarity Elevation of Privilege Vulnerability">Microsoft Clarity Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-113824" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-109490 authentication methods portal extension elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-109490</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Authentication Methods Portal Extension Elevation of Privilege Vulnerability">Authentication Methods Portal Extension Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109490" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-109484 azure app service for linux elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-109484</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Azure App Service for Linux Elevation of Privilege Vulnerability">Azure App Service for Linux Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109484" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-109480 profile data roaming service (pdrs) elevation of privilege vulnerability microsoft msrc critical 严重" data-level="critical" data-ts="1795075200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-109480</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T16:00:00">2026-11-19 16:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Profile Data Roaming Service (PDRS) Elevation of Privilege Vulnerability">Profile Data Roaming Service (PDRS) Elevation of Privilege Vulnerability</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-109480" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99319 alsa: usx2y: refuse a retried dsp load after a failure microsoft msrc high 高危" data-level="high" data-ts="1795040265">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99319</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:45">2026-11-19 06:17:45</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="ALSA: usx2y: Refuse a retried DSP load after a failure">ALSA: usx2y: Refuse a retried DSP load after a failure</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-99319" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99318 alsa: bcd2000: fix use-after-free of midi urbs on file close microsoft msrc high 高危" data-level="high" data-ts="1795040262">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99318</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:42">2026-11-19 06:17:42</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="ALSA: bcd2000: Fix use-after-free of MIDI URBs on file close">ALSA: bcd2000: Fix use-after-free of MIDI URBs on file close</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-99318" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99317 alsa: hwdep: serialize dsp load requests microsoft msrc high 高危" data-level="high" data-ts="1795040259">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99317</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:39">2026-11-19 06:17:39</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="ALSA: hwdep: Serialize DSP load requests">ALSA: hwdep: Serialize DSP load requests</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-99317" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99316 alsa: usx2y: initialize idle urbs before submitting streams microsoft msrc medium 中危" data-level="medium" data-ts="1795040257">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99316</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:37">2026-11-19 06:17:37</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="ALSA: usx2y: Initialize idle URBs before submitting streams">ALSA: usx2y: Initialize idle URBs before submitting streams</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-99316" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99315 alsa: us122l: fix null dereference at hwdep open and release microsoft msrc medium 中危" data-level="medium" data-ts="1795040253">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99315</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:33">2026-11-19 06:17:33</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="ALSA: us122l: Fix NULL dereference at hwdep open and release">ALSA: us122l: Fix NULL dereference at hwdep open and release</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-99315" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99314 alsa: us122l: add missing null check in usb_stream_hwdep_mmap() microsoft msrc medium 中危" data-level="medium" data-ts="1795040251">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99314</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:31">2026-11-19 06:17:31</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="ALSA: us122l: Add missing NULL check in usb_stream_hwdep_mmap()">ALSA: us122l: Add missing NULL check in usb_stream_hwdep_mmap()</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-99314" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-99312 kvm: x86: unconditionally reset mmu context when emulating init microsoft msrc medium 中危" data-level="medium" data-ts="1795040247">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99312</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:17:27">2026-11-19 06:17:27</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="KVM: x86: Unconditionally reset MMU context when emulating INIT">KVM: x86: Unconditionally reset MMU context when emulating INIT</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-99312" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-131842 poppler pdfdetach 24.03.0 through 26.11.0 path traversal via embedded file names microsoft msrc medium 中危" data-level="medium" data-ts="1795040174">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-131842</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:16:14">2026-11-19 06:16:14</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Poppler pdfdetach 24.03.0 through 26.11.0 Path Traversal via Embedded File Names">Poppler pdfdetach 24.03.0 through 26.11.0 Path Traversal via Embedded File Names</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-131842" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-130335 info-zip zip 3.0 (and 3.1 beta through 3.1c) allows os command injection by an attacker who controls the command line. the victim must use the -t option followed by a filename containing shell metacharacters, on a platform (such as linux) where a suitable shell is run. this occurs because the system… microsoft msrc low 低危" data-level="low" data-ts="1795040165">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-130335</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:16:05">2026-11-19 06:16:05</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Info-ZIP Zip 3.0 (and 3.1 beta through 3.1c) allows OS command injection by an attacker who controls the command line. The victim must use the -T option followed by a filename containing shell metacharacters, on a platform (such as Linux) where a suitable shell is run. This occurs because the system…">Info-ZIP Zip 3.0 (and 3.1 beta through 3.1c) allows OS command injection by an attacker who controls the command line…</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-130335" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124950 same-origin policy bypass in the css parsing and computation component microsoft msrc high 高危" data-level="high" data-ts="1795039850">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124950</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:10:50">2026-11-19 06:10:50</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Same-origin policy bypass in the CSS Parsing and Computation component">Same-origin policy bypass in the CSS Parsing and Computation component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124950" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124949 other issue in the svg component microsoft msrc high 高危" data-level="high" data-ts="1795039842">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124949</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:10:42">2026-11-19 06:10:42</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Other issue in the SVG component">Other issue in the SVG component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124949" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124947 incorrect boundary conditions in the graphics component microsoft msrc high 高危" data-level="high" data-ts="1795039831">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124947</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:10:31">2026-11-19 06:10:31</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Incorrect boundary conditions in the Graphics component">Incorrect boundary conditions in the Graphics component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124947" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124946 invalid pointer in the javascript engine: jit component microsoft msrc high 高危" data-level="high" data-ts="1795039824">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124946</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:10:24">2026-11-19 06:10:24</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Invalid pointer in the JavaScript Engine: JIT component">Invalid pointer in the JavaScript Engine: JIT component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124946" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124945 invalid pointer in the layout: text and fonts component microsoft msrc high 高危" data-level="high" data-ts="1795039811">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124945</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:10:11">2026-11-19 06:10:11</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Invalid pointer in the Layout: Text and Fonts component">Invalid pointer in the Layout: Text and Fonts component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124945" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124943 use-after-free in the layout component microsoft msrc high 高危" data-level="high" data-ts="1795039745">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124943</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:09:05">2026-11-19 06:09:05</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Use-after-free in the Layout component">Use-after-free in the Layout component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124943" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124936 spoofing issue in the address bar component microsoft msrc medium 中危" data-level="medium" data-ts="1795039740">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124936</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:09:00">2026-11-19 06:09:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Spoofing issue in the Address Bar component">Spoofing issue in the Address Bar component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124936" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124925 information disclosure in the layout component microsoft msrc medium 中危" data-level="medium" data-ts="1795039730">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124925</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:08:50">2026-11-19 06:08:50</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Information disclosure in the Layout component">Information disclosure in the Layout component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124925" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124923 sandbox escape in the agent component microsoft msrc critical 严重" data-level="critical" data-ts="1795039724">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124923</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:08:44">2026-11-19 06:08:44</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Sandbox escape in the Agent component">Sandbox escape in the Agent component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124923" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124921 sandbox escape in the graphics: webgpu component microsoft msrc critical 严重" data-level="critical" data-ts="1795039717">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124921</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:08:37">2026-11-19 06:08:37</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Sandbox escape in the Graphics: WebGPU component">Sandbox escape in the Graphics: WebGPU component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124921" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124920 uninitialized memory in the graphics: webgpu component microsoft msrc high 高危" data-level="high" data-ts="1795039710">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124920</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:08:30">2026-11-19 06:08:30</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Uninitialized memory in the Graphics: WebGPU component">Uninitialized memory in the Graphics: WebGPU component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124920" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124911 clickjacking issue in the autofill component in firefox for android microsoft msrc medium 中危" data-level="medium" data-ts="1795039703">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124911</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:08:23">2026-11-19 06:08:23</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Clickjacking issue in the Autofill component in Firefox for Android">Clickjacking issue in the Autofill component in Firefox for Android</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124911" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124908 use-after-free in the css parsing and computation component microsoft msrc high 高危" data-level="high" data-ts="1795039695">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124908</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:08:15">2026-11-19 06:08:15</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Use-after-free in the CSS Parsing and Computation component">Use-after-free in the CSS Parsing and Computation component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124908" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124904 use-after-free in the svg component microsoft msrc high 高危" data-level="high" data-ts="1795039689">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124904</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:08:09">2026-11-19 06:08:09</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Use-after-free in the SVG component">Use-after-free in the SVG component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124904" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124900 sandbox escape due to use-after-free in the dom: service workers component microsoft msrc critical 严重" data-level="critical" data-ts="1795039683">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124900</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:08:03">2026-11-19 06:08:03</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Sandbox escape due to use-after-free in the DOM: Service Workers component">Sandbox escape due to use-after-free in the DOM: Service Workers component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124900" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124878 use-after-free in the layout: positioned component microsoft msrc high 高危" data-level="high" data-ts="1795039677">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124878</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:07:57">2026-11-19 06:07:57</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Use-after-free in the Layout: Positioned component">Use-after-free in the Layout: Positioned component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124878" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124871 use-after-free in the dom: html parser component microsoft msrc high 高危" data-level="high" data-ts="1795039670">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124871</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:07:50">2026-11-19 06:07:50</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Use-after-free in the DOM: HTML Parser component">Use-after-free in the DOM: HTML Parser component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124871" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124867 use-after-free in the dom: editor component microsoft msrc high 高危" data-level="high" data-ts="1795039664">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124867</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:07:44">2026-11-19 06:07:44</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Use-after-free in the DOM: Editor component">Use-after-free in the DOM: Editor component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124867" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-124852 incorrect boundary conditions in the graphics: canvaswebgl component microsoft msrc high 高危" data-level="high" data-ts="1795039657">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124852</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:07:37">2026-11-19 06:07:37</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Incorrect boundary conditions in the Graphics: CanvasWebGL component">Incorrect boundary conditions in the Graphics: CanvasWebGL component</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-124852" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-121758 iso-2022-cn-ext decoder may read past input microsoft msrc medium 中危" data-level="medium" data-ts="1795039642">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-121758</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:07:22">2026-11-19 06:07:22</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="ISO-2022-CN-EXT decoder may read past input">ISO-2022-CN-EXT decoder may read past input</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-121758" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-107493 use-after-free in pem_x509_info_read_bio_ex() when appending to a caller-supplied stack fails microsoft msrc high 高危" data-level="high" data-ts="1795039537">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-107493</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T06:05:37">2026-11-19 06:05:37</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Use-After-Free in PEM_X509_INFO_read_bio_ex() when appending to a caller-supplied stack fails">Use-After-Free in PEM_X509_INFO_read_bio_ex() when appending to a caller-supplied stack fails</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-107493" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="source-card is-collapsed" id="src-16" data-source="AISLE">
+        <header class="source-head">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-16-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">AISLE</span>
@@ -6070,7 +7094,7 @@
             </button>
             <a class="source-more" href="https://aisle.com/cve-discoveries" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-14-body">
+        <div class="source-body" id="src-16-body">
             <div class="table-wrap">
                 <table>
                     <caption class="sr-only">AISLE 最新威胁情报</caption>
@@ -6570,9 +7594,9 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-15" data-source="Mozilla">
+    <section class="source-card is-collapsed" id="src-17" data-source="Mozilla">
         <header class="source-head">
-            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-15-body">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-17-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">Mozilla</span>
@@ -6581,7 +7605,7 @@
             </button>
             <a class="source-more" href="https://www.mozilla.org/en-US/security/advisories/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-15-body">
+        <div class="source-body" id="src-17-body">
             <div class="table-wrap">
                 <table>
                     <caption class="sr-only">Mozilla 最新威胁情报</caption>
@@ -6801,9 +7825,9 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-16" data-source="Vulnerability-Wiki-PoC">
+    <section class="source-card is-collapsed" id="src-18" data-source="Vulnerability-Wiki-PoC">
         <header class="source-head">
-            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-16-body">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-18-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">Vulnerability-Wiki-PoC</span>
@@ -6812,7 +7836,7 @@
             </button>
             <a class="source-more" href="https://github.com/SourByte05/Vulnerability-Wiki-PoC" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-16-body">
+        <div class="source-body" id="src-18-body">
             <div class="table-wrap">
                 <table>
                     <caption class="sr-only">Vulnerability-Wiki-PoC 最新威胁情报</caption>
@@ -7320,7 +8344,7 @@
         <div class="footer-brand">
             <strong>渊龙Sec安全团队</strong>
             <p>持续跟踪公开漏洞情报，为安全从业者提供轻量、可检索、可归档的每日威胁简报。</p>
-            <p class="footer-note">数据来源：阿里云高危漏洞库 · 斗象漏洞情报中心 · 微步在线情报中心 · 长亭漏洞库 · 美国国家漏洞数据库（NVD） · Tenable (Nessus) · CISA 在野利用漏洞 · Sploitus · Exploit-DB · Palo Alto Networks · Fortinet · Cisco · ZDI · AISLE · Mozilla · Vulnerability-Wiki-PoC。情报仅供参考，请以官方通告为准。</p>
+            <p class="footer-note">数据来源：阿里云高危漏洞库 · 斗象漏洞情报中心 · 微步在线情报中心 · 长亭漏洞库 · 美国国家漏洞数据库（NVD） · Tenable (Nessus) · CISA 在野利用漏洞 · Sploitus · Exploit-DB · Palo Alto Networks · Fortinet · Cisco · ZDI · Red Hat · Microsoft MSRC · AISLE · Mozilla · Vulnerability-Wiki-PoC。情报仅供参考，请以官方通告为准。</p>
         </div>
         <div class="footer-links">
             <a href="https://threat.aabyss.cn/" target="_blank" rel="noopener">在线播报页</a>
@@ -7334,7 +8358,7 @@
         </div>
     </div>
     <div class="wrap copyright">
-        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-21 00:34:24</p>
+        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-21 01:14:52</p>
     </div>
 </footer>
 
