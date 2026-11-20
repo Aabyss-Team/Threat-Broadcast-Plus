@@ -25,9 +25,9 @@
             <h1>威胁情报播报</h1>
             <p class="lede">自动聚合公开漏洞情报源，每 4 小时更新一次，聚焦最新披露与已被在野利用的高危漏洞，并提供 Kimi K3 模型的分析，能够马上锁定近 5 天的重大漏洞。</p>
             <div class="hero-meta">
-                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-21T00:30:26+08:00">2026-11-21 00:30:26</time></span>
-                <span class="meta-item">14 个情报源</span>
-                <span class="meta-item">735 条记录</span>
+                <span class="meta-item"><span class="meta-dot" aria-hidden="true"></span>最后更新 <time datetime="2026-11-21T00:34:24+08:00">2026-11-21 00:34:24</time></span>
+                <span class="meta-item">16 个情报源</span>
+                <span class="meta-item">836 条记录</span>
             </div>
         </div>
         <div class="hero-actions">
@@ -40,15 +40,15 @@
 <main id="main">
     <section class="wrap stats" aria-label="数据概览">
         <div class="stat">
-            <span class="stat-value">735</span>
+            <span class="stat-value">836</span>
             <span class="stat-label">当前展示情报</span>
         </div>
         <div class="stat stat-accent">
-            <span class="stat-value">209</span>
+            <span class="stat-value">263</span>
             <span class="stat-label">近两天新增</span>
         </div>
         <div class="stat">
-            <span class="stat-value">14</span>
+            <span class="stat-value">16</span>
             <span class="stat-label">活跃情报源</span>
         </div>
         <div class="stat">
@@ -62,8 +62,8 @@
                 <span class="ai-badge">AI 研判</span>
                 <h2 id="ai-summary-title">近期高风险漏洞研判</h2>
             </div>
-            <p class="ai-summary-text">本时间窗口内风险最高的为已被 CISA 确认在野利用的 5 个漏洞，建议作为第一优先级处置：CVE-2026-90436（Apache Axis 不安全反射）、CVE-2026-90817（REDCap 代码注入）、CVE-2026-40217（LiteLLM 未受保护的备用通道）和 CVE-2024-10441（Synology DSM 输出编码不当），其中 DSM 面向大量中小企业 NAS 设备，暴露面广、利用门槛低，建议立即升级至厂商修复版本并对管理界面做网络层访问限制；REDCap 在科研医疗机构广泛部署，代码注入可导致数据泄露与横向移动，应在补丁前通过 WAF 规则拦截可疑请求。此外 CVE-2026-127027（Poste.io DMARC 报告处理 RCE）邮件服务直面互联网，需优先排查。国内产品相关方面，清单未出现典型国产软件漏洞，但斗象情报收录的 Flyto2 Core 沙箱绕过（CVE-2026-77312）、Etherpad 路径遍历（CVE-2026-114516）及 IBM Guardium 三个漏洞（CVE-2026-87977、CVE-2026-84236、CVE-2026-82339）在国内企业环境使用率较高，尤其是 Guardium 反序列化 RCE 与 SQL 注入可危及数据库审计核心，建议尽快核查部署情况并应用补丁；PHP 系列漏洞（CVE-2026-129289、CVE-2026-129474、CVE-2026-126714）影响面极广，应纳入近期升级计划。关于 PoC/EXP 检索：当前环境无法联网访问 github.com、exploit-db.com、sploitus.com 等平台，故未检索到相关公开利用代码链接，建议后续人工在上述平台以 CVE 编号逐一核查，并对已出现在野利用的漏洞按“假定已被利用”标准开展入侵排查。</p>
-            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-21 00:30:26</p>
+            <p class="ai-summary-text">本期清单中风险最高、最需立即处置的是五条已进入 CISA 在野利用目录的漏洞。CVE-2026-90817（REDCap 代码注入）直接影响全球大量医疗机构的临床研究电子数据采集系统，代码注入可致敏感医疗数据泄露与篡改，且在高校和医院中暴露面广、利用门槛低，须第一时间升级并排查日志。CVE-2026-40217（BerriAI LiteLLM 未受保护的备用通道）针对 AI 大模型网关，攻击者可能绕过认证直接调用后端模型接口、窃取 API 密钥，鉴于 LLM 网关在近期企业部署中激增，横向扩散风险极大。CVE-2026-115731（Puppet Enterprise 反序列化）一旦被利用即可获得配置管理平台的控制权，进而向全网受管节点下发恶意指令，属于典型&quot;一点突破、全内网沦陷&quot;场景。CVE-2026-90436（Apache Axis 不安全反射）和 CVE-2024-10441（Synology DSM 输出编码不当）虽为较老组件，但 Axis 仍广泛存在于遗留 Java 业务系统中，Synology NAS 在中小企业和边缘环境保有量巨大，均应纳入紧急补丁或下线隔离范围。除此之外，CVE-2026-35273（Oracle PeopleSoft 授权不当 RCE，ZDI 披露）和 CVE-2026-127027（Poste.io DMARC 报告处理 RCE）也值得关注：PeopleSoft 是大型企业核心 ERP，RCE 后果严重；Poste.io 常用于自建邮件服务，处理外部 DMARC 报告时触发，属预认证攻击面。国内产品方面，本清单未见明确指向国产软件的高危条目，但 PHP 相关的三条（CVE-2026-129289 PHP-FPM 请求走私、CVE-2026-129474 PHP 8.5 UAF、CVE-2026-126714 Session 文件覆盖反序列化）由阿里云库收录，对国内大量使用 PHP 的建站与业务系统影响广泛，建议运维侧优先升级 PHP-FPM 与 PHP 版本并限制 FastCGI 端口暴露。处置建议：对五条 CISA 在野利用漏洞按 24-48 小时内完成补丁或缓解，无法修复的即刻断网隔离；对 PeopleSoft、Wing FTP（CVE-2026-133310 文件掩码绕过上传）等面向互联网的服务收敛暴露面；同时加强 IDS/WAF 对上述漏洞特征流量的检测。关于 PoC/EXP 检索：受当前环境限制，未能实时访问 github.com、exploit-db.com、sploitus.com 进行核实，故不列出具体链接；针对上述在野利用漏洞，建议分析师自行在 GitHub 以 CVE 编号检索，并在 sploitus.com 汇总查询，通常在 CISA KEV 收录后数日内即有公开验证代码流出。</p>
+            <p class="ai-summary-meta">基于近 5 天 30 条候选情报 · k3 · 2026-11-21 00:34:24</p>
         </section>
 
 
@@ -115,13 +115,15 @@
 <a class="chip" href="#src-5"><span>美国国家漏洞数据库（NVD）</span><b>60</b></a>
 <a class="chip" href="#src-6"><span>Tenable (Nessus)</span><b>60</b></a>
 <a class="chip" href="#src-7"><span>CISA 在野利用漏洞</span><b>60</b></a>
-<a class="chip" href="#src-8"><span>Palo Alto Networks</span><b>26</b></a>
-<a class="chip" href="#src-9"><span>Fortinet</span><b>52</b></a>
-<a class="chip" href="#src-10"><span>Cisco</span><b>60</b></a>
-<a class="chip" href="#src-11"><span>ZDI</span><b>60</b></a>
-<a class="chip" href="#src-12"><span>AISLE（AI 发现）</span><b>60</b></a>
-<a class="chip" href="#src-13"><span>Mozilla（AI 发现）</span><b>25</b></a>
-<a class="chip" href="#src-14"><span>Vulnerability-Wiki-PoC</span><b>60</b></a>
+<a class="chip" href="#src-8"><span>Sploitus</span><b>54</b></a>
+<a class="chip" href="#src-9"><span>Exploit-DB</span><b>47</b></a>
+<a class="chip" href="#src-10"><span>Palo Alto Networks</span><b>26</b></a>
+<a class="chip" href="#src-11"><span>Fortinet</span><b>52</b></a>
+<a class="chip" href="#src-12"><span>Cisco</span><b>60</b></a>
+<a class="chip" href="#src-13"><span>ZDI</span><b>60</b></a>
+<a class="chip" href="#src-14"><span>AISLE</span><b>60</b></a>
+<a class="chip" href="#src-15"><span>Mozilla</span><b>25</b></a>
+<a class="chip" href="#src-16"><span>Vulnerability-Wiki-PoC</span><b>60</b></a>
     </nav>
 
     <div class="wrap">
@@ -3479,9 +3481,879 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-8" data-source="Palo Alto Networks">
+    <section class="source-card is-collapsed" id="src-8" data-source="Sploitus">
         <header class="source-head">
             <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-8-body">
+                <span class="toggle-icon" aria-hidden="true"></span>
+                <span class="source-heading">
+                    <span class="source-name" role="heading" aria-level="2">Sploitus</span>
+                    <span class="source-meta">最近更新 2026-11-20 · <span class="card-count" data-total="54">54 条</span></span>
+                </span>
+            </button>
+            <a class="source-more" href="https://sploitus.com/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
+        </header>
+        <div class="source-body" id="src-8-body">
+            <div class="table-wrap">
+                <table>
+                    <caption class="sr-only">Sploitus 最新威胁情报</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-id">编号</th>
+                            <th scope="col" class="col-level">等级</th>
+                            <th scope="col" class="col-time">披露时间</th>
+                            <th scope="col" class="col-title">漏洞标题</th>
+                            <th scope="col" class="col-link">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-search="cve-2026-99312 exploit for cve-2026-99312 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-99312</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-99312">Exploit for CVE-2026-99312</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/jmginer/pve-cve-2026-99312" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132165 exploit for cve-2026-132165 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132165</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-132165">Exploit for CVE-2026-132165</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/abraxas/drupal-install-takeover" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-126714 exploit for cve-2026-126714 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-126714</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-126714">Exploit for CVE-2026-126714</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/evenomn/cve-2026-126714-phpAfterShell" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-126714 exploit for cve-2026-126714 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-126714</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-126714">Exploit for CVE-2026-126714</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/ashrafzaryouh/CVE-2026-126714" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-126714 exploit for cve-2026-126714 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-126714</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-126714">Exploit for CVE-2026-126714</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/tani2shell/phpaftershell-lab" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129496 exploit for cve-2026-129496 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129496</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-129496">Exploit for CVE-2026-129496</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/LLCForge/CVE-2026-129496" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129474 exploit for cve-2026-129474 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129474</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-129474">Exploit for CVE-2026-129474</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/LLCForge/CVE-2026-129474" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-117517 exploit for cve-2026-117517 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-117517</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-117517">Exploit for CVE-2026-117517</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/LLCForge/CVE-2026-117517" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133430 exploit for cve-2026-133430 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133430</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-133430">Exploit for CVE-2026-133430</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/LLCForge/CVE-2026-133430" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123890 exploit for cve-2026-123890 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123890</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-123890">Exploit for CVE-2026-123890</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/LLCForge/CVE-2026-123890" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129289 exploit for cve-2026-129289 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129289</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-129289">Exploit for CVE-2026-129289</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/LLCForge/CVE-2026-129289" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="vulners software audit sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Vulners Software Audit">Vulners Software Audit</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://raw.githubusercontent.com/SIA-IOTechnology/Kittysploit-framework/main/modules/scanner/vulners/software_audit.py" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="linux-privilege-escalation-playbook sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="linux-privilege-escalation-playbook">linux-privilege-escalation-playbook</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/araizcorp/linux-privilege-escalation-playbook" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for interpretation conflict in wordpress sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Interpretation Conflict in Wordpress">Exploit for Interpretation Conflict in Wordpress</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/SanWRoot/wp2shell-LAB-POC" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2023-28450 exploit for cve-2023-28450 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2023-28450</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2023-28450">Exploit for CVE-2023-28450</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/vitalelele/CVE-2023-28450-PoC" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for integer underflow (wrap or wraparound) in f5 dos sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Integer Underflow (Wrap or Wraparound) in F5 Dos">Exploit for Integer Underflow (Wrap or Wraparound) in F5 Dos</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/bytevet/h2flowcheck" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="vuln-repo sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="vuln-repo">vuln-repo</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/V0WKeep3r/vuln-repo" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133430 exploit for cve-2026-133430 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133430</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-133430">Exploit for CVE-2026-133430</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-133430" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for improper restriction of operations within the bounds of a memory buffer in arm bifrost_gpu_kernel_driver sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Improper Restriction of Operations within the Bounds of a Memory Buffer in Arm Bifrost_Gpu_Kernel_Driver">Exploit for Improper Restriction of Operations within the Bounds of a Memory Buffer in Arm Bifrost_Gpu_Kernel_Driver</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/emdzej/sony-bravia-mtk-root" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for out-of-bounds read in polkit_project polkit sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Out-of-bounds Read in Polkit_Project Polkit">Exploit for Out-of-bounds Read in Polkit_Project Polkit</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/vukma25/CVE-2021-4034" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-117517 exploit for cve-2026-117517 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-117517</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-117517">Exploit for CVE-2026-117517</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-117517" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132825 exploit for cve-2026-132825 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132825</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-132825">Exploit for CVE-2026-132825</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/techdevfun/ruby2shell" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for heap-based buffer overflow in oracle jdk sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Heap-based Buffer Overflow in Oracle Jdk">Exploit for Heap-based Buffer Overflow in Oracle Jdk</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/Luscious8/JVM2Shell" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-59273 exploit for cve-2026-59273 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-59273</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-59273">Exploit for CVE-2026-59273</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/afernandesvigo/PoC-CVE-2026-59273" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cyberreason-threat-intelligence-llm sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="cyberreason-threat-intelligence-llm">cyberreason-threat-intelligence-llm</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/AdityaJagtap18/cyberreason-threat-intelligence-llm" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-133481 exploit for cve-2026-133481 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133481</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-133481">Exploit for CVE-2026-133481</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-133481" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-77378 exploit for cve-2026-77378 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-77378</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-77378">Exploit for CVE-2026-77378</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-77378" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-63012 exploit for cve-2026-63012 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-63012</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-63012">Exploit for CVE-2026-63012</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-63012" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-77318 exploit for cve-2026-77318 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-77318</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-77318">Exploit for CVE-2026-77318</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-77318" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132825 exploit for cve-2026-132825 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132825</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-132825">Exploit for CVE-2026-132825</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/Mahgal/ruby2shell-check" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-129448 exploit for cve-2026-129448 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129448</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-129448">Exploit for CVE-2026-129448</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/foxcornlab/apache-roller-scanner" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132749 exploit for cve-2026-132749 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132749</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-132749">Exploit for CVE-2026-132749</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/SHAHID-XT/CVE-2026-132749-Vtiger-CRM-Reports-SQLi" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132748 exploit for cve-2026-132748 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132748</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-132748">Exploit for CVE-2026-132748</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/SHAHID-XT/CVE-2026-132748-Vtiger-CRM-PHP-Code-Injection" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for use after free in samsung android sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Use After Free in Samsung Android">Exploit for Use After Free in Samsung Android</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/zhanghangjie/CVE-2026-20971-CYL1" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132747 exploit for cve-2026-132747 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132747</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-132747">Exploit for CVE-2026-132747</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/SHAHID-XT/CVE-2026-132747-Vtiger-CRM-ExportData-SQLi" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132746 exploit for cve-2026-132746 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132746</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-132746">Exploit for CVE-2026-132746</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/SHAHID-XT/CVE-2026-132746-Vtiger-CRM-WSAPP-SQLi-" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-132745 exploit for cve-2026-132745 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-132745</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-132745">Exploit for CVE-2026-132745</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/SHAHID-XT/CVE-2026-132745-Vtiger-CRM-Blind-SQLi" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-103025 exploit for cve-2026-103025 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-103025</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-103025">Exploit for CVE-2026-103025</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-103025" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for use after free in linux linux_kernel sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Use After Free in Linux Linux_Kernel">Exploit for Use After Free in Linux Linux_Kernel</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/zhanghangjie/CVE-2025-21756-VM" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-62955 exploit for cve-2026-62955 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-62955</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-62955">Exploit for CVE-2026-62955</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-62955" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for integer overflow or wraparound in qualcomm sm7675p_firmware sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Integer Overflow or Wraparound in Qualcomm Sm7675P_Firmware">Exploit for Integer Overflow or Wraparound in Qualcomm Sm7675P_Firmware</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/zhanghangjie/CVE-2026-21385-CYL1" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for use after free in linux linux_kernel sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Use After Free in Linux Linux_Kernel">Exploit for Use After Free in Linux Linux_Kernel</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/zhanghangjie/CVE-2026-64560-CYL1" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-98260 exploit for cve-2026-98260 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-98260</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-98260">Exploit for CVE-2026-98260</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/zhanghangjie/CVE-2026-98260-CYL1" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for type confusion in google chrome sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Type Confusion in Google Chrome">Exploit for Type Confusion in Google Chrome</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/zhanghangjie/CVE-2025-6554-CYL1" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for use after free in linux linux_kernel sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Use After Free in Linux Linux_Kernel">Exploit for Use After Free in Linux Linux_Kernel</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/zhanghangjie/CVE-2026-43499-CYL1" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-103033 exploit for cve-2026-103033 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-103033</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-103033">Exploit for CVE-2026-103033</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/googlesky/CVE-2026-103033" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for integer underflow (wrap or wraparound) in f5 dos sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Integer Underflow (Wrap or Wraparound) in F5 Dos">Exploit for Integer Underflow (Wrap or Wraparound) in F5 Dos</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/genaforvena/nginx2root" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for improperly controlled sequential memory allocation in php sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Improperly Controlled Sequential Memory Allocation in Php">Exploit for Improperly Controlled Sequential Memory Allocation in Php</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/genaforvena/php2sec" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for heap-based buffer overflow in oracle jdk sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Heap-based Buffer Overflow in Oracle Jdk">Exploit for Heap-based Buffer Overflow in Oracle Jdk</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/crash00xd/java2shell-poc" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-71319 exploit for cve-2026-71319 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-71319</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-71319">Exploit for CVE-2026-71319</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/TazmiDev/CVE-2026-71319" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for improper input validation in siemens 6bk1602-0aa12-0tp0_firmware sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Improper Input Validation in Siemens 6Bk1602-0Aa12-0Tp0_Firmware">Exploit for Improper Input Validation in Siemens 6Bk1602-0Aa12-0Tp0_Firmware</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/minBuild/unhacked" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-123890 exploit for cve-2026-123890 sploitus" data-level="none" data-ts="1795104000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-123890</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T00:00:00">2026-11-20</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-123890">Exploit for CVE-2026-123890</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/Quaerendir/cve-2026-123890-audit" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-115560 exploit for cve-2026-115560 sploitus" data-level="none" data-ts="1795017600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-115560</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T00:00:00">2026-11-19</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for CVE-2026-115560">Exploit for CVE-2026-115560</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/LLCForge/CVE-2026-115560" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exploit for heap-based buffer overflow in oracle jdk sploitus" data-level="none" data-ts="1795017600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T00:00:00">2026-11-19</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="Exploit for Heap-based Buffer Overflow in Oracle Jdk">Exploit for Heap-based Buffer Overflow in Oracle Jdk</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://github.com/uxokpro1234/Java4shell-CVE-2026-114938" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="source-card is-collapsed" id="src-9" data-source="Exploit-DB">
+        <header class="source-head">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-9-body">
+                <span class="toggle-icon" aria-hidden="true"></span>
+                <span class="source-heading">
+                    <span class="source-name" role="heading" aria-level="2">Exploit-DB</span>
+                    <span class="source-meta">最近更新 2026-11-11 · <span class="card-count" data-total="47">47 条</span></span>
+                </span>
+            </button>
+            <a class="source-more" href="https://www.exploit-db.com/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
+        </header>
+        <div class="source-body" id="src-9-body">
+            <div class="table-wrap">
+                <table>
+                    <caption class="sr-only">Exploit-DB 最新威胁情报</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col" class="col-id">编号</th>
+                            <th scope="col" class="col-level">等级</th>
+                            <th scope="col" class="col-time">披露时间</th>
+                            <th scope="col" class="col-title">漏洞标题</th>
+                            <th scope="col" class="col-link">详情</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tr data-search="cve-2026-59726 ruflo mcp bridge 3.16.2 - remote code execution exploit-db" data-level="none" data-ts="1794326400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-59726</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-11T00:00:00">2026-11-11</time></td>
+                        <td class="col-title" data-label="标题" title="Ruflo MCP Bridge 3.16.2 - Remote Code Execution">Ruflo MCP Bridge 3.16.2 - Remote Code Execution</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52705" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-109618 php2shell (cve-2026-109618) - php core versions after v5.4 - rce exploit-db" data-level="none" data-ts="1792598400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-109618</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-22T00:00:00">2026-10-22</time></td>
+                        <td class="col-title" data-label="标题" title="PHP2Shell (CVE-2026-109618) - PHP core versions after v5.4 - RCE">PHP2Shell (CVE-2026-109618) - PHP core versions after v5.4 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52704" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-18963 keycloak 26.7.2 - unauthenticated account takeover exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-18963</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="Keycloak 26.7.2 - Unauthenticated Account Takeover">Keycloak 26.7.2 - Unauthenticated Account Takeover</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52699" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2024-26503 open eclass 3.15 - rce exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2024-26503</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="Open eClass 3.15 - RCE">Open eClass 3.15 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52698" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="edimax br-6478ac firmware v2.20 - authenticated command injection exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="Edimax BR-6478AC firmware v2.20 - authenticated command injection">Edimax BR-6478AC firmware v2.20 - authenticated command injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52696" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="prosoft rlx-ifh24e v2.2.44 - unsigned firmware upgrade package executed as root exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="ProSoft RLX-IFH24E v2.2.44 - Unsigned Firmware Upgrade Package Executed as Root">ProSoft RLX-IFH24E v2.2.44 - Unsigned Firmware Upgrade Package Executed as Root</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52693" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="exasol database 7.1.30 - command execution exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="Exasol Database 7.1.30 - command execution">Exasol Database 7.1.30 - command execution</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52695" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="parasoft continuous testing platform 10.7.5 - jsp command execution exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="Parasoft Continuous Testing Platform 10.7.5 - JSP command execution">Parasoft Continuous Testing Platform 10.7.5 - JSP command execution</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52694" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="synametrics syncrify 6.2 - command execution exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="Synametrics Syncrify 6.2 - command execution">Synametrics Syncrify 6.2 - command execution</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52700" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="automotive shop management system 1.0 - sqli exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="Automotive Shop Management System 1.0 - SQLi">Automotive Shop Management System 1.0 - SQLi</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52697" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="pizzafy-1.0 - sqli exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="pizzafy-1.0 - SQLi">pizzafy-1.0 - SQLi</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52703" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="south river technologies titan mft server 26.0.0 - code execution exploit-db" data-level="none" data-ts="1792512000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-21T00:00:00">2026-10-21</time></td>
+                        <td class="col-title" data-label="标题" title="South River Technologies Titan MFT Server 26.0.0 - code execution">South River Technologies Titan MFT Server 26.0.0 - code execution</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52701" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-87902 wordpress 7.0.2 - path travesal exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-87902</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="WordPress 7.0.2 - Path Travesal">WordPress 7.0.2 - Path Travesal</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52690" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-69137 suitecrm 8.10.1 - authenticated ssrf exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-69137</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="SuiteCRM 8.10.1 - Authenticated SSRF">SuiteCRM 8.10.1 - Authenticated SSRF</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52686" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-40297 invoiceplane 1.7.1 - rce exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-40297</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="InvoicePlane 1.7.1 - RCE">InvoicePlane 1.7.1 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52685" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-100885 krayin crm 2.2.4 - idor exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-100885</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="Krayin CRM 2.2.4 - IDOR">Krayin CRM 2.2.4 - IDOR</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52687" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="teltonika_rutos 00.07.06.21 - command injection exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="Teltonika_RutOS 00.07.06.21 - command injection">Teltonika_RutOS 00.07.06.21 - command injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52692" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="food-ordering 1.0 - lfi exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="Food-Ordering 1.0 - LFI">Food-Ordering 1.0 - LFI</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52689" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="poms oretnom23v1.0 - sqli vulnerabilities exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="POMS oretnom23v1.0 - SQLi vulnerabilities">POMS oretnom23v1.0 - SQLi vulnerabilities</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52684" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="tigergraph_community_edition 4.2.4 - arbitrary file write exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="TigerGraph_Community_Edition 4.2.4 - arbitrary file write">TigerGraph_Community_Edition 4.2.4 - arbitrary file write</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52691" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="ecava_ntegraxor igx_16.0.701.10 - rce exploit-db" data-level="none" data-ts="1790784000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-10-01T00:00:00">2026-10-01</time></td>
+                        <td class="col-title" data-label="标题" title="Ecava_ntegraXor IGX_16.0.701.10 - RCE">Ecava_ntegraXor IGX_16.0.701.10 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52688" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-86060 mikrotrick_ 7.24_ 7.24.2_ 7.0.0_ 7.23.4_ 6.0.0_ 6.49.21 - rce exploit-db" data-level="none" data-ts="1790179200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-86060</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-24T00:00:00">2026-09-24</time></td>
+                        <td class="col-title" data-label="标题" title="MikroTrick_ 7.24_ 7.24.2_ 7.0.0_ 7.23.4_ 6.0.0_ 6.49.21 - RCE">MikroTrick_ 7.24_ 7.24.2_ 7.0.0_ 7.23.4_ 6.0.0_ 6.49.21 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52683" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-80428 cve-2026-80428 unauthenticated php object injection via shibboleth - ilias &lt; 9.22_ 10.0 &lt; 10.10_ 11.0 &lt; 11.3 - rce exploit-db" data-level="none" data-ts="1789056000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-80428</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-11T00:00:00">2026-09-11</time></td>
+                        <td class="col-title" data-label="标题" title="CVE-2026-80428 Unauthenticated PHP Object Injection via Shibboleth - ILIAS &lt; 9.22_ 10.0 &lt; 10.10_ 11.0 &lt; 11.3 - RCE">CVE-2026-80428 Unauthenticated PHP Object Injection via Shibboleth - ILIAS &lt; 9.22_ 10.0 &lt; 10.10_ 11.0 &lt; 11.3 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52682" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-59827 metabase 0.61.0 - authenticated remote code execution exploit-db" data-level="none" data-ts="1788364800">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-59827</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-03T00:00:00">2026-09-03</time></td>
+                        <td class="col-title" data-label="标题" title="Metabase 0.61.0 - Authenticated Remote Code Execution">Metabase 0.61.0 - Authenticated Remote Code Execution</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52680" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2025-57819 freepbx 17.0.2 - remote code execution (rce) exploit-db" data-level="none" data-ts="1788364800">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2025-57819</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-03T00:00:00">2026-09-03</time></td>
+                        <td class="col-title" data-label="标题" title="FreePBX 17.0.2 - Remote Code Execution (RCE)">FreePBX 17.0.2 - Remote Code Execution (RCE)</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52681" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-9198 langflow 1.10.0 - rce exploit-db" data-level="none" data-ts="1788278400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-9198</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-02T00:00:00">2026-09-02</time></td>
+                        <td class="col-title" data-label="标题" title="Langflow 1.10.0 - RCE">Langflow 1.10.0 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52675" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-51407, cve-2026-51406, cve-2026-51405, cve-2026-51404, cve-2026-51403, cve-2026-51402 fullhan fh8626v100 - multiple vulnerabilities exploit-db" data-level="none" data-ts="1788278400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-51407, CVE-2026-51406, CVE-2026-51405, CVE-2026-51404, CVE-2026-51403, CVE-2026-51402</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-02T00:00:00">2026-09-02</time></td>
+                        <td class="col-title" data-label="标题" title="Fullhan FH8626V100 - Multiple Vulnerabilities">Fullhan FH8626V100 - Multiple Vulnerabilities</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52674" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-41456 bludit cms 3.20.0 - reflected cross-site scripting exploit-db" data-level="none" data-ts="1788278400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-41456</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-02T00:00:00">2026-09-02</time></td>
+                        <td class="col-title" data-label="标题" title="Bludit CMS 3.20.0 - Reflected Cross-Site Scripting">Bludit CMS 3.20.0 - Reflected Cross-Site Scripting</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52678" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-39987 marimo 0.20.4 - rce exploit-db" data-level="none" data-ts="1788278400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-39987</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-02T00:00:00">2026-09-02</time></td>
+                        <td class="col-title" data-label="标题" title="Marimo 0.20.4 - RCE">Marimo 0.20.4 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52673" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-29053 ghost_cms 6.19.0 - remote code execution exploit-db" data-level="none" data-ts="1788278400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-29053</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-02T00:00:00">2026-09-02</time></td>
+                        <td class="col-title" data-label="标题" title="Ghost_CMS 6.19.0 - Remote Code Execution">Ghost_CMS 6.19.0 - Remote Code Execution</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52676" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2025-70336 podcastgenerator 3.2.9 - stored xss exploit-db" data-level="none" data-ts="1788278400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2025-70336</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-02T00:00:00">2026-09-02</time></td>
+                        <td class="col-title" data-label="标题" title="PodcastGenerator 3.2.9 - Stored XSS">PodcastGenerator 3.2.9 - Stored XSS</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52677" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2025-68137 everest 2025.9.0 - dos exploit-db" data-level="none" data-ts="1788278400">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2025-68137</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-02T00:00:00">2026-09-02</time></td>
+                        <td class="col-title" data-label="标题" title="EVerest 2025.9.0 - DoS">EVerest 2025.9.0 - DoS</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52679" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-67206 wolf cms 0.8.3.1 - rce v exploit-db" data-level="none" data-ts="1788192000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-67206</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-01T00:00:00">2026-09-01</time></td>
+                        <td class="col-title" data-label="标题" title="Wolf CMS 0.8.3.1 - RCE v">Wolf CMS 0.8.3.1 - RCE v</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52672" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-65008 grav cms 2.0.7 - rce exploit-db" data-level="none" data-ts="1788192000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-65008</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-01T00:00:00">2026-09-01</time></td>
+                        <td class="col-title" data-label="标题" title="Grav CMS 2.0.7 - RCE">Grav CMS 2.0.7 - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52669" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-25544 payload cms 3.72.0 - blind sql injection exploit-db" data-level="none" data-ts="1788192000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-25544</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-01T00:00:00">2026-09-01</time></td>
+                        <td class="col-title" data-label="标题" title="Payload CMS 3.72.0 - Blind SQL Injection">Payload CMS 3.72.0 - Blind SQL Injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52671" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-15013 miniorange 5.4.3 - unauthenticated auth bypass exploit-db" data-level="none" data-ts="1788192000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-15013</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-01T00:00:00">2026-09-01</time></td>
+                        <td class="col-title" data-label="标题" title="miniOrange 5.4.3 - Unauthenticated Auth Bypass">miniOrange 5.4.3 - Unauthenticated Auth Bypass</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52668" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2025-50455 easyappointments 1.5.1 - blind sql injection exploit-db" data-level="none" data-ts="1788192000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2025-50455</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-01T00:00:00">2026-09-01</time></td>
+                        <td class="col-title" data-label="标题" title="EasyAppointments 1.5.1 - Blind SQL Injection">EasyAppointments 1.5.1 - Blind SQL Injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52667" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="bludit cms - stored xss exploit-db" data-level="none" data-ts="1788192000">
+                        <td class="col-id" data-label="编号"><span class="cve-id">—</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-09-01T00:00:00">2026-09-01</time></td>
+                        <td class="col-title" data-label="标题" title="Bludit CMS - Stored XSS">Bludit CMS - Stored XSS</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52670" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-54647 cubecart 6.7.4 - sql injection exploit-db" data-level="none" data-ts="1788105600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-54647</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-31T00:00:00">2026-08-31</time></td>
+                        <td class="col-title" data-label="标题" title="CubeCart 6.7.4 - SQL injection">CubeCart 6.7.4 - SQL injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52664" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-54646 cubecart 6.7.4 - sql exploit-db" data-level="none" data-ts="1788105600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-54646</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-31T00:00:00">2026-08-31</time></td>
+                        <td class="col-title" data-label="标题" title="CubeCart 6.7.4 - SQL">CubeCart 6.7.4 - SQL</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52663" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-54645 cubecart 6.7.4 - stored xss exploit-db" data-level="none" data-ts="1788105600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-54645</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-31T00:00:00">2026-08-31</time></td>
+                        <td class="col-title" data-label="标题" title="CubeCart 6.7.4 - Stored XSS">CubeCart 6.7.4 - Stored XSS</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52662" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-54644 cubecart 6.7.4 - cross-site scripting exploit-db" data-level="none" data-ts="1788105600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-54644</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-31T00:00:00">2026-08-31</time></td>
+                        <td class="col-title" data-label="标题" title="CubeCart 6.7.4 - Cross-Site Scripting">CubeCart 6.7.4 - Cross-Site Scripting</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52661" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-51134 c-mor 6.0104 - directory traversal exploit-db" data-level="none" data-ts="1788105600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-51134</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-31T00:00:00">2026-08-31</time></td>
+                        <td class="col-title" data-label="标题" title="C-MOR 6.0104 - Directory Traversal">C-MOR 6.0104 - Directory Traversal</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52666" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-51133 c-mor 6.0104 - cross-site scripting (xss) exploit-db" data-level="none" data-ts="1788105600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-51133</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-31T00:00:00">2026-08-31</time></td>
+                        <td class="col-title" data-label="标题" title="C-MOR 6.0104 - Cross-Site Scripting (XSS)">C-MOR 6.0104 - Cross-Site Scripting (XSS)</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52665" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-5027 langflow 1.8.4 - path traversal to remote code execution exploit-db" data-level="none" data-ts="1788105600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-5027</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-31T00:00:00">2026-08-31</time></td>
+                        <td class="col-title" data-label="标题" title="Langflow 1.8.4 - Path Traversal to Remote Code Execution">Langflow 1.8.4 - Path Traversal to Remote Code Execution</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52659" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2025-60689 linksys e1200_2.0.04 - unauthenticated os command injection exploit-db" data-level="none" data-ts="1788105600">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2025-60689</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-31T00:00:00">2026-08-31</time></td>
+                        <td class="col-title" data-label="标题" title="Linksys E1200_2.0.04 - Unauthenticated OS Command Injection">Linksys E1200_2.0.04 - Unauthenticated OS Command Injection</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52660" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-42167 cve-2026-42167 - proftpd mod_sql post-authentication sqli - rce exploit-db" data-level="none" data-ts="1787587200">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-42167</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-none">—</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-08-25T00:00:00">2026-08-25</time></td>
+                        <td class="col-title" data-label="标题" title="CVE-2026-42167 - ProFTPD mod_sql post-authentication SQLi - RCE">CVE-2026-42167 - ProFTPD mod_sql post-authentication SQLi - RCE</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.exploit-db.com/exploits/52658" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="source-card is-collapsed" id="src-10" data-source="Palo Alto Networks">
+        <header class="source-head">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-10-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">Palo Alto Networks</span>
@@ -3490,7 +4362,7 @@
             </button>
             <a class="source-more" href="https://security.paloaltonetworks.com/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-8-body">
+        <div class="source-body" id="src-10-body">
             <div class="table-wrap">
                 <table>
                     <caption class="sr-only">Palo Alto Networks 最新威胁情报</caption>
@@ -3718,9 +4590,9 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-9" data-source="Fortinet">
+    <section class="source-card is-collapsed" id="src-11" data-source="Fortinet">
         <header class="source-head">
-            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-9-body">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-11-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">Fortinet</span>
@@ -3729,7 +4601,7 @@
             </button>
             <a class="source-more" href="https://fortiguard.fortinet.com/psirt" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-9-body">
+        <div class="source-body" id="src-11-body">
             <div class="table-wrap">
                 <table>
                     <caption class="sr-only">Fortinet 最新威胁情报</caption>
@@ -4165,9 +5037,9 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-10" data-source="Cisco">
+    <section class="source-card is-collapsed" id="src-12" data-source="Cisco">
         <header class="source-head">
-            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-10-body">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-12-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">Cisco</span>
@@ -4176,7 +5048,7 @@
             </button>
             <a class="source-more" href="https://sec.cloudapps.cisco.com/security/center/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-10-body">
+        <div class="source-body" id="src-12-body">
             <div class="table-wrap">
                 <table>
                     <caption class="sr-only">Cisco 最新威胁情报</caption>
@@ -4676,9 +5548,9 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-11" data-source="ZDI">
+    <section class="source-card is-collapsed" id="src-13" data-source="ZDI">
         <header class="source-head">
-            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-11-body">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-13-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">ZDI</span>
@@ -4687,7 +5559,7 @@
             </button>
             <a class="source-more" href="https://www.zerodayinitiative.com/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-11-body">
+        <div class="source-body" id="src-13-body">
             <div class="table-wrap">
                 <table>
                     <caption class="sr-only">ZDI 最新威胁情报</caption>
@@ -5187,21 +6059,21 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-12" data-source="AISLE（AI 发现）">
+    <section class="source-card is-collapsed" id="src-14" data-source="AISLE">
         <header class="source-head">
-            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-12-body">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-14-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
-                    <span class="source-name" role="heading" aria-level="2">AISLE（AI 发现）</span>
+                    <span class="source-name" role="heading" aria-level="2">AISLE</span>
                     <span class="source-meta">最近更新 2026-11-20 08:00:00 · <span class="card-count" data-total="60">60 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://aisle.com/cve-discoveries" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-12-body">
+        <div class="source-body" id="src-14-body">
             <div class="table-wrap">
                 <table>
-                    <caption class="sr-only">AISLE（AI 发现） 最新威胁情报</caption>
+                    <caption class="sr-only">AISLE 最新威胁情报</caption>
                     <thead>
                         <tr>
                             <th scope="col" class="col-id">编号</th>
@@ -5212,7 +6084,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr data-search="cve-2026-130441 wireshark: stack-based buffer overflow in wireshark aisle（ai 发现） medium 中危" data-level="medium" data-ts="1795132800">
+                    <tr data-search="cve-2026-130441 wireshark: stack-based buffer overflow in wireshark aisle medium 中危" data-level="medium" data-ts="1795132800">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-130441</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-20T08:00:00">2026-11-20 08:00:00</time><span class="badge-new">NEW</span></td>
@@ -5220,23 +6092,23 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-130441" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-133245 parse5: denial of service via preprocessor#_processsurrogate aisle（ai 发现） high 高危" data-level="high" data-ts="1795046400">
-                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133245</span></td>
-                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:00:00">2026-11-19 08:00:00</time><span class="badge-new">NEW</span></td>
-                        <td class="col-title" data-label="标题" title="parse5: Denial of Service via Preprocessor#_processSurrogate">parse5: Denial of Service via Preprocessor#_processSurrogate</td>
-                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-133245" target="_blank" rel="noopener noreferrer">查看</a></td>
-                    </tr>
-
-                    <tr data-search="cve-2026-133244 parse5: xss via rewritingstream#emittext aisle（ai 发现） medium 中危" data-level="medium" data-ts="1795046400">
+                    <tr data-search="cve-2026-133244 parse5: xss via rewritingstream#emittext aisle medium 中危" data-level="medium" data-ts="1795103533">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133244</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
-                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T08:00:00">2026-11-19 08:00:00</time><span class="badge-new">NEW</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T23:52:13">2026-11-19 23:52:13</time><span class="badge-new">NEW</span></td>
                         <td class="col-title" data-label="标题" title="parse5: XSS via RewritingStream#emitText">parse5: XSS via RewritingStream#emitText</td>
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-133244" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-127040 gnutls: denial of service via memory allocation failure in rsa-psk clientkeyexchange aisle（ai 发现） medium 中危" data-level="medium" data-ts="1795044551">
+                    <tr data-search="cve-2026-133245 parse5: denial of service via preprocessor#_processsurrogate aisle high 高危" data-level="high" data-ts="1795103532">
+                        <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-133245</span></td>
+                        <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
+                        <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T23:52:12">2026-11-19 23:52:12</time><span class="badge-new">NEW</span></td>
+                        <td class="col-title" data-label="标题" title="parse5: Denial of Service via Preprocessor#_processSurrogate">parse5: Denial of Service via Preprocessor#_processSurrogate</td>
+                        <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-133245" target="_blank" rel="noopener noreferrer">查看</a></td>
+                    </tr>
+
+                    <tr data-search="cve-2026-127040 gnutls: denial of service via memory allocation failure in rsa-psk clientkeyexchange aisle medium 中危" data-level="medium" data-ts="1795044551">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127040</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:29:11">2026-11-19 07:29:11</time><span class="badge-new">NEW</span></td>
@@ -5244,7 +6116,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-127040" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-127039 gnutls: daniel of service of service via certificate authentication info reallocation failure aisle（ai 发现） medium 中危" data-level="medium" data-ts="1795044536">
+                    <tr data-search="cve-2026-127039 gnutls: daniel of service of service via certificate authentication info reallocation failure aisle medium 中危" data-level="medium" data-ts="1795044536">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-127039</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-19T07:28:56">2026-11-19 07:28:56</time><span class="badge-new">NEW</span></td>
@@ -5252,7 +6124,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-127039" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-129348 apache shiro: propertiesrealm reload does not remove deleted users or narrowed permissions aisle（ai 发现） low 低危" data-level="low" data-ts="1794836363">
+                    <tr data-search="cve-2026-129348 apache shiro: propertiesrealm reload does not remove deleted users or narrowed permissions aisle low 低危" data-level="low" data-ts="1794836363">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129348</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-low">低危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-16T21:39:23">2026-11-16 21:39:23</time></td>
@@ -5260,7 +6132,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-129348" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-74763 apache shiro: authorization annotations not always enforced, depending on where they are placed aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794835755">
+                    <tr data-search="cve-2026-74763 apache shiro: authorization annotations not always enforced, depending on where they are placed aisle medium 中危" data-level="medium" data-ts="1794835755">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-74763</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-16T21:29:15">2026-11-16 21:29:15</time></td>
@@ -5268,7 +6140,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-74763" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-88019 apache shiro: saved form replay may weaken cookie security and expose form data aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794835506">
+                    <tr data-search="cve-2026-88019 apache shiro: saved form replay may weaken cookie security and expose form data aisle medium 中危" data-level="medium" data-ts="1794835506">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-88019</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-16T21:25:06">2026-11-16 21:25:06</time></td>
@@ -5276,7 +6148,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-88019" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-129482 okhttp: certificate pinning bypass via trailing-dot hostname aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794750444">
+                    <tr data-search="cve-2026-129482 okhttp: certificate pinning bypass via trailing-dot hostname aisle medium 中危" data-level="medium" data-ts="1794750444">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129482</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-15T21:47:24">2026-11-15 21:47:24</time></td>
@@ -5284,7 +6156,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-129482" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-129349 apache shiro: arbitrary account takeover when authentication caching is enabled aisle（ai 发现） critical 严重" data-level="critical" data-ts="1794735110">
+                    <tr data-search="cve-2026-129349 apache shiro: arbitrary account takeover when authentication caching is enabled aisle critical 严重" data-level="critical" data-ts="1794735110">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-129349</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-critical">严重</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-15T17:31:50">2026-11-15 17:31:50</time></td>
@@ -5292,7 +6164,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-129349" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-126462 openemr: stored xss via eye exam next visit orders aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794562505">
+                    <tr data-search="cve-2026-126462 openemr: stored xss via eye exam next visit orders aisle medium 中危" data-level="medium" data-ts="1794562505">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-126462</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-13T17:35:05">2026-11-13 17:35:05</time></td>
@@ -5300,7 +6172,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-126462" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-91151 cockpit: local privilege escalation via insecure symlink handling in public key addition helper aisle（ai 发现） high 高危" data-level="high" data-ts="1794426374">
+                    <tr data-search="cve-2026-91151 cockpit: local privilege escalation via insecure symlink handling in public key addition helper aisle high 高危" data-level="high" data-ts="1794426374">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-91151</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-12T03:46:14">2026-11-12 03:46:14</time></td>
@@ -5308,7 +6180,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-91151" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-91150 cockpit: denial of service via unbounded fragmented websocket messages aisle（ai 发现） high 高危" data-level="high" data-ts="1794422292">
+                    <tr data-search="cve-2026-91150 cockpit: denial of service via unbounded fragmented websocket messages aisle high 高危" data-level="high" data-ts="1794422292">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-91150</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-12T02:38:12">2026-11-12 02:38:12</time></td>
@@ -5316,7 +6188,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-91150" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125270 ffmpeg: heap out-of-bounds read in v4l2_buffer_swframe_to_buf() via frames with negative linesize aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251530">
+                    <tr data-search="cve-2026-125270 ffmpeg: heap out-of-bounds read in v4l2_buffer_swframe_to_buf() via frames with negative linesize aisle medium 中危" data-level="medium" data-ts="1794251530">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125270</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:10">2026-11-10 03:12:10</time></td>
@@ -5324,7 +6196,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125270" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125269 ffmpeg: double free in cbs_sei_delete_message() via a stale extension_data reference aisle（ai 发现） high 高危" data-level="high" data-ts="1794251529">
+                    <tr data-search="cve-2026-125269 ffmpeg: double free in cbs_sei_delete_message() via a stale extension_data reference aisle high 高危" data-level="high" data-ts="1794251529">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125269</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:09">2026-11-10 03:12:09</time></td>
@@ -5332,7 +6204,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125269" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125267 ffmpeg: heap out-of-bounds write in the apac decoder via an unreset bitstream index aisle（ai 发现） high 高危" data-level="high" data-ts="1794251528">
+                    <tr data-search="cve-2026-125267 ffmpeg: heap out-of-bounds write in the apac decoder via an unreset bitstream index aisle high 高危" data-level="high" data-ts="1794251528">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125267</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:08">2026-11-10 03:12:08</time></td>
@@ -5340,7 +6212,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125267" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125268 ffmpeg: uninitialized heap memory disclosure in the cineform hd decoder via oversized imageheight aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251528">
+                    <tr data-search="cve-2026-125268 ffmpeg: uninitialized heap memory disclosure in the cineform hd decoder via oversized imageheight aisle medium 中危" data-level="medium" data-ts="1794251528">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125268</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:08">2026-11-10 03:12:08</time></td>
@@ -5348,7 +6220,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125268" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125266 ffmpeg: uninitialized stack memory disclosure in old_codec23() of the sanm decoder aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251527">
+                    <tr data-search="cve-2026-125266 ffmpeg: uninitialized stack memory disclosure in old_codec23() of the sanm decoder aisle medium 中危" data-level="medium" data-ts="1794251527">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125266</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:07">2026-11-10 03:12:07</time></td>
@@ -5356,7 +6228,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125266" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125264 ffmpeg: cpu exhaustion in the jpeg xl parser via a huge toc_count in a permuted toc aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251526">
+                    <tr data-search="cve-2026-125264 ffmpeg: cpu exhaustion in the jpeg xl parser via a huge toc_count in a permuted toc aisle medium 中危" data-level="medium" data-ts="1794251526">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125264</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:06">2026-11-10 03:12:06</time></td>
@@ -5364,7 +6236,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125264" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125265 ffmpeg: use after free in the nvdec decoder via a stale bitstream pointer after slice errors aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251526">
+                    <tr data-search="cve-2026-125265 ffmpeg: use after free in the nvdec decoder via a stale bitstream pointer after slice errors aisle medium 中危" data-level="medium" data-ts="1794251526">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125265</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:06">2026-11-10 03:12:06</time></td>
@@ -5372,7 +6244,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125265" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125263 ffmpeg: memory exhaustion via lcevc enhanced output dimensions not checked against max_pixels aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251525">
+                    <tr data-search="cve-2026-125263 ffmpeg: memory exhaustion via lcevc enhanced output dimensions not checked against max_pixels aisle medium 中危" data-level="medium" data-ts="1794251525">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125263</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:05">2026-11-10 03:12:05</time></td>
@@ -5380,7 +6252,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125263" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125262 ffmpeg: heap buffer overflow in lcevc enhancement decoding via unvalidated output dimensions aisle（ai 发现） high 高危" data-level="high" data-ts="1794251524">
+                    <tr data-search="cve-2026-125262 ffmpeg: heap buffer overflow in lcevc enhancement decoding via unvalidated output dimensions aisle high 高危" data-level="high" data-ts="1794251524">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125262</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:04">2026-11-10 03:12:04</time></td>
@@ -5388,7 +6260,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125262" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125260 ffmpeg: heap buffer overflow in the exr encoder rle path when frame height grows mid-stream aisle（ai 发现） high 高危" data-level="high" data-ts="1794251523">
+                    <tr data-search="cve-2026-125260 ffmpeg: heap buffer overflow in the exr encoder rle path when frame height grows mid-stream aisle high 高危" data-level="high" data-ts="1794251523">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125260</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:03">2026-11-10 03:12:03</time></td>
@@ -5396,7 +6268,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125260" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125261 ffmpeg: out-of-bounds read in the sgi encoder&#x27;s encode_frame() via negative linesize frames aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251523">
+                    <tr data-search="cve-2026-125261 ffmpeg: out-of-bounds read in the sgi encoder&#x27;s encode_frame() via negative linesize frames aisle medium 中危" data-level="medium" data-ts="1794251523">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125261</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:03">2026-11-10 03:12:03</time></td>
@@ -5404,7 +6276,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125261" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125259 ffmpeg: integer overflow in the prores_ks encoder causing heap buffer overflow on large frames aisle（ai 发现） high 高危" data-level="high" data-ts="1794251522">
+                    <tr data-search="cve-2026-125259 ffmpeg: integer overflow in the prores_ks encoder causing heap buffer overflow on large frames aisle high 高危" data-level="high" data-ts="1794251522">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125259</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:02">2026-11-10 03:12:02</time></td>
@@ -5412,7 +6284,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125259" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125257 ffmpeg: off-by-one heap overflow in get_exponent_dynamic() of the nellymoser trellis search aisle（ai 发现） high 高危" data-level="high" data-ts="1794251521">
+                    <tr data-search="cve-2026-125257 ffmpeg: off-by-one heap overflow in get_exponent_dynamic() of the nellymoser trellis search aisle high 高危" data-level="high" data-ts="1794251521">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125257</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:01">2026-11-10 03:12:01</time></td>
@@ -5420,7 +6292,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125257" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125258 ffmpeg: division by zero in dovi_configure_ext() via a zero frame rate denominator aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251521">
+                    <tr data-search="cve-2026-125258 ffmpeg: division by zero in dovi_configure_ext() via a zero frame rate denominator aisle medium 中危" data-level="medium" data-ts="1794251521">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125258</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:01">2026-11-10 03:12:01</time></td>
@@ -5428,7 +6300,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125258" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125256 ffmpeg: heap buffer overflow in ff_llvidenc_diff_bytes_rvv() via rgb video narrower than 8 pixels aisle（ai 发现） high 高危" data-level="high" data-ts="1794251520">
+                    <tr data-search="cve-2026-125256 ffmpeg: heap buffer overflow in ff_llvidenc_diff_bytes_rvv() via rgb video narrower than 8 pixels aisle high 高危" data-level="high" data-ts="1794251520">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125256</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:12:00">2026-11-10 03:12:00</time></td>
@@ -5436,7 +6308,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125256" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125254 ffmpeg: division by zero in the vvc decoder via excess num_ref_idx_active in ff_vvc_slice_rpl() aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251519">
+                    <tr data-search="cve-2026-125254 ffmpeg: division by zero in the vvc decoder via excess num_ref_idx_active in ff_vvc_slice_rpl() aisle medium 中危" data-level="medium" data-ts="1794251519">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125254</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:59">2026-11-10 03:11:59</time></td>
@@ -5444,7 +6316,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125254" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125255 ffmpeg: use after free in the mjpeg decoder via a sof marker without a preceding soi aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251519">
+                    <tr data-search="cve-2026-125255 ffmpeg: use after free in the mjpeg decoder via a sof marker without a preceding soi aisle medium 中危" data-level="medium" data-ts="1794251519">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125255</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:59">2026-11-10 03:11:59</time></td>
@@ -5452,7 +6324,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125255" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125253 ffmpeg: integer overflow in cbs_vp9_split_fragment() causing out-of-bounds read on 32-bit builds aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251518">
+                    <tr data-search="cve-2026-125253 ffmpeg: integer overflow in cbs_vp9_split_fragment() causing out-of-bounds read on 32-bit builds aisle medium 中危" data-level="medium" data-ts="1794251518">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125253</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:58">2026-11-10 03:11:58</time></td>
@@ -5460,7 +6332,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125253" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125252 ffmpeg: memory leak in the vaapi decoder via slice parse errors on every frame aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251517">
+                    <tr data-search="cve-2026-125252 ffmpeg: memory leak in the vaapi decoder via slice parse errors on every frame aisle medium 中危" data-level="medium" data-ts="1794251517">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125252</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:57">2026-11-10 03:11:57</time></td>
@@ -5468,7 +6340,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125252" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125250 ffmpeg: heap buffer overflow in the gif encoder via a pal8 frame linesize that grows mid-stream aisle（ai 发现） high 高危" data-level="high" data-ts="1794251516">
+                    <tr data-search="cve-2026-125250 ffmpeg: heap buffer overflow in the gif encoder via a pal8 frame linesize that grows mid-stream aisle high 高危" data-level="high" data-ts="1794251516">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125250</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:56">2026-11-10 03:11:56</time></td>
@@ -5476,7 +6348,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125250" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125251 ffmpeg: integer overflow in the vvc decoder&#x27;s alloc_frame() causing heap overflow on 32-bit builds aisle（ai 发现） high 高危" data-level="high" data-ts="1794251516">
+                    <tr data-search="cve-2026-125251 ffmpeg: integer overflow in the vvc decoder&#x27;s alloc_frame() causing heap overflow on 32-bit builds aisle high 高危" data-level="high" data-ts="1794251516">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125251</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:56">2026-11-10 03:11:56</time></td>
@@ -5484,7 +6356,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125251" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125249 ffmpeg: integer overflow in ff_vk_decode_add_slice() causing heap overflow on huge slice data aisle（ai 发现） high 高危" data-level="high" data-ts="1794251515">
+                    <tr data-search="cve-2026-125249 ffmpeg: integer overflow in ff_vk_decode_add_slice() causing heap overflow on huge slice data aisle high 高危" data-level="high" data-ts="1794251515">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125249</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:55">2026-11-10 03:11:55</time></td>
@@ -5492,7 +6364,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125249" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125248 ffmpeg: integer overflow in the ffv1 vulkan encoder undersizing the float remap buffer aisle（ai 发现） high 高危" data-level="high" data-ts="1794251514">
+                    <tr data-search="cve-2026-125248 ffmpeg: integer overflow in the ffv1 vulkan encoder undersizing the float remap buffer aisle high 高危" data-level="high" data-ts="1794251514">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125248</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:54">2026-11-10 03:11:54</time></td>
@@ -5500,7 +6372,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125248" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125247 ffmpeg: uninitialized memory disclosure in dng_decode_tiles() via near-int_max tile dimensions aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251514">
+                    <tr data-search="cve-2026-125247 ffmpeg: uninitialized memory disclosure in dng_decode_tiles() via near-int_max tile dimensions aisle medium 中危" data-level="medium" data-ts="1794251514">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125247</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:54">2026-11-10 03:11:54</time></td>
@@ -5508,7 +6380,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125247" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125246 ffmpeg: assertion failure in cbs_jpeg_assemble_fragment() via 0xff bytes in the scan header aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251513">
+                    <tr data-search="cve-2026-125246 ffmpeg: assertion failure in cbs_jpeg_assemble_fragment() via 0xff bytes in the scan header aisle medium 中危" data-level="medium" data-ts="1794251513">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125246</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:53">2026-11-10 03:11:53</time></td>
@@ -5516,7 +6388,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125246" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125244 ffmpeg: out-of-bounds write in the vvc decoder&#x27;s sh_entry_points() via excess entry points aisle（ai 发现） high 高危" data-level="high" data-ts="1794251512">
+                    <tr data-search="cve-2026-125244 ffmpeg: out-of-bounds write in the vvc decoder&#x27;s sh_entry_points() via excess entry points aisle high 高危" data-level="high" data-ts="1794251512">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125244</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:52">2026-11-10 03:11:52</time></td>
@@ -5524,7 +6396,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125244" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125245 ffmpeg: memory leak in ff_mjpeg_decode_sof() via an overwritten hwaccel_picture_private pointer aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251512">
+                    <tr data-search="cve-2026-125245 ffmpeg: memory leak in ff_mjpeg_decode_sof() via an overwritten hwaccel_picture_private pointer aisle medium 中危" data-level="medium" data-ts="1794251512">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125245</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:52">2026-11-10 03:11:52</time></td>
@@ -5532,7 +6404,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125245" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125243 ffmpeg: uninitialized memory disclosure in the jpeg-ls decoder via 16-bit line-interleaved scans aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251511">
+                    <tr data-search="cve-2026-125243 ffmpeg: uninitialized memory disclosure in the jpeg-ls decoder via 16-bit line-interleaved scans aisle medium 中危" data-level="medium" data-ts="1794251511">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125243</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:51">2026-11-10 03:11:51</time></td>
@@ -5540,7 +6412,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125243" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125241 ffmpeg: heap buffer overflow in the flic decoder via one-sided bounds check in check_pixel_ptr() aisle（ai 发现） high 高危" data-level="high" data-ts="1794251510">
+                    <tr data-search="cve-2026-125241 ffmpeg: heap buffer overflow in the flic decoder via one-sided bounds check in check_pixel_ptr() aisle high 高危" data-level="high" data-ts="1794251510">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125241</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:50">2026-11-10 03:11:50</time></td>
@@ -5548,7 +6420,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125241" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125242 ffmpeg: memory leak in the vdpau hwaccel bitstream buffer table via aborted pictures aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251510">
+                    <tr data-search="cve-2026-125242 ffmpeg: memory leak in the vdpau hwaccel bitstream buffer table via aborted pictures aisle medium 中危" data-level="medium" data-ts="1794251510">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125242</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:50">2026-11-10 03:11:50</time></td>
@@ -5556,7 +6428,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125242" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125240 ffmpeg: resource leak in svt_jpegxs_dec_decode() when ff_set_dimensions() rejects frame dimensions aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251509">
+                    <tr data-search="cve-2026-125240 ffmpeg: resource leak in svt_jpegxs_dec_decode() when ff_set_dimensions() rejects frame dimensions aisle medium 中危" data-level="medium" data-ts="1794251509">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125240</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:49">2026-11-10 03:11:49</time></td>
@@ -5564,7 +6436,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125240" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125239 ffmpeg: heap buffer overflow in ff_dxva2_hevc_fill_picture_parameters() via excessive hevc tiles aisle（ai 发现） high 高危" data-level="high" data-ts="1794251508">
+                    <tr data-search="cve-2026-125239 ffmpeg: heap buffer overflow in ff_dxva2_hevc_fill_picture_parameters() via excessive hevc tiles aisle high 高危" data-level="high" data-ts="1794251508">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125239</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:48">2026-11-10 03:11:48</time></td>
@@ -5572,7 +6444,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125239" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125238 ffmpeg: reachable assertion in libxevd_receive_frame() via evc access units that produce no frame aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251507">
+                    <tr data-search="cve-2026-125238 ffmpeg: reachable assertion in libxevd_receive_frame() via evc access units that produce no frame aisle medium 中危" data-level="medium" data-ts="1794251507">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125238</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:47">2026-11-10 03:11:47</time></td>
@@ -5580,7 +6452,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125238" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125237 ffmpeg: assertion abort in the dpx decoder after a failed vulkan hwaccel callback aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251507">
+                    <tr data-search="cve-2026-125237 ffmpeg: assertion abort in the dpx decoder after a failed vulkan hwaccel callback aisle medium 中危" data-level="medium" data-ts="1794251507">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125237</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:47">2026-11-10 03:11:47</time></td>
@@ -5588,7 +6460,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125237" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125236 ffmpeg: memory leak in the vvc decoder alloc_frame() when frame buffer allocation fails aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251506">
+                    <tr data-search="cve-2026-125236 ffmpeg: memory leak in the vvc decoder alloc_frame() when frame buffer allocation fails aisle medium 中危" data-level="medium" data-ts="1794251506">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125236</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:46">2026-11-10 03:11:46</time></td>
@@ -5596,7 +6468,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125236" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125235 ffmpeg: heap buffer overflow in the qsv encoder when input resolution grows mid-stream aisle（ai 发现） high 高危" data-level="high" data-ts="1794251505">
+                    <tr data-search="cve-2026-125235 ffmpeg: heap buffer overflow in the qsv encoder when input resolution grows mid-stream aisle high 高危" data-level="high" data-ts="1794251505">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125235</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:45">2026-11-10 03:11:45</time></td>
@@ -5604,7 +6476,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125235" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125234 ffmpeg: infinite loop in wavpack_encode_init() via integer overflow from a huge sample rate aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251505">
+                    <tr data-search="cve-2026-125234 ffmpeg: infinite loop in wavpack_encode_init() via integer overflow from a huge sample rate aisle medium 中危" data-level="medium" data-ts="1794251505">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125234</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:45">2026-11-10 03:11:45</time></td>
@@ -5612,7 +6484,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125234" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125233 ffmpeg: heap buffer overflow in dvbsub_encode() from undercounted clut segment headers aisle（ai 发现） high 高危" data-level="high" data-ts="1794251504">
+                    <tr data-search="cve-2026-125233 ffmpeg: heap buffer overflow in dvbsub_encode() from undercounted clut segment headers aisle high 高危" data-level="high" data-ts="1794251504">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125233</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:44">2026-11-10 03:11:44</time></td>
@@ -5620,7 +6492,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125233" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125232 ffmpeg: division by zero in estimate_motion_b() via b-frame timestamp gaps of 65536 multiples aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251503">
+                    <tr data-search="cve-2026-125232 ffmpeg: division by zero in estimate_motion_b() via b-frame timestamp gaps of 65536 multiples aisle medium 中危" data-level="medium" data-ts="1794251503">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125232</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:43">2026-11-10 03:11:43</time></td>
@@ -5628,7 +6500,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125232" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125231 ffmpeg: null pointer dereference in the adx decoder via an invalid sample rate in side data aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251503">
+                    <tr data-search="cve-2026-125231 ffmpeg: null pointer dereference in the adx decoder via an invalid sample rate in side data aisle medium 中危" data-level="medium" data-ts="1794251503">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125231</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:43">2026-11-10 03:11:43</time></td>
@@ -5636,7 +6508,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125231" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125230 ffmpeg: division by zero in the pcm_rechunk bitstream filter via an overflowing channel count aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251502">
+                    <tr data-search="cve-2026-125230 ffmpeg: division by zero in the pcm_rechunk bitstream filter via an overflowing channel count aisle medium 中危" data-level="medium" data-ts="1794251502">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125230</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:42">2026-11-10 03:11:42</time></td>
@@ -5644,7 +6516,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125230" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125229 ffmpeg: out-of-bounds read and write in the huffyuv encoder median predictor via tiny frames aisle（ai 发现） high 高危" data-level="high" data-ts="1794251501">
+                    <tr data-search="cve-2026-125229 ffmpeg: out-of-bounds read and write in the huffyuv encoder median predictor via tiny frames aisle high 高危" data-level="high" data-ts="1794251501">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125229</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:41">2026-11-10 03:11:41</time></td>
@@ -5652,7 +6524,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125229" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125227 ffmpeg: integer overflow in cbs_jpeg_write_scan() causing heap buffer overflow on 32-bit builds aisle（ai 发现） high 高危" data-level="high" data-ts="1794251500">
+                    <tr data-search="cve-2026-125227 ffmpeg: integer overflow in cbs_jpeg_write_scan() causing heap buffer overflow on 32-bit builds aisle high 高危" data-level="high" data-ts="1794251500">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125227</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:40">2026-11-10 03:11:40</time></td>
@@ -5660,7 +6532,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125227" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125228 ffmpeg: out-of-bounds read in the vorbis encoder put_vector() via nan float samples aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251500">
+                    <tr data-search="cve-2026-125228 ffmpeg: out-of-bounds read in the vorbis encoder put_vector() via nan float samples aisle medium 中危" data-level="medium" data-ts="1794251500">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125228</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:40">2026-11-10 03:11:40</time></td>
@@ -5668,7 +6540,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125228" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125226 ffmpeg: excessive memory allocation in the sbagen demuxer via a very high script sample rate aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251499">
+                    <tr data-search="cve-2026-125226 ffmpeg: excessive memory allocation in the sbagen demuxer via a very high script sample rate aisle medium 中危" data-level="medium" data-ts="1794251499">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125226</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:39">2026-11-10 03:11:39</time></td>
@@ -5676,7 +6548,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125226" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125225 ffmpeg: null pointer dereference in aac_adtstoasc_filter() via an oversized adts aac packet aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251498">
+                    <tr data-search="cve-2026-125225 ffmpeg: null pointer dereference in aac_adtstoasc_filter() via an oversized adts aac packet aisle medium 中危" data-level="medium" data-ts="1794251498">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125225</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:38">2026-11-10 03:11:38</time></td>
@@ -5684,7 +6556,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://aisle.com/cve-discoveries/cve-2026-125225" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-125224 ffmpeg: cpu exhaustion in the vorbis parser from re-parsing large invalid extradata per packet aisle（ai 发现） medium 中危" data-level="medium" data-ts="1794251497">
+                    <tr data-search="cve-2026-125224 ffmpeg: cpu exhaustion in the vorbis parser from re-parsing large invalid extradata per packet aisle medium 中危" data-level="medium" data-ts="1794251497">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-125224</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-medium">中危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T03:11:37">2026-11-10 03:11:37</time></td>
@@ -5698,21 +6570,21 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-13" data-source="Mozilla（AI 发现）">
+    <section class="source-card is-collapsed" id="src-15" data-source="Mozilla">
         <header class="source-head">
-            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-13-body">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-15-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
-                    <span class="source-name" role="heading" aria-level="2">Mozilla（AI 发现）</span>
+                    <span class="source-name" role="heading" aria-level="2">Mozilla</span>
                     <span class="source-meta">最近更新 2026-11-10 · <span class="card-count" data-total="25">25 条</span></span>
                 </span>
             </button>
             <a class="source-more" href="https://www.mozilla.org/en-US/security/advisories/" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-13-body">
+        <div class="source-body" id="src-15-body">
             <div class="table-wrap">
                 <table>
-                    <caption class="sr-only">Mozilla（AI 发现） 最新威胁情报</caption>
+                    <caption class="sr-only">Mozilla 最新威胁情报</caption>
                     <thead>
                         <tr>
                             <th scope="col" class="col-id">编号</th>
@@ -5723,7 +6595,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <tr data-search="cve-2026-124904 use-after-free in the svg component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124904 use-after-free in the svg component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124904</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5731,7 +6603,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-128/#CVE-2026-124904" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124899 use-after-free in the layout: text and fonts component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124899 use-after-free in the layout: text and fonts component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124899</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5739,7 +6611,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124899" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124898 use-after-free in the dom: editor component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124898 use-after-free in the dom: editor component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124898</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5747,7 +6619,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124898" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124897 use-after-free in the javascript: gc component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124897 use-after-free in the javascript: gc component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124897</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5755,7 +6627,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124897" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124896 invalid pointer in the layout: text and fonts component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124896 invalid pointer in the layout: text and fonts component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124896</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5763,7 +6635,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124896" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124895 use-after-free in the storage: localstorage &amp; sessionstorage component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124895 use-after-free in the storage: localstorage &amp; sessionstorage component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124895</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5771,7 +6643,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124895" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124894 use-after-free in the networking: cookies component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124894 use-after-free in the networking: cookies component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124894</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5779,7 +6651,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124894" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124893 use-after-free in the dom: workers component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124893 use-after-free in the dom: workers component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124893</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5787,7 +6659,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124893" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124892 use-after-free in the javascript: gc component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124892 use-after-free in the javascript: gc component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124892</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5795,7 +6667,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124892" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124891 incorrect boundary conditions in the dom: selection component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124891 incorrect boundary conditions in the dom: selection component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124891</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5803,7 +6675,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124891" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124890 use-after-free in the dom: core &amp; html component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124890 use-after-free in the dom: core &amp; html component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124890</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5811,7 +6683,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124890" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124889 use-after-free in the css parsing and computation component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124889 use-after-free in the css parsing and computation component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124889</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5819,7 +6691,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124889" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124888 incorrect boundary conditions in the layout: text and fonts component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124888 incorrect boundary conditions in the layout: text and fonts component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124888</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5827,7 +6699,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124888" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124887 incorrect boundary conditions in the layout: text and fonts component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124887 incorrect boundary conditions in the layout: text and fonts component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124887</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5835,7 +6707,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124887" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124886 invalid pointer in the layout: text and fonts component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124886 invalid pointer in the layout: text and fonts component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124886</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5843,7 +6715,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124886" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124885 use-after-free in the graphics: text component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124885 use-after-free in the graphics: text component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124885</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5851,7 +6723,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124885" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124884 use-after-free in the javascript: gc component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124884 use-after-free in the javascript: gc component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124884</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5859,7 +6731,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124884" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124883 use-after-free in the dom: core &amp; html component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124883 use-after-free in the dom: core &amp; html component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124883</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5867,7 +6739,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124883" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124882 use-after-free in the css parsing and computation component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124882 use-after-free in the css parsing and computation component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124882</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5875,7 +6747,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124882" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124881 use-after-free in the css parsing and computation component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124881 use-after-free in the css parsing and computation component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124881</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5883,7 +6755,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124881" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124880 use-after-free in the dom: core &amp; html component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124880 use-after-free in the dom: core &amp; html component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124880</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5891,7 +6763,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124880" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124879 invalid pointer in the networking: cache component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124879 invalid pointer in the networking: cache component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124879</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5899,7 +6771,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124879" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124878 use-after-free in the layout: positioned component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124878 use-after-free in the layout: positioned component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124878</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5907,7 +6779,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-128/#CVE-2026-124878" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124877 use-after-free in the layout: positioned component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124877 use-after-free in the layout: positioned component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124877</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5915,7 +6787,7 @@
                         <td class="col-link" data-label="详情"><a class="detail-link" href="https://www.mozilla.org/en-US/security/advisories/mfsa2026-129/#CVE-2026-124877" target="_blank" rel="noopener noreferrer">查看</a></td>
                     </tr>
 
-                    <tr data-search="cve-2026-124872 use-after-free in the cycle collector component mozilla（ai 发现） high 高危" data-level="high" data-ts="1794240000">
+                    <tr data-search="cve-2026-124872 use-after-free in the cycle collector component mozilla high 高危" data-level="high" data-ts="1794240000">
                         <td class="col-id" data-label="编号"><span class="cve-id">CVE-2026-124872</span></td>
                         <td class="col-level" data-label="等级"><span class="badge badge-high">高危</span></td>
                         <td class="col-time" data-label="披露时间"><time datetime="2026-11-10T00:00:00">2026-11-10</time></td>
@@ -5929,9 +6801,9 @@
         </div>
     </section>
 
-    <section class="source-card is-collapsed" id="src-14" data-source="Vulnerability-Wiki-PoC">
+    <section class="source-card is-collapsed" id="src-16" data-source="Vulnerability-Wiki-PoC">
         <header class="source-head">
-            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-14-body">
+            <button class="source-toggle" type="button" aria-expanded="false" aria-controls="src-16-body">
                 <span class="toggle-icon" aria-hidden="true"></span>
                 <span class="source-heading">
                     <span class="source-name" role="heading" aria-level="2">Vulnerability-Wiki-PoC</span>
@@ -5940,7 +6812,7 @@
             </button>
             <a class="source-more" href="https://github.com/SourByte05/Vulnerability-Wiki-PoC" target="_blank" rel="noopener">访问来源 <span aria-hidden="true">→</span></a>
         </header>
-        <div class="source-body" id="src-14-body">
+        <div class="source-body" id="src-16-body">
             <div class="table-wrap">
                 <table>
                     <caption class="sr-only">Vulnerability-Wiki-PoC 最新威胁情报</caption>
@@ -6448,7 +7320,7 @@
         <div class="footer-brand">
             <strong>渊龙Sec安全团队</strong>
             <p>持续跟踪公开漏洞情报，为安全从业者提供轻量、可检索、可归档的每日威胁简报。</p>
-            <p class="footer-note">数据来源：阿里云高危漏洞库 · 斗象漏洞情报中心 · 微步在线情报中心 · 长亭漏洞库 · 美国国家漏洞数据库（NVD） · Tenable (Nessus) · CISA 在野利用漏洞 · Palo Alto Networks · Fortinet · Cisco · ZDI · AISLE（AI 发现） · Mozilla（AI 发现） · Vulnerability-Wiki-PoC。情报仅供参考，请以官方通告为准。</p>
+            <p class="footer-note">数据来源：阿里云高危漏洞库 · 斗象漏洞情报中心 · 微步在线情报中心 · 长亭漏洞库 · 美国国家漏洞数据库（NVD） · Tenable (Nessus) · CISA 在野利用漏洞 · Sploitus · Exploit-DB · Palo Alto Networks · Fortinet · Cisco · ZDI · AISLE · Mozilla · Vulnerability-Wiki-PoC。情报仅供参考，请以官方通告为准。</p>
         </div>
         <div class="footer-links">
             <a href="https://threat.aabyss.cn/" target="_blank" rel="noopener">在线播报页</a>
@@ -6462,7 +7334,7 @@
         </div>
     </div>
     <div class="wrap copyright">
-        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-21 00:30:26</p>
+        <p>© 2026 渊龙Sec安全团队 · 页面由 GitHub Actions 自动生成 · 最近一次构建 2026-11-21 00:34:24</p>
     </div>
 </footer>
 
