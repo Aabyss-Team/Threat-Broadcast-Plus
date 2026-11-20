@@ -35,7 +35,7 @@ class AISLE(BaseCrawler):
     """AISLE 官方 CVE 目录，披露时间取自各披露页的 JSON-LD 元数据。"""
 
     def NAME_CH(self):
-        return 'AISLE（AI 发现）'
+        return 'AISLE'
 
     def NAME_EN(self):
         return 'AISLE'
@@ -147,7 +147,7 @@ class MozillaAI(BaseCrawler):
     REPO = 'https://raw.githubusercontent.com/mozilla/foundation-security-advisories/main/announce'
 
     def NAME_CH(self):
-        return 'Mozilla（AI 发现）'
+        return 'Mozilla'
 
     def NAME_EN(self):
         return 'Mozilla AI'

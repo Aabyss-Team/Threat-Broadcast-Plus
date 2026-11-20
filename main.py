@@ -26,6 +26,8 @@ from src.crawler.cisa_kev import CisaKev
 from src.crawler.ai_discoveries import AISLE, MozillaAI
 from src.crawler.vendor_advisories import PaloAlto, Fortinet, Cisco, ZDI, RedHat, MSRC
 from src.crawler.vulnerability_wiki import VulnerabilityWiki
+from src.crawler.sploitus import Sploitus
+from src.crawler.exploit_db import ExploitDB
 
 import src.notice.page as page
 import src.notice.mail as mail
@@ -112,6 +114,8 @@ def build_sources():
         NVD(),
         Tenable(),
         CisaKev(),
+        Sploitus(),
+        ExploitDB(),
         PaloAlto(),
         Fortinet(),
         Cisco(),

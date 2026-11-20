@@ -27,6 +27,8 @@
 | NVD | https://nvd.nist.gov/ | 官方 2.0 recent JSON 源，失败时回退 REST API |
 | Tenable (Nessus) | https://www.tenable.com/cve/feeds?sort=newest | RSS 源，含严重等级与英文描述 |
 | CISA KEV | https://www.cisa.gov/known-exploited-vulnerabilities-catalog | 已被在野利用的漏洞目录 |
+| Sploitus | https://sploitus.com/ | 漏洞利用聚合搜索引擎，按收录时间拉取最新 Exploit/PoC |
+| Exploit-DB | https://www.exploit-db.com/ | 官方 GitLab 索引，含 CVE 编号与验证标记 |
 | Palo Alto Networks | https://security.paloaltonetworks.com/ | 官方 JSON 通告，含 CVSS、受影响产品与修复建议 |
 | Fortinet | https://fortiguard.fortinet.com/psirt | 官方 RSS + 详情页，含 CVSS、是否已知被利用 |
 | Cisco | https://sec.cloudapps.cisco.com/security/center/ | 官方 RSS，详情优先取 CSAF JSON |
