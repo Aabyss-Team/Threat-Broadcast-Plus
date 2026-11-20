@@ -10,6 +10,7 @@
 #   Microsoft MSRC：https://msrc.microsoft.com/update-guide/
 # -----------------------------------------------
 
+import json
 import re
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
@@ -267,6 +268,9 @@ class Cisco(VendorSource):
             return []
         try:
             data = self.request(url + '/csaf/' + advisory + '.json').json()
+            # cisco-sa-notice-* 这类公告通告没有漏洞条目，不是漏洞记录，直接跳过
+            if not (data.get('vulnerabilities') or []):
+                return []
             return self.parse_csaf(data, url)
         except Exception as error:
             log.warning('[Cisco] %s CSAF 失败，仅使用 RSS：%s' % (advisory, error))
@@ -275,8 +279,6 @@ class Cisco(VendorSource):
     def parse_csaf(self, data, url):
         document = data['document']
         tracking = document['tracking']
-        if not data.get('vulnerabilities'):
-            raise ValueError('Cisco CSAF 没有漏洞条目')
         products = {}
 
         def walk(node, parents=()):
@@ -378,11 +380,19 @@ class RedHat(VendorSource):
 
     def get_cves(self, limit=60):
         after = datetime.now(timezone.utc) - timedelta(days=_max_age_days())
-        data = self.request(self.API + 'cve.json', params={
-            'after': after.strftime('%Y-%m-%d'), 'per_page': limit, 'page': 1}).json()
+        data = self._json(self.request(self.API + 'cve.json', params={
+            'after': after.strftime('%Y-%m-%d'), 'per_page': limit, 'page': 1}))
         if not isinstance(data, list):
             raise ValueError('Red Hat CVE 列表格式异常')
         return self.details(data, self.fetch_detail, limit)
+
+    @staticmethod
+    def _json(response):
+        # Hydra 接口在结果窗口较大时会把 JSON 数组二次编码成字符串，需要再解一层
+        data = response.json()
+        if isinstance(data, str):
+            data = json.loads(data)
+        return data
 
     def fetch_detail(self, item):
         identifier = item['CVE']
@@ -394,7 +404,7 @@ class RedHat(VendorSource):
                           cwe=item.get('CWE') or '', collection_status='summary_only')
         cve.level = normalize(item.get('severity'))
         try:
-            data = self.request(self.API + 'cve/' + identifier + '.json').json()
+            data = self._json(self.request(self.API + 'cve/' + identifier + '.json'))
             return [self.parse_detail(data, cve)]
         except Exception as error:
             log.warning('[Red Hat] %s 详情失败，仅使用列表：%s' % (identifier, error))
@@ -428,8 +438,14 @@ class MSRC(VendorSource):
         releases.sort(key=lambda x: x['InitialReleaseDate'], reverse=True)
         records = {}
         for release in releases:
-            document = self.request(self.API + 'cvrf/' + release['ID']).json()
-            for cve in self.parse_document(document, release['ID']):
+            try:
+                document = self.request(self.API + 'cvrf/' + release['ID']).json()
+                parsed = self.parse_document(document, release['ID'])
+            except Exception as error:
+                # 单个月度的文档异常不应拖垮整个来源
+                log.warning('[MSRC] %s 文档解析失败，跳过：%s' % (release.get('ID'), error))
+                continue
+            for cve in parsed:
                 if self.recent(cve.time):
                     # 同一个 CVE 可能出现在后续月份的产品更新里
                     existing = records.get(cve.id)
@@ -463,8 +479,15 @@ class MSRC(VendorSource):
                     walk(value)
         walk(data.get('ProductTree', {}))
         records = []
-        for vulnerability in data['Vulnerability']:
-            identifier = vulnerability['CVE']
+        for vulnerability in data.get('Vulnerability') or []:
+            identifier = vulnerability.get('CVE') or ''
+            if not identifier:
+                continue
+            # 个别条目的 Title 是空对象（如 Mariner 相关记录），取不到 Value 时用编号兜底
+            title = vulnerability.get('Title') or {}
+            if isinstance(title, dict):
+                title = title.get('Value') or ''
+            title = str(title).strip() or identifier
             revisions = [x['Date'] for x in vulnerability.get('RevisionHistory', [])
                          if x.get('Date', '').startswith(('19', '20'))]
             # 不要把当月文档日期标到历史 CVE 上
@@ -481,7 +504,7 @@ class MSRC(VendorSource):
                       'url': x.get('URL', ''), 'fixed_build': x.get('FixedBuild', ''),
                       'products': [products.get(key, key) for key in x.get('ProductID', [])]}
                      for x in vulnerability.get('Remediations', []) if x.get('Type') == 2]
-            cve = self.record(identifier, vulnerability['Title']['Value'], self.HOME + 'vulnerability/' + identifier,
+            cve = self.record(identifier, title, self.HOME + 'vulnerability/' + identifier,
                               published, advisory_id=identifier, release=release,
                               date_basis='MSRC ReleaseDate' if vulnerability.get('ReleaseDateSpecified') else 'MSRC 最早修订日期',
                               updated_at=cst(max(revisions, default=published)),
