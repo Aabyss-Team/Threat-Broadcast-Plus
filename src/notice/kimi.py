@@ -288,8 +288,8 @@ def _call_api(api_url, api_key, model, messages, max_tokens, reasoning_effort='l
             return ''
 
         content = content.replace('**', '').strip()
-        if len(content) > 1200:
-            content = content[:1200].rstrip() + '…'
+        if len(content) > 3000:
+            content = content[:3000].rstrip() + '…'
         return content
 
     log.warning('[AI] 联网搜索超过 %d 轮仍未完成，放弃' % MAX_SEARCH_ROUNDS)
